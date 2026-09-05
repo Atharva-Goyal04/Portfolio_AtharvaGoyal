@@ -1,4 +1,5 @@
-import { Link } from 'react-scroll'
+import { Link as ScrollLink } from 'react-scroll'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
 
 const navLinks = [
   { to: 'home', label: 'Home' },
@@ -8,9 +9,13 @@ const navLinks = [
 ]
 
 export default function Navigation({ darkMode, setDarkMode, scrolled }) {
+  const { pathname } = useLocation()
+  const internal = pathname === '/'
+  const Link = internal ? ScrollLink : RouterLink
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-40 transition-colors duration-500 ${
         scrolled
           ? 'backdrop-blur-md'
           : ''
@@ -19,8 +24,8 @@ export default function Navigation({ darkMode, setDarkMode, scrolled }) {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link
-          to="home"
-          smooth={true}
+          to={internal ? 'home' : '/#home'}
+          smooth={!internal}
           duration={500}
           className="cursor-pointer"
         >
@@ -33,13 +38,13 @@ export default function Navigation({ darkMode, setDarkMode, scrolled }) {
           {navLinks.map((link) => (
             <Link
               key={link.to}
-              to={link.to}
-              spy={true}
-              smooth={true}
-              offset={0}
+              to={internal ? link.to : `/#${link.to}`}
+              spy={internal}
+              smooth={!internal}
+              offset={internal ? 0 : undefined}
               duration={500}
               className="nav-link font-mono text-[10px] tracking-[0.2em] uppercase cursor-pointer"
-              activeClass="nav-active"
+              activeClass={internal ? 'nav-active' : undefined}
             >
               {link.label}
             </Link>

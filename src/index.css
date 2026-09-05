@@ -36,23 +36,30 @@
       #395144 360deg
     );
     box-shadow: 
-      0 0 0 6px #2d4033,
+      0 0 0 6px rgba(20, 20, 20, 0.55),
       0 0 0 8px #AA8B56,
-      0 0 24px rgba(57, 81, 68, 0.5),
-      inset 0 0 16px rgba(57, 81, 68, 0.3);
-  }
-
-  .vinyl-record::before {
-    content: '';
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full;
-    background: radial-gradient(circle, #AA8B56 0%, #395144 50%, #2d4033 51%, #2d4033 100%);
-    box-shadow: 0 0 8px rgba(170, 139, 86, 0.3);
+      0 0 24px rgba(0, 0, 0, 0.4),
+      inset 0 0 16px rgba(0, 0, 0, 0.3);
   }
 
   .vinyl-record::after {
     content: '';
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full;
-    background: #2d4033;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .vinyl-label {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full;
+    background-image: repeating-radial-gradient(
+      circle at center,
+      transparent 0px,
+      transparent 2px,
+      rgba(0, 0, 0, 0.22) 2px,
+      rgba(0, 0, 0, 0.22) 3px
+    );
+    box-shadow:
+      0 0 0 2px rgba(0, 0, 0, 0.35),
+      inset 0 2px 4px rgba(0, 0, 0, 0.4);
   }
 
   .vinyl-grooves {

@@ -1,15 +1,9 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
-
-const categoryImports = {
-  favorite: import.meta.glob('/public/images/favorite/*.{jpg,jpeg,png,webp}', { eager: true }),
-  street: import.meta.glob('/public/images/street/*.{jpg,jpeg,png,webp}', { eager: true }),
-  portrait: import.meta.glob('/public/images/portrait/*.{jpg,jpeg,png,webp}', { eager: true }),
-  architecture: import.meta.glob('/public/images/architecture/*.{jpg,jpeg,png,webp}', { eager: true }),
-  'summer-picnic': import.meta.glob('/public/images/summer-picnic/*.{jpg,jpeg,png,webp}', { eager: true }),
-  all: import.meta.glob('/public/images/all/*.{jpg,jpeg,png,webp}', { eager: true }),
-  film: import.meta.glob('/public/images/film/*.{jpg,jpeg,png,webp}', { eager: true }) // Pentax Espio 738
-}
+import Photo from '../components/Photo'
+import Lightbox from '../components/Lightbox'
+import { imageCatalog } from '../data/imageManifest'
+import { allProjects } from '../lib/projects'
 
 const CATEGORY_LABELS = {
   favorite: 'Favorite',
@@ -18,28 +12,16 @@ const CATEGORY_LABELS = {
   architecture: 'Architecture',
   'summer-picnic': 'Summer Picnic',
   all: 'All',
-  film: 'Film'
+  film: 'Film',
 }
 
+let shuffledCache = null
 function generateProjects() {
-  const projects = []
-  let id = 1
-
-  for (const [folder, files] of Object.entries(categoryImports)) {
-    const category = CATEGORY_LABELS[folder] || folder.charAt(0).toUpperCase() + folder.slice(1)
-
-    for (const [path, module] of Object.entries(files)) {
-      const filename = path.split('/').pop().replace(/\.[^/.]+$/, '')
-      projects.push({
-        id: id++,
-        title: filename.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-        category,
-        image: module.default,
-      })
-    }
-  }
-
-  return projects.sort(() => Math.random() - 0.5)
+  if (shuffledCache) return shuffledCache
+  shuffledCache = allProjects()
+    .map((p, i) => ({ ...p, id: i + 1 }))
+    .sort(() => Math.random() - 0.5)
+  return shuffledCache
 }
 
 const categories = ['Favorite', 'Street', 'Portrait', 'Architecture', 'Summer Picnic', 'Film', 'All']
@@ -49,11 +31,17 @@ const GAP_TOLERANCE = 0.4
 const GAP_PX = 16
 const FADE_HEIGHT = 56
 
+const defaultRatio = (src) => {
+  const info = imageCatalog[src]
+  return info ? info.width / info.height : 0.75
+}
+
 export default function Projects({ darkMode }) {
   const [activeCategory, setActiveCategory] = useState('Favorite')
   const [hoveredId, setHoveredId] = useState(null)
   const [projects, setProjects] = useState([])
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE)
+  const [lightboxId, setLightboxId] = useState(null)
   const heightsRef = useRef({})
   const columns = useColumnCount()
 
@@ -69,6 +57,10 @@ export default function Projects({ darkMode }) {
 
   const visibleProjects = filteredProjects.slice(0, visibleCount)
   const hasMore = visibleCount < filteredProjects.length
+
+  const lightboxIndex = lightboxId !== null
+    ? visibleProjects.findIndex(p => p.id === lightboxId)
+    : -1
 
   const ratioOf = (p) => heightsRef.current[p.id] ?? 0.75
 
@@ -169,6 +161,7 @@ export default function Projects({ darkMode }) {
             hoveredId={hoveredId}
             setHoveredId={setHoveredId}
             heightsRef={heightsRef}
+            onOpen={setLightboxId}
           />
 
           {hasMore && (
@@ -205,11 +198,19 @@ export default function Projects({ darkMode }) {
           </div>
         )}
       </div>
+
+      <Lightbox
+        open={lightboxIndex >= 0}
+        items={visibleProjects}
+        index={lightboxIndex}
+        onClose={() => setLightboxId(null)}
+        onNavigateIndex={(i) => setLightboxId(visibleProjects[i]?.id)}
+      />
     </section>
   )
 }
 
-function MasonryGrid({ items, hoveredId, setHoveredId, heightsRef }) {
+function MasonryGrid({ items, hoveredId, setHoveredId, heightsRef, onOpen }) {
   const columns = useColumnCount()
   const [tick, setTick] = useState(0)
 
@@ -217,8 +218,8 @@ function MasonryGrid({ items, hoveredId, setHoveredId, heightsRef }) {
     const el = e.target
     const ratio = el.naturalHeight && el.naturalWidth
       ? el.naturalHeight / el.naturalWidth
-      : 0.75
-    if (heightsRef.current[id] !== ratio) {
+      : null
+    if (ratio && heightsRef.current[id] !== ratio) {
       heightsRef.current[id] = ratio
       setTick(t => t + 1)
     }
@@ -233,7 +234,7 @@ function MasonryGrid({ items, hoveredId, setHoveredId, heightsRef }) {
       if (colHeights[c] < colHeights[target]) target = c
     }
     buckets[target].push(project)
-    const ratio = heightsRef.current[project.id] ?? 0.75
+    const ratio = heightsRef.current[project.id] ?? defaultRatio(project.image)
     colHeights[target] += ratio + 0.1
   })
 
@@ -249,17 +250,18 @@ function MasonryGrid({ items, hoveredId, setHoveredId, heightsRef }) {
               transition={{ duration: 0.4, delay: (project.id % INITIAL_VISIBLE) * 0.03 }}
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
+              onClick={() => onOpen(project.id)}
               className="group relative rounded-xl overflow-hidden cursor-pointer"
             >
-              <div style={{ aspectRatio: heightsRef.current[project.id] ?? 0.75 }}>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  onLoad={(e) => handleLoad(project.id, e)}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
+              <Photo
+                src={project.image}
+                alt={project.title}
+                sizes={columns > 1 ? `${(100 / columns - 3)}vw` : '100vw'}
+                ratio={heightsRef.current[project.id] ?? defaultRatio(project.image)}
+                className="w-full"
+                onLoad={(e) => handleLoad(project.id, e)}
+                imgClassName="transition-transform duration-700 group-hover:scale-105"
+              />
               <div className={`absolute inset-0 transition-all duration-500 ${
                 hoveredId === project.id
                   ? 'bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100'

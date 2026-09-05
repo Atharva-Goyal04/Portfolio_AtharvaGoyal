@@ -6,13 +6,20 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "images": "node scripts/optimize.mjs",
+    "import": "node scripts/import-metadata.mjs",
+    "starter": "node scripts/export-starter.mjs",
+    "predev": "npm run images && npm run import",
+    "prebuild": "npm run images && npm run import",
+    "sitemap": "node scripts/sitemap.mjs"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
     "framer-motion": "^10.16.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^7.18.3",
     "react-scroll": "^1.9.0"
   },
   "devDependencies": {

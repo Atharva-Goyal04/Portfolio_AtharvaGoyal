@@ -6,7 +6,8 @@ dist/
 *.tsbuildinfo
 next-env.d.ts
 public/images/optimized/
-deliverables/
+deliverables/*
+!deliverables/README.txt
 
 # Secrets — never commit local env files.
 .env

@@ -8,19 +8,27 @@ Drop each shoot's photos in ITS OWN subfolder named the gallery slug.
 
 Then run the upload from inside the "portfolio" folder:
 
-    node scripts/r2-upload.mjs <slug>
+    node scripts/r2-upload.mjs <slug> [--client "Name"] [--email x@y.com]
+                                    [--phone 555-0100] [--status delivered]
+                                    [--notes "free text"]
 
 Replace <slug> with the folder name (letters, numbers, and dashes).
 The script:
   - uploads the originals + webp previews to Cloudflare R2
   - creates content/galleries/<slug>/gallery.json
   - prints the generated client password (LUMEN-XXXX...)
-  - logs the password in deliverables/passwords.html (styled table — open
-    it in a browser to see every gallery's password at a glance)
+  - adds/updates a client card in deliverables/clients.html (open it in a
+    browser — shows client, contact, status pill, gallery link, password,
+    and notes)
+
+Any --flags you pass get written into that client's card. Fields you leave
+off are preserved on future uploads, so you can add client/contact/notes at
+any time — either via flags while uploading, or by editing the embedded
+JSON block at the bottom of clients.html.
 
 Example:
 
-    node scripts/r2-upload.mjs john-graduation
+    node scripts/r2-upload.mjs john-graduation --client "John Doe" --status delivered
 
 After the upload (optional): edit content/galleries/<slug>/gallery.json
 to set the title, category, location. Then commit + push to deploy:

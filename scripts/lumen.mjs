@@ -1,8 +1,9 @@
+import { fileURLToPath } from "node:url";
 import { readdir, readFile, writeFile, rm, mkdir } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 
-const ROOT = path.resolve(import.meta.dirname, "..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const IMAGES_DIR = path.join(ROOT, "public", "images");
 const OUT_DEFAULT = path.join(ROOT, "src", "data", "image-manifest.json");
 

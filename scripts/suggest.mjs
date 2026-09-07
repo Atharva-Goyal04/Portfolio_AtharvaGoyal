@@ -1,8 +1,9 @@
+import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 import { readdir } from "node:fs/promises";
 import path from "node:path";
 
-const IMG = path.resolve(import.meta.dirname, "..", "public", "images");
+const IMG = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "public", "images");
 const CATS = ["street", "portrait", "architecture", "favorite", "film", "summer-picnic"];
 
 async function hash256(file) {

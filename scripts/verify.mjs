@@ -1,7 +1,8 @@
+import { fileURLToPath } from "node:url";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-const ROOT = path.resolve(import.meta.dirname, "..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const MANIFEST = path.join(ROOT, "src", "data", "image-manifest.json");
 const maxRuns = Number(process.env.VERIFY_MAX) || Infinity;
 

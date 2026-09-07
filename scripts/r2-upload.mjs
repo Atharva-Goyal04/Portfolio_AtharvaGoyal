@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { readFile, readdir, mkdir, writeFile } from "node:fs/promises";
 import fs from "node:fs";
 import path from "node:path";
@@ -8,7 +9,7 @@ import {
   signedPutHeaders,
 } from "../lib/r2-sign.ts";
 
-const ROOT = path.resolve(import.meta.dirname, "..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 const envPath = path.join(ROOT, ".env.local");
 try {

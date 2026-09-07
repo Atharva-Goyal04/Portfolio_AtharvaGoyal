@@ -1,8 +1,9 @@
+import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 import path from "node:path";
 import { readFile } from "node:fs/promises";
 
-const ROOT = path.resolve(import.meta.dirname, "..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const MANIFEST = path.join(ROOT, "src", "data", "image-manifest.json");
 const LOCAL_SRC = path.join(ROOT, "public", "images", "favorite", "AG_04225.jpg");
 

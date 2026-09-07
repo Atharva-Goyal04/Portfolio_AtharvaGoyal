@@ -1,9 +1,10 @@
+import { fileURLToPath } from "node:url";
 import { readFile, readdir as fsReaddir } from "node:fs/promises";
 import fs from "node:fs";
 import path from "node:path";
 import { put } from "@vercel/blob";
 
-const ROOT = path.resolve(import.meta.dirname, "..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const IMAGES_DIR = path.join(ROOT, "public", "images");
 const MANIFEST = path.join(ROOT, "src", "data", "image-manifest.json");
 

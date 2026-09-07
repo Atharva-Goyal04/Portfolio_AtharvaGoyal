@@ -21,10 +21,15 @@ The script:
     browser — shows client, contact, status pill, gallery link, password,
     and notes)
 
-Any --flags you pass get written into that client's card. Fields you leave
-off are preserved on future uploads, so you can add client/contact/notes at
-any time — either via flags while uploading, or by editing the embedded
-JSON block at the bottom of clients.html.
+After uploading it ASKS for client name, email, phone, status, and notes —
+just press Enter to leave any field unchanged. You can skip the questions
+by passing --flags, and values already in the card are reused on re-runs.
+Each gallery gets its own card in the SAME clients.html file.
+
+To update a card WITHOUT re-uploading photos (e.g. after a session, to
+change the status or add notes):
+
+    node scripts/r2-upload.mjs <slug> --refresh
 
 Example:
 

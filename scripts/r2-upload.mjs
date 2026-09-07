@@ -3,6 +3,8 @@ import { randomBytes } from "node:crypto";
 import { readFile, readdir, mkdir, writeFile } from "node:fs/promises";
 import fs from "node:fs";
 import path from "node:path";
+import { createInterface } from "node:readline";
+import { stdin } from "node:process";
 import sharp from "sharp";
 import {
   r2OriginalKey,
@@ -41,14 +43,20 @@ const usage = `Usage: node scripts/r2-upload.mjs <slug> [sourceDir] [flags]
   branded password (LUMEN-<hex>) and a cover pointing at the first upload.
 
   Re-running for an existing gallery keeps its current password and settings.
+  After uploading it asks for optional client details (name, email, phone,
+  status, notes) and adds/updates that client's card in
+  deliverables/clients.html — already set fields are reused on future runs.
 
-Flags (added to the client tracker in deliverables/clients.html):
+Flags (all optional; empty = reuse what's already in the card):
   --client "Name"   --email x@y.com   --phone 555-0100
-  --status upcoming|delivered|archived   --notes "Free text"`;
+  --status upcoming|delivered|archived   --notes "Free text"
+  --refresh         no upload — just re-sync the card from an existing
+                    content/galleries/<slug>/gallery.json`;
 
 const slug = process.argv[2];
+const refreshOnly = process.argv.includes("--refresh") || process.argv.includes("--update-only");
 const sourceDir = process.argv[3] ?? path.join(ROOT, "deliverables", slug);
-if (!slug || !fs.existsSync(sourceDir)) {
+if (!slug || (!refreshOnly && !fs.existsSync(sourceDir))) {
   console.error(usage);
   process.exit(1);
 }
@@ -61,6 +69,35 @@ const flags = { client: "", email: "", phone: "", status: "", notes: "" };
     if (!a.startsWith("--")) continue;
     const key = a.slice(2).toLowerCase();
     if (key in flags && raw[i + 1]) flags[key] = raw[++i];
+  }
+}
+
+const prompt = (question) =>
+  new Promise((resolve) => {
+    const rl = createInterface({ input: stdin, output: process.stdout });
+    rl.question(question, (answer) => {
+      rl.close();
+      resolve(answer.trim());
+    });
+  });
+
+const STATUS_CHOICES = { "1": "Upcoming", "2": "Delivered", "3": "Archived" };
+
+async function collectClientFields() {
+  if (!process.stdin.isTTY || process.argv.includes("--non-interactive")) return;
+  const need = refreshOnly || !flags.client || !flags.email || !flags.phone || !flags.status || !flags.notes;
+  if (!need) return;
+  console.log("\n  Client tracker — press Enter to leave a field unchanged");
+  if (!flags.client) flags.client = (await prompt("    Client name : ")) || "";
+  if (!flags.email) flags.email = (await prompt("    Email       : ")) || "";
+  if (!flags.phone) flags.phone = (await prompt("    Phone       : ")) || "";
+  if (!flags.status) {
+    const choice = (await prompt("    Status [1 Upcoming] [2 Delivered] [3 Archived]: ")) || "";
+    flags.status = STATUS_CHOICES[choice.trim()] ?? "";
+  }
+  if (!flags.notes) flags.notes = (await prompt("    Notes       : ")) || "";
+  if (flags.client || flags.email || flags.phone || flags.status || flags.notes) {
+    console.log("  — card updated.");
   }
 }
 
@@ -254,6 +291,24 @@ async function put(key, body, contentType) {
 }
 
 async function main() {
+  if (refreshOnly) {
+    const gf = path.join(ROOT, "content", "galleries", slug, "gallery.json");
+    if (!fs.existsSync(gf)) {
+      console.error(`[r2] no existing gallery at ${gf}`);
+      process.exit(1);
+    }
+    const g = JSON.parse(await readFile(gf, "utf8"));
+    await collectClientFields();
+    await upsertClientFile({
+      slug,
+      password: g.password ?? "",
+      title: g.title ?? slug,
+      date: g.date ?? "",
+    });
+    console.log(`[r2] tracker card refreshed for "${slug}" (no upload)`);
+    return;
+  }
+
   const files = (await readdir(sourceDir))
     .filter((f) => /\.(jpe?g|png|webp|heic)$/i.test(f) && !f.startsWith("."))
     .sort();
@@ -303,6 +358,7 @@ async function main() {
 
   await writeFile(path.join(outDir, "r2-manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
   await writeFile(path.join(outDir, "gallery.json"), JSON.stringify(gallery, null, 2) + "\n");
+  await collectClientFields();
   await upsertClientFile({
     slug,
     password,

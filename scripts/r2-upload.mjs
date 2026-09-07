@@ -58,7 +58,9 @@ async function upsertPasswordFile({ slug, password, title, date }) {
   const header = [
     "# THE.LUMENCODE — delivery gallery passwords",
     "# This file is git-ignored (deliverables/*) — keep it private. Do not commit.",
-    "# slug\tpassword\ttitle\tdate",
+    "",
+    "| Gallery | Password | Title | Date |",
+    "| --- | --- | --- | --- |",
   ];
   let lines = [];
   try {
@@ -66,8 +68,9 @@ async function upsertPasswordFile({ slug, password, title, date }) {
   } catch {
     // file not created yet
   }
-  const kept = lines.filter((l) => !l.startsWith(`${slug}\t`));
-  kept.push([slug, password, title ?? "", date ?? ""].join("\t"));
+  const rowRegex = new RegExp(`^\\|\\s*${slug}\\s*\\|`);
+  const kept = lines.filter((l) => !rowRegex.test(l));
+  kept.push(`| ${slug} | ${password} | ${title ?? ""} | ${date ?? ""} |`);
   await writeFile(
     PASSWORDS_FILE,
     header.concat(kept.filter(Boolean)).join("\n") + "\n",

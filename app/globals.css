@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --canvas: 48 44% 93%;
+    --surface: 45 45% 96%;
+    --card: 45 100% 100%;
+    --ink: 150 10% 12%;
+    --muted: 152 7% 36%;
+    --brand: 39 39% 50%;
+    --brand-foreground: 40 25% 9%;
+    --line: 150 10% 12% / 0.12;
+  }
+
+  .dark {
+    --canvas: 150 9% 6%;
+    --surface: 152 8% 10%;
+    --card: 150 8% 14%;
+    --ink: 45 30% 91%;
+    --muted: 90 9% 66%;
+    --brand: 38 45% 56%;
+    --brand-foreground: 40 22% 10%;
+    --line: 45 30% 91% / 0.14;
+  }
+
+  * {
+    border-color: hsl(var(--line));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-canvas text-ink font-body antialiased;
+  }
+
+  :where(a, button, input, textarea, select, summary):focus-visible {
+    outline: 2px solid hsl(var(--brand));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: hsl(var(--brand) / 0.35);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .noise-overlay {
+    @apply pointer-events-none fixed inset-0 z-50 opacity-[0.014];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  .glow-line {
+    @apply h-px bg-gradient-to-r from-transparent via-[#B08A4E] to-transparent;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#C9A666] to-[#B08A4E];
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.3em];
+  }
+
+  .card-surface {
+    @apply rounded-xl border bg-surface;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .container-site {
+    @apply mx-auto w-full max-w-7xl px-6;
+  }
+}

@@ -1,5 +1,8 @@
 node_modules/
+.next/
+out/
 dist/
 .DS_Store
+*.tsbuildinfo
+next-env.d.ts
 public/images/optimized/
-src/data/imageManifest.mjs

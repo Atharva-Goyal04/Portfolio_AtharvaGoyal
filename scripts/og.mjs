@@ -3,7 +3,27 @@ import path from "node:path";
 import { readFile } from "node:fs/promises";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
-const SRC = path.join(ROOT, "public", "images", "favorite", "AG_04225.jpg");
+const MANIFEST = path.join(ROOT, "src", "data", "image-manifest.json");
+const LOCAL_SRC = path.join(ROOT, "public", "images", "favorite", "AG_04225.jpg");
+
+async function sourceBuffer() {
+  let url;
+  try {
+    const manifest = JSON.parse(await readFile(MANIFEST, "utf8"));
+    url = manifest["/images/favorite/AG_04225.jpg"]?.url;
+  } catch {
+    url = undefined;
+  }
+  if (url) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) return Buffer.from(await res.arrayBuffer());
+    } catch {
+      // fall through to local
+    }
+  }
+  return readFile(LOCAL_SRC);
+}
 const FONT_BODY = "/System/Library/Fonts/Supplemental/Arial Bold.ttf";
 const FONT_MONO = "/System/Library/Fonts/Supplemental/Courier New Bold.ttf";
 const OUT = path.join(ROOT, "public", "og.jpg");
@@ -24,7 +44,7 @@ const [bodyFile, monoFile] = await Promise.all([font(FONT_BODY), font(FONT_MONO)
 const W = 1200;
 const H = 630;
 
-const image = sharp(SRC).resize(W, H, {
+const image = sharp(await sourceBuffer()).resize(W, H, {
   fit: "cover",
   position: "centre",
 });

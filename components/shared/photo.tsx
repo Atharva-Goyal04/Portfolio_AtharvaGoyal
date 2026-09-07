@@ -30,9 +30,11 @@ export default function Photo({
   const info = imageInfo(src);
   const aspect = ratio ?? (info ? info.width / info.height : 1.5);
   const blur = info?.blur;
+  // Originals live on Vercel Blob now; fall back to the local path in dev if unindexed.
+  const source = info?.url ?? src;
 
   const commonImg = {
-    src,
+    src: source,
     alt,
     sizes,
     priority: eager || priority,
@@ -44,7 +46,7 @@ export default function Photo({
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
-        src={src}
+        src={source}
         alt={alt}
         loading={eager ? "eager" : "lazy"}
         decoding="async"

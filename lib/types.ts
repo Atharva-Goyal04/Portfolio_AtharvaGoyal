@@ -4,6 +4,7 @@ export interface ImageInfo {
   width: number;
   height: number;
   blur?: string;
+  url?: string;
 }
 
 export type ImageCatalog = Record<string, ImageInfo>;

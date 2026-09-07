@@ -5,6 +5,9 @@ import path from "node:path";
 import { ZipArchive } from "archiver";
 import { galleryBySlug, isExpired } from "@/lib/gallery";
 import { galleryUnlocked } from "@/lib/gallery-auth";
+import { presignGet, r2Config, r2KeysFromSource } from "@/lib/r2";
+
+export const runtime = "nodejs";
 
 export async function GET(
   _request: Request,
@@ -22,12 +25,24 @@ export async function GET(
     return new Response("Gallery is locked", { status: 403 });
   }
 
+  const cfg = r2Config();
   const archive = new ZipArchive({ zlib: { level: 6 } });
 
-  for (const src of gallery.images) {
-    const filePath = path.join(process.cwd(), "public", src.replace(/^\//, ""));
-    if (existsSync(filePath)) {
-      archive.append(createReadStream(filePath), { name: path.basename(src) });
+  for (const source of gallery.images) {
+    const keys = r2KeysFromSource(source);
+    if (keys && cfg) {
+      const signed = await presignGet(cfg, keys.original, 60);
+      const res = await fetch(signed);
+      if (res.ok && res.body) {
+        archive.append(Readable.fromWeb(res.body as import("node:stream/web").ReadableStream), {
+          name: keys.original.split("/").pop() ?? "photo.jpg",
+        });
+      }
+    } else {
+      const filePath = path.join(process.cwd(), "public", source.replace(/^\//, ""));
+      if (existsSync(filePath)) {
+        archive.append(createReadStream(filePath), { name: path.basename(source) });
+      }
     }
   }
 

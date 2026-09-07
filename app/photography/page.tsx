@@ -9,6 +9,7 @@ import GalleryCard from "@/components/gallery/gallery-card";
 import { Button } from "@/components/ui/button";
 import { titleFromName } from "@/lib/utils";
 import { galleries } from "@/lib/gallery";
+import { imageInfo } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Photography",
@@ -148,7 +149,7 @@ function PhotographyHero() {
       <div className="container-site relative z-10 mt-14 pb-0">
         <Reveal delay={0.1} className="relative overflow-hidden rounded-2xl">
           <Image
-            src="/images/favorite/DSC04384.jpg"
+            src={imageInfo("/images/favorite/DSC04384.jpg")?.url ?? "/images/favorite/DSC04384.jpg"}
             alt="Desert study — golden hour backlit portrait"
             priority
             sizes="100vw"

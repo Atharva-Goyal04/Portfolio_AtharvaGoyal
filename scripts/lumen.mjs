@@ -1,4 +1,4 @@
-import { readdir, writeFile, rm, mkdir } from "node:fs/promises";
+import { readdir, readFile, writeFile, rm, mkdir } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 
@@ -31,32 +31,50 @@ async function placeholderFor(srcPath) {
   }
 }
 
-async function scanCategories() {
-  const entries = await readdir(IMAGES_DIR, { withFileTypes: true });
+async function scanCategories(existing = {}) {
+  let entries;
+  try {
+    entries = await readdir(IMAGES_DIR, { withFileTypes: true });
+  } catch {
+    entries = []; // public/images may not exist (photos live on Blob now)
+  }
   const manifest = {};
-  for (const entry of entries) {
-    if (!entry.isDirectory() || IGNORE_DIRS.has(entry.name)) continue;
-    const folder = entry.name;
-    const files = await readdir(path.join(IMAGES_DIR, folder));
-    for (const file of files.sort()) {
-      if (!/\.(jpe?g|png|webp)$/i.test(file)) continue;
-      if (file.startsWith(".")) continue;
-      const filePath = path.join(IMAGES_DIR, folder, file);
-      let meta;
-      try {
-        meta = await sharp(filePath).metadata();
-      } catch {
-        continue;
-      }
-      const src = `/images/${folder}/${file}`;
-      manifest[src] = {
-        category: folder,
-        label: CATEGORY_LABELS[folder] ?? folder,
-        width: meta.width ?? 0,
-        height: meta.height ?? 0,
-        blur: await placeholderFor(filePath),
-      };
+
+  const indexFile = async (folder, file) => {
+    const filePath = path.join(IMAGES_DIR, folder, file);
+    const src = `/images/${folder ? `${folder}/` : ""}${file}`;
+    let meta;
+    try {
+      meta = await sharp(filePath).metadata();
+    } catch {
+      return;
     }
+    manifest[src] = {
+      category: folder,
+      label: CATEGORY_LABELS[folder] ?? folder,
+      width: meta.width ?? 0,
+      height: meta.height ?? 0,
+      blur: await placeholderFor(filePath),
+      url: existing[src]?.url,
+    };
+  };
+
+  for (const entry of entries) {
+    if (entry.isDirectory()) {
+      if (IGNORE_DIRS.has(entry.name)) continue;
+      const files = await readdir(path.join(IMAGES_DIR, entry.name));
+      for (const file of files.sort()) {
+        if (!/\.(jpe?g|png|webp)$/i.test(file)) continue;
+        if (file.startsWith(".")) continue;
+        await indexFile(entry.name, file);
+      }
+    } else if (/\.(jpe?g|png|webp)$/i.test(entry.name) && !entry.name.startsWith(".")) {
+      await indexFile("", entry.name);
+    }
+  }
+  // Preserve previously-indexed entries whose local file is gone (photos now live on Blob).
+  for (const [src, info] of Object.entries(existing)) {
+    if (!manifest[src] && info.url) manifest[src] = info;
   }
   return manifest;
 }
@@ -70,8 +88,16 @@ function counts(manifest) {
   return { total: Object.keys(manifest).length, per };
 }
 
+async function readExisting(out) {
+  try {
+    return JSON.parse(await readFile(out, "utf8"));
+  } catch {
+    return {};
+  }
+}
+
 async function report() {
-  const manifest = await scanCategories();
+  const manifest = await scanCategories(await readExisting(OUT_DEFAULT));
   const { total, per } = counts(manifest);
   console.log(`[lumen] ${total} indexed photos`);
   for (const [cat, n] of Object.entries(per).sort((a, b) => b[1] - a[1])) {
@@ -123,7 +149,7 @@ async function main() {
     process.exit(1);
   }
 
-  const manifest = await scanCategories();
+  const manifest = await scanCategories(await readExisting(out));
   const text = JSON.stringify(manifest, null, 2);
   await mkdir(path.dirname(out), { recursive: true });
   await rm(out, { force: true });

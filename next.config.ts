@@ -1,14 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Keep these data dirs available to serverless functions at runtime
-  // (zip downloads read from public/, gallery loader reads content/).
+  // Keep content/ available to serverless functions at runtime (gallery loader).
+  // Local photos live in Vercel Blob now, so public/images is not traced.
   outputFileTracingIncludes: {
-    "/api/gallery/*": ["./public/images/**/*", "./content/galleries/**/*"],
+    "/api/gallery/*": ["./content/galleries/**/*"],
     "/gallery/*": ["./content/galleries/**/*"],
   },
   images: {
     formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      // Portfolio photos are hosted on Vercel Blob.
+      { protocol: "https", hostname: "*.blob.vercel-storage.com" },
+    ],
   },
 };
 

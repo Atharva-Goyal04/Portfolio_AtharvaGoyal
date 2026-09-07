@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, Instagram } from "lucide-react";
 import Photo from "@/components/shared/photo";
 import { allProjects, neighbors } from "@/lib/projects";
 import { monthYear, INSTAGRAM_URL } from "@/lib/utils";
+import { imageInfo } from "@/lib/images";
 
 interface ProjectDetailProps {
   params: Promise<{ category: string; name: string }>;
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: ProjectDetailProps): Promise<
   return {
     title: project.title,
     description: `${project.category} photography by Atharva Goyal${project.location ? ` — ${project.location}` : ""}.`,
-    openGraph: { images: [project.image] },
+    openGraph: { images: [imageInfo(project.image)?.url ?? project.image] },
   };
 }
 

@@ -5,11 +5,13 @@ import type { Metadata } from "next";
 import { ArrowLeft, ArrowDownToLine, Calendar, Clock3, Lock, MapPin } from "lucide-react";
 import Reveal from "@/components/shared/reveal";
 import GalleryGrid from "@/components/gallery/gallery-grid";
+import R2Gallery from "@/components/gallery/r2-gallery";
 import PasswordGate from "@/components/gallery/password-gate";
 import ShareButton from "@/components/gallery/share-button";
 import { Badge } from "@/components/ui/badge";
 import { galleryBySlug, isExpired, rawGalleries, resolveGalleryImages } from "@/lib/gallery";
 import { galleryUnlocked } from "@/lib/gallery-auth";
+import { imageInfo } from "@/lib/images";
 import { monthYear } from "@/lib/utils";
 
 interface GalleryDetailProps {
@@ -25,10 +27,13 @@ export async function generateMetadata({ params }: GalleryDetailProps): Promise<
   const { slug } = await params;
   const gallery = await galleryBySlug(slug);
   if (!gallery) return { title: "Gallery not found" };
+  const og = gallery.cover.startsWith("r2:") ? undefined : {
+    images: [imageInfo(gallery.cover)?.url ?? gallery.cover],
+  };
   return {
     title: gallery.title,
     description: gallery.description ?? `Client gallery — ${gallery.location ?? "Arizona"}.`,
-    openGraph: { images: [gallery.cover] },
+    ...(og ? { openGraph: og } : {}),
   };
 }
 
@@ -42,6 +47,8 @@ export default async function GalleryDetailPage({ params }: GalleryDetailProps) 
 
   const expired = isExpired(gallery);
   const images = resolveGalleryImages(gallery);
+  const isR2 = gallery.images.some((src) => src.startsWith("r2:"));
+  const photoCount = isR2 ? gallery.images.length : images.length;
 
   return (
     <section className="min-h-screen pt-28 md:pt-32">
@@ -57,14 +64,14 @@ export default async function GalleryDetailPage({ params }: GalleryDetailProps) 
           <ExpiredPanel gallery={gallery} />
         ) : gallery.password && !unlocked ? (
           <Reveal>
-            <GalleryHeader gallery={gallery} images={images.length} locked />
+            <GalleryHeader gallery={gallery} images={photoCount} locked />
             <PasswordGate slug={gallery.slug} />
           </Reveal>
         ) : (
           <>
             <GalleryHeader
               gallery={gallery}
-              images={images.length}
+              images={photoCount}
               unlocked={Boolean(gallery.password)}
             />
 
@@ -83,12 +90,16 @@ export default async function GalleryDetailPage({ params }: GalleryDetailProps) 
               ) : null}
               <ShareButton title={gallery.title} />
               <span className="ml-auto hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
-                {images.length} images · {monthYear(gallery.date ?? gallery.expires ?? "")}
+                {photoCount} images · {monthYear(gallery.date ?? gallery.expires ?? "")}
               </span>
             </div>
 
             <div className="mt-12">
-              <GalleryGrid images={images} />
+              {isR2 ? (
+                <R2Gallery slug={gallery.slug} />
+              ) : (
+                <GalleryGrid images={images} />
+              )}
             </div>
           </>
         )}

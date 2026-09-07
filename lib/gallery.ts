@@ -10,7 +10,12 @@ import { DEFAULT_CAMERA, PROJECT_METADATA } from "@/src/data/project-metadata";
 export const GALLERIES_DIR = path.join(process.cwd(), "content", "galleries");
 
 export async function rawGalleries(): Promise<Gallery[]> {
-  const entries = await readdir(GALLERIES_DIR, { withFileTypes: true });
+  let entries;
+  try {
+    entries = await readdir(GALLERIES_DIR, { withFileTypes: true });
+  } catch {
+    return []; // galleries dir may not exist (no client sessions yet)
+  }
   const galleries: Gallery[] = [];
   for (const entry of entries) {
     if (!entry.isDirectory()) continue;

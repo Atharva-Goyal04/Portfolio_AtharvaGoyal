@@ -2,9 +2,26 @@ import Link from "next/link";
 import Photo from "@/components/shared/photo";
 import Reveal from "@/components/shared/reveal";
 import { Badge } from "@/components/ui/badge";
+import { presignGet, r2Config, r2KeysFromSource } from "@/lib/r2";
 import type { Gallery } from "@/lib/types";
 
-export default function GalleryCard({ gallery, index }: { gallery: Gallery; index: number }) {
+async function resolveCover(cover: string): Promise<string> {
+  if (!cover.startsWith("r2:")) return cover;
+  const cfg = r2Config();
+  const keys = r2KeysFromSource(cover);
+  if (!cfg || !keys) return cover;
+  return presignGet(cfg, keys.preview, 900);
+}
+
+export default async function GalleryCard({
+  gallery,
+  index,
+}: {
+  gallery: Gallery;
+  index: number;
+}) {
+  const cover = await resolveCover(gallery.cover);
+
   return (
     <Reveal delay={(index % 3) * 0.08}>
       <Link
@@ -13,7 +30,7 @@ export default function GalleryCard({ gallery, index }: { gallery: Gallery; inde
       >
         <div className="relative overflow-hidden">
           <Photo
-            src={gallery.cover}
+            src={cover}
             alt={gallery.title}
             sizes="(max-width: 768px) 100vw, 33vw"
             ratio={3 / 4}

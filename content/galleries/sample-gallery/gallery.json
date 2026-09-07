@@ -1,0 +1,23 @@
+{
+  "title": "Sample Delivery",
+  "slug": "sample-gallery",
+  "cover": "r2:gallery/sample-gallery/AG_05183.jpg",
+  "description": "A sample client delivery so you can see exactly how your galleries will look — password-protected, private, and downloadable-ready.",
+  "password": "LUMEN-2810C603FE",
+  "download": false,
+  "featured": false,
+  "category": "portrait",
+  "location": "Tempe, AZ",
+  "images": [
+    "r2:gallery/sample-gallery/AG_05183.jpg",
+    "r2:gallery/sample-gallery/AG_05208.jpg",
+    "r2:gallery/sample-gallery/AG_05225.jpg",
+    "r2:gallery/sample-gallery/AG_05247.jpg",
+    "r2:gallery/sample-gallery/AG_05328.jpg",
+    "r2:gallery/sample-gallery/AG_05336-2.jpg",
+    "r2:gallery/sample-gallery/AG_05336.jpg",
+    "r2:gallery/sample-gallery/AG_05396.jpg",
+    "r2:gallery/sample-gallery/AG_05424.jpg",
+    "r2:gallery/sample-gallery/AG_05440.jpg"
+  ]
+}

@@ -1,4 +1,5 @@
 import { fileURLToPath } from "node:url";
+import { randomBytes } from "node:crypto";
 import { readFile, readdir, mkdir, writeFile } from "node:fs/promises";
 import fs from "node:fs";
 import path from "node:path";
@@ -36,7 +37,10 @@ if (!cfg.accountId || !cfg.accessKeyId || !cfg.secretAccessKey || !cfg.bucket) {
 const usage = `Usage: node scripts/r2-upload.mjs <slug> [sourceDir]
   Uploads full-res originals + webp previews of every image in sourceDir to
   Cloudflare R2 as gallery/<slug>/<file>, then writes
-  content/galleries/<slug>/r2-manifest.json with the R2 keys for gallery.json.`;
+  content/galleries/<slug>/gallery.json with an auto-generated
+  branded password (LUMEN-<hex>) and a cover pointing at the first upload.
+
+  Re-running for an existing gallery keeps its current password and settings.`;
 
 const slug = process.argv[2];
 const sourceDir = process.argv[3] ?? path.join(ROOT, "deliverables", slug);
@@ -44,6 +48,9 @@ if (!slug || !fs.existsSync(sourceDir)) {
   console.error(usage);
   process.exit(1);
 }
+
+const generatePassword = () =>
+  `LUMEN-${randomBytes(5).toString("hex").toUpperCase()}`;
 
 const mime = (f) => {
   const ext = path.extname(f).toLowerCase();
@@ -85,25 +92,34 @@ async function main() {
 
   const outDir = path.join(ROOT, "content", "galleries", slug);
   await mkdir(outDir, { recursive: true });
+
+  let existing = {};
+  try {
+    existing = JSON.parse(await readFile(path.join(outDir, "gallery.json"), "utf8"));
+  } catch {
+    // first upload for this gallery
+  }
+
+  const password = existing.password || generatePassword();
+  const gallery = {
+    title: existing.title ?? slug,
+    slug,
+    cover: manifest[0].src,
+    description: existing.description,
+    password,
+    download: existing.download ?? false,
+    featured: existing.featured ?? false,
+    category: existing.category ?? "portrait",
+    location: existing.location,
+    date: existing.date,
+    expires: existing.expires,
+    images: manifest.map((m) => m.src),
+  };
+
   await writeFile(path.join(outDir, "r2-manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
-  await writeFile(
-    path.join(outDir, "gallery.json"),
-    JSON.stringify(
-      {
-        title: slug,
-        slug,
-        cover: "",
-        password: "snap",
-        download: false,
-        featured: false,
-        category: "events",
-        images: manifest.map((m) => m.src),
-      },
-      null,
-      2,
-    ) + "\n",
-  );
+  await writeFile(path.join(outDir, "gallery.json"), JSON.stringify(gallery, null, 2) + "\n");
   console.log(`[r2] uploaded ${files.length} original + ${files.length} preview; wrote content/galleries/${slug}/gallery.json`);
+  console.log(`[r2] gallery password -> ${password}`);
 }
 
 main().catch((err) => {

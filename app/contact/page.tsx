@@ -83,12 +83,12 @@ export default function ContactPage() {
           <Reveal className="mb-10 flex flex-col items-center gap-4 text-center">
             <CalendarClock className="h-6 w-6 text-brand" />
             <SectionHeading
-              eyebrow="No back-and-forth"
-              title="Book a session on"
-              highlight="the calendar"
+              eyebrow="Free intro call"
+              title="Book a 30-minute"
+              highlight="consult"
               description={
                 CALENDLY_URL
-                  ? "Pick an open slot below to claim your time — you'll get a confirmation and reminders automatically."
+                  ? "Not sure where to start? Grab a 30-minute Zoom call to talk through your shoot — what you want, the timeline, and how delivery works. No commitment."
                   : ""
               }
               align="center"

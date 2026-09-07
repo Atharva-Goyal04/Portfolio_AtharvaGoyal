@@ -33,7 +33,7 @@ export function allProjects(): Project[] {
       featured: favoriteNames.has(name),
     };
     const current = byName.get(name);
-    if (!current || (current.folder === "favorite" && folder !== "favorite")) {
+    if (!current || (folder === "favorite" && current.folder !== "favorite")) {
       byName.set(name, project);
     }
   }

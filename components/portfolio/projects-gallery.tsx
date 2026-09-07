@@ -16,19 +16,23 @@ export interface CategoryTab {
 }
 
 export default function ProjectsGallery({ projects }: { projects: Project[] }) {
-  const [active, setActive] = useState<string>("all");
+  const [active, setActive] = useState<string>(
+    () => (projects.some((p) => p.featured) ? "featured" : "all"),
+  );
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
 
   const tabs: CategoryTab[] = useMemo(() => {
-    const folderTabs = [...new Set(projects.map((p) => p.folder))].map((folder) => ({
-      key: folder,
-      label: CATEGORY_META[folder]?.label ?? folder,
-    }));
+    const folderTabs = [...new Set(projects.map((p) => p.folder))]
+      .filter((folder) => folder !== "favorite")
+      .map((folder) => ({
+        key: folder,
+        label: CATEGORY_META[folder]?.label ?? folder,
+      }));
     const hasFeatured = projects.some((p) => p.featured);
     return [
+      ...(hasFeatured ? [{ key: "featured", label: "Featured" }] : []),
       { key: "all", label: "All" },
       ...folderTabs,
-      ...(hasFeatured ? [{ key: "featured", label: "Featured" }] : []),
     ];
   }, [projects]);
 

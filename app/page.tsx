@@ -110,6 +110,7 @@ function HomeHero() {
                   src={featured[0].image}
                   alt="Golden hour portrait"
                   ratio={4 / 5}
+                  sizes="(max-width: 1024px) 60vw, 40vw"
                   priority
                   className="transition-transform duration-700 hover:scale-[1.02]"
                 />

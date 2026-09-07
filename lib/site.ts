@@ -7,6 +7,7 @@ export const SITE = {
   email: "the.lumencode@gmail.com",
   description:
     "THE.LUMENCODE is the photography portfolio of Atharva Goyal — portraits, street scenes, and client sessions across Arizona, delivered as private online galleries.",
+  ogImage: "/images/favorite/AG_04225.jpg",
   url:
     process.env.NEXT_PUBLIC_SITE_URL ??
     (process.env.NODE_ENV === "development"

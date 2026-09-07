@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Dancing_Script, Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { cn } from "@/lib/utils";
 import { SITE } from "@/lib/site";
 import { Providers } from "@/components/providers/providers";
@@ -57,13 +59,13 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: `${SITE.name} | ${SITE.author} — ${SITE.tagline}`,
     description: SITE.description,
-    images: ["/images/favorite/AG_04225.jpg"],
+    images: ["/og.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.name} | ${SITE.author}`,
     description: SITE.description,
-    images: ["/images/favorite/AG_04225.jpg"],
+    images: ["/og.jpg"],
   },
 };
 
@@ -114,6 +116,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <VinylPlayer />
           <BackToTop />
+          <Analytics />
+          <SpeedInsights />
         </Providers>
       </body>
     </html>

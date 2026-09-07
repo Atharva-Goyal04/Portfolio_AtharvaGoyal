@@ -101,7 +101,7 @@ export default function AboutPage() {
                 Book a session <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="/photography"
+                href="/journal"
                 className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 font-mono text-xs uppercase tracking-wider transition-colors hover:border-brand hover:text-brand"
               >
                 See the portfolio

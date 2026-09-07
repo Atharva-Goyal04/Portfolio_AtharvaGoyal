@@ -25,9 +25,6 @@ export default function GalleryCard({ gallery, index }: { gallery: Gallery; inde
               Private
             </Badge>
           )}
-          <span className="absolute bottom-3 right-3 rounded-full bg-black/40 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cream/80 backdrop-blur-sm">
-            {gallery.images.length} photos
-          </span>
         </div>
         <div className="p-5">
           <div className="flex items-center justify-between gap-3">

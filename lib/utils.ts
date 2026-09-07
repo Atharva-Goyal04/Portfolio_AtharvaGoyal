@@ -27,9 +27,9 @@ export function titleFromName(name: string): string {
 }
 
 export {
+  CALENDLY_URL,
   CONTACT_EMAIL,
   FORMSPREE_ENDPOINT,
-  INSTAGRAM_PERSONAL,
   INSTAGRAM_URL,
   LINKEDIN_URL,
   SITE,

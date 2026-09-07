@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { ArrowUpRight, Instagram, Mail } from "lucide-react";
+import { ArrowUpRight, CalendarClock, Instagram, Mail } from "lucide-react";
 import SectionHeading from "@/components/shared/section-heading";
 import Reveal from "@/components/shared/reveal";
 import ContactForm from "@/components/portfolio/contact-form";
-import { CONTACT_EMAIL, INSTAGRAM_PERSONAL } from "@/lib/utils";
+import CalendlyEmbed from "@/components/portfolio/calendly-embed";
+import { CALENDLY_URL, CONTACT_EMAIL, INSTAGRAM_URL } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -20,8 +21,8 @@ const contacts = [
   },
   {
     name: "Instagram",
-    value: "@atharva__goyal",
-    href: INSTAGRAM_PERSONAL,
+    value: "@the.lumencode",
+    href: INSTAGRAM_URL,
     icon: Instagram,
   },
 ];
@@ -75,6 +76,26 @@ export default function ContactPage() {
             <div className="rounded-2xl border border-line bg-surface p-8">
               <ContactForm />
             </div>
+          </Reveal>
+        </div>
+
+        <div className="mt-24">
+          <Reveal className="mb-10 flex flex-col items-center gap-4 text-center">
+            <CalendarClock className="h-6 w-6 text-brand" />
+            <SectionHeading
+              eyebrow="No back-and-forth"
+              title="Book a session on"
+              highlight="the calendar"
+              description={
+                CALENDLY_URL
+                  ? "Pick an open slot below to claim your time — you'll get a confirmation and reminders automatically."
+                  : ""
+              }
+              align="center"
+            />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <CalendlyEmbed />
           </Reveal>
         </div>
       </div>

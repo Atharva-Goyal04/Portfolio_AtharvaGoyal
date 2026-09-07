@@ -74,7 +74,7 @@ function HomeHero() {
 
             <Reveal delay={0.24}>
               <div className="flex flex-wrap items-center gap-4 pt-2">
-                <Link href="/photography">
+                <Link href="/projects">
                   <Button variant="primary" size="lg">
                     View the Portfolio
                     <ArrowRight className="h-4 w-4" />
@@ -162,10 +162,10 @@ function FeaturedSection() {
           <SectionHeading eyebrow="Selected Work" title="Frames that" highlight="caught my eye" />
           <Reveal delay={0.1}>
             <Link
-              href="/photography"
+              href="/journal"
               className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-brand"
             >
-              View photography <ArrowRight className="h-4 w-4" />
+              Read the journal <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>
         </div>
@@ -233,10 +233,10 @@ function DisciplineSection() {
                 made for the love of the frame, not the brief.
               </p>
               <Link
-                href="/photography"
+                href="/journal"
                 className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-brand"
               >
-                Explore the portfolio <ArrowRight className="h-4 w-4" />
+                Read the journal <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </Reveal>

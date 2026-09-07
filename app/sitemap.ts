@@ -1,15 +1,21 @@
 import type { MetadataRoute } from "next";
 import { allProjects } from "@/lib/projects";
 import { galleries } from "@/lib/gallery";
+import { allJournalEntries } from "@/src/data/journal";
 import { SITE } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = SITE.url;
   const lastModified = new Date();
 
-  const staticRoutes: MetadataRoute.Sitemap = ["", "/projects", "/photography", "/gallery", "/about", "/contact"].map(
+  const staticRoutes: MetadataRoute.Sitemap = ["", "/projects", "/journal", "/gallery", "/about", "/contact"].map(
     (path) => ({ url: `${base}${path}`, lastModified }),
   );
+
+  const journalRoutes: MetadataRoute.Sitemap = allJournalEntries().map((e) => ({
+    url: `${base}/journal/${e.slug}`,
+    lastModified,
+  }));
 
   const projectRoutes: MetadataRoute.Sitemap = allProjects().map((p) => ({
     url: `${base}${p.path}`,
@@ -21,5 +27,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified,
   }));
 
-  return [...staticRoutes, ...galleryRoutes, ...projectRoutes];
+  return [...staticRoutes, ...journalRoutes, ...galleryRoutes, ...projectRoutes];
 }

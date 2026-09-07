@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/photography",
+        destination: "/journal",
+        permanent: true,
+      },
+    ];
+  },
   // Keep content/ available to serverless functions at runtime (gallery loader).
   // Local photos live in Vercel Blob now, so public/images is not traced.
   outputFileTracingIncludes: {

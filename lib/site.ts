@@ -16,7 +16,7 @@ export const SITE = {
 } as const;
 
 export const INSTAGRAM_URL = "https://www.instagram.com/the.lumencode/";
-export const INSTAGRAM_PERSONAL = "https://www.instagram.com/atharva__goyal/";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/atharva--goyal/";
 export const CONTACT_EMAIL = SITE.email;
 export const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjyvwgaw";
+export const CALENDLY_URL = "https://calendly.com/projects-executable/photography-session";

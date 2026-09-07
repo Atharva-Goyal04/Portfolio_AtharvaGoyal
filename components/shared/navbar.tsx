@@ -12,7 +12,7 @@ import { INSTAGRAM_URL, LINKEDIN_URL } from "@/lib/utils";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Portfolio" },
-  { href: "/photography", label: "Photography" },
+  { href: "/journal", label: "Journal" },
   { href: "/gallery", label: "Gallery" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },

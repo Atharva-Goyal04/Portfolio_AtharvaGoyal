@@ -4,7 +4,7 @@ import { CONTACT_EMAIL, INSTAGRAM_URL, LINKEDIN_URL } from "@/lib/utils";
 const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/photography", label: "Photography" },
+  { href: "/journal", label: "Journal" },
   { href: "/gallery", label: "Gallery" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },

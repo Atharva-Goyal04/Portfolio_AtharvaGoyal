@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CONTACT_EMAIL, INSTAGRAM_URL, LINKEDIN_URL } from "@/lib/utils";
+import { CONTACT_EMAIL, INSTAGRAM_URL, LINKEDIN_URL, WEB3_URL } from "@/lib/utils";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -63,6 +63,14 @@ export default function Footer() {
             className="font-mono text-xs uppercase tracking-widest text-ink/70 transition-colors hover:text-brand"
           >
             LinkedIn
+          </a>
+          <a
+            href={WEB3_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-xs uppercase tracking-widest text-ink/70 transition-colors hover:text-brand"
+          >
+            thelumencode.professional
           </a>
         </div>
       </div>

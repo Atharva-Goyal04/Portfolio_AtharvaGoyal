@@ -80,6 +80,36 @@ export default async function JournalPostPage({ params }: JournalPostProps) {
           />
         </div>
 
+        {entry.figures && entry.figures.length > 0 && (
+          <Reveal className="mt-10">
+            <div className="mb-6">
+              <span className="eyebrow text-brand">Two homes</span>
+              <h2 className="mt-2 font-display text-2xl font-medium md:text-3xl">
+                The <em className="text-gradient not-italic">same light</em>, two addresses
+              </h2>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {entry.figures.map((fig) => (
+                <figure
+                  key={fig.src}
+                  className="overflow-hidden rounded-2xl border border-line bg-surface p-2"
+                >
+                  <Photo
+                    src={fig.src}
+                    alt={fig.caption}
+                    ratio={1200 / 630}
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    className="rounded-xl"
+                  />
+                  <figcaption className="px-2 py-3 font-mono text-[10px] uppercase tracking-widest text-muted">
+                    {fig.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </Reveal>
+        )}
+
         <Reveal className="mx-auto mt-10 max-w-2xl">
           <div className="flex flex-col gap-5">
             {entry.body.map((paragraph, i) => (

@@ -23,6 +23,19 @@ const photographySkills = [
   "35mm Film",
 ];
 
+const homes = [
+  {
+    name: "Udaipur",
+    place: "Rajasthan, India — where I grew up",
+    file: "/maps/udaipur.webp",
+  },
+  {
+    name: "Tempe",
+    place: "Arizona, USA — where I live now",
+    file: "/maps/tempe.webp",
+  },
+];
+
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -124,6 +137,46 @@ export default function AboutPage() {
               <div className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-2xl border border-brand/20" />
             </div>
           </Reveal>
+        </div>
+
+        <div className="mt-24 border-t border-line pt-16">
+          <Reveal>
+            <div className="mb-8 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <span className="glow-line w-10" />
+                <span className="eyebrow text-brand">Two homes</span>
+              </div>
+              <h2 className="font-display text-3xl font-medium tracking-tight text-balance md:text-5xl">
+                One <em className="text-gradient not-italic">light</em>, two addresses
+              </h2>
+            </div>
+          </Reveal>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {homes.map((h, i) => (
+              <Reveal key={h.name} delay={i * 0.1}>
+                <figure className="group overflow-hidden rounded-2xl border border-line bg-surface p-2">
+                  <div className="relative overflow-hidden rounded-xl">
+                    <Image
+                      src={h.file}
+                      alt={h.name}
+                      width={1200}
+                      height={630}
+                      className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.02]"
+                    />
+                  </div>
+                  <div className="flex items-start justify-between gap-3 px-2 py-3">
+                    <div>
+                      <figcaption className="font-display text-lg text-ink">{h.name}</figcaption>
+                      <p className="mt-0.5 font-mono text-[10px] uppercase tracking-widest text-muted">
+                        {h.place}
+                      </p>
+                    </div>
+                    <MapPin className="mt-1 h-4 w-4 shrink-0 text-brand" />
+                  </div>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -9,6 +9,9 @@ public/images/optimized/
 deliverables/*
 !deliverables/README.txt
 
+# Raw source assets — only optimized copies live in public/.
+map/
+
 # Secrets — never commit local env files.
 .env
 .env.local

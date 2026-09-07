@@ -1,3 +1,8 @@
+export interface JournalFigure {
+  src: string;
+  caption: string;
+}
+
 export interface JournalEntry {
   slug: string;
   title: string;
@@ -7,6 +12,7 @@ export interface JournalEntry {
   camera?: string;
   cover: string;
   frames: string[];
+  figures?: JournalFigure[];
   excerpt: string;
   body: string[];
 }
@@ -50,6 +56,34 @@ const JOURNAL_ENTRIES: JournalEntry[] = [
       "Some of the best sessions aren't sessions at all. This one was a picnic that ran an hour longer than it should have because nobody wanted to leave the light.",
       "Shot wide-open and moving fast, with zero direction — just the good chaos of people being themselves. Honest frames beat posed ones almost every time.",
       "Client deliveries work the same way: find the moment, don't build it.",
+    ],
+  },
+  {
+    slug: "two-homes-one-light",
+    title: "Two Homes, One Light",
+    category: "Notes",
+    date: "2026-09",
+    location: "Udaipur · Tempe",
+    camera: "Sony a7 IV",
+    cover: "/images/favorite/DSC_1317.jpg",
+    frames: [],
+    figures: [
+      {
+        src: "/maps/udaipur.webp",
+        caption: "Udaipur, Rajasthan — where I first picked up the camera",
+      },
+      {
+        src: "/maps/tempe.webp",
+        caption: "Tempe, Arizona — where I live and shoot now",
+      },
+    ],
+    excerpt:
+      "From the lakeside mornings of Udaipur to the desert afternoons of Tempe — the same light, a long way from home.",
+    body: [
+      "I started with a camera in Udaipur, though calling it a start almost undersells it. The city refuses to be ignored — pale havelis stacked around the water, saffron against grey stone at dawn, heat that sits on the lake like silk. Who could resist trying to hold on to a little of that? I didn't want to document it. I wanted to keep it.",
+      "So I kept it the only way I knew how — a frame at a time. Udaipur taught me what I was looking for long before I had a word for it: light that carries a mood, a color, a temperature. Everything since has been a variation on that first morning.",
+      "Tempe is a different kind of beautiful. Where Udaipur asks you to look, Arizona makes you work for it — the light here is dry, honest, and ruthless at noon. At Arizona State I've been turning instinct into craft: client sessions, private galleries, deliveries built to outlast a season. The lakes traded for canals, the havelis for glass, but the reasons I shoot haven't moved.",
+      "Two homes, one light — and a camera in the middle of it.",
     ],
   },
   {

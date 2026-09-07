@@ -13,6 +13,8 @@ export interface JournalEntry {
   cover: string;
   frames: string[];
   figures?: JournalFigure[];
+  figuresLabel?: string;
+  figuresTitle?: string;
   excerpt: string;
   body: string[];
 }
@@ -77,6 +79,8 @@ const JOURNAL_ENTRIES: JournalEntry[] = [
         caption: "Tempe, Arizona — where I live and shoot now",
       },
     ],
+    figuresLabel: "Two homes",
+    figuresTitle: "The same light, two addresses",
     excerpt:
       "From the lakeside mornings of Udaipur to the desert afternoons of Tempe — the same light, a long way from home.",
     body: [

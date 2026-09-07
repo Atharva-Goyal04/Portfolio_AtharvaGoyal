@@ -83,9 +83,11 @@ export default async function JournalPostPage({ params }: JournalPostProps) {
         {entry.figures && entry.figures.length > 0 && (
           <Reveal className="mt-10">
             <div className="mb-6">
-              <span className="eyebrow text-brand">Two homes</span>
+              <span className="eyebrow text-brand">
+                {entry.figuresLabel ?? "Detail"}
+              </span>
               <h2 className="mt-2 font-display text-2xl font-medium md:text-3xl">
-                The <em className="text-gradient not-italic">same light</em>, two addresses
+                {entry.figuresTitle ?? "Figures from the light"}
               </h2>
             </div>
             <div className="grid gap-5 sm:grid-cols-2">

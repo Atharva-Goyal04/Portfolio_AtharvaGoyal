@@ -15,6 +15,8 @@ The script:
   - uploads the originals + webp previews to Cloudflare R2
   - creates content/galleries/<slug>/gallery.json
   - prints the generated client password (LUMEN-XXXX...)
+  - logs the password in deliverables/passwords.html (styled table — open
+    it in a browser to see every gallery's password at a glance)
 
 Example:
 

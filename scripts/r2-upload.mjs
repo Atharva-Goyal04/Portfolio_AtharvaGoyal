@@ -52,6 +52,28 @@ if (!slug || !fs.existsSync(sourceDir)) {
 const generatePassword = () =>
   `LUMEN-${randomBytes(5).toString("hex").toUpperCase()}`;
 
+const PASSWORDS_FILE = path.join(ROOT, "deliverables", "passwords.txt");
+
+async function upsertPasswordFile({ slug, password, title, date }) {
+  const header = [
+    "# THE.LUMENCODE — delivery gallery passwords",
+    "# This file is git-ignored (deliverables/*) — keep it private. Do not commit.",
+    "# slug\tpassword\ttitle\tdate",
+  ];
+  let lines = [];
+  try {
+    lines = (await readFile(PASSWORDS_FILE, "utf8")).split("\n");
+  } catch {
+    // file not created yet
+  }
+  const kept = lines.filter((l) => !l.startsWith(`${slug}\t`));
+  kept.push([slug, password, title ?? "", date ?? ""].join("\t"));
+  await writeFile(
+    PASSWORDS_FILE,
+    header.concat(kept.filter(Boolean)).join("\n") + "\n",
+  );
+}
+
 const mime = (f) => {
   const ext = path.extname(f).toLowerCase();
   return ext === ".png" ? "image/png" : ext === ".webp" ? "image/webp" : ext === ".heic" ? "image/heic" : "image/jpeg";
@@ -118,8 +140,14 @@ async function main() {
 
   await writeFile(path.join(outDir, "r2-manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
   await writeFile(path.join(outDir, "gallery.json"), JSON.stringify(gallery, null, 2) + "\n");
+  await upsertPasswordFile({
+    slug,
+    password,
+    title: gallery.title,
+    date: gallery.date,
+  });
   console.log(`[r2] uploaded ${files.length} original + ${files.length} preview; wrote content/galleries/${slug}/gallery.json`);
-  console.log(`[r2] gallery password -> ${password}`);
+  console.log(`[r2] gallery password -> ${password} (saved to deliverables/passwords.txt)`);
 }
 
 main().catch((err) => {

@@ -17,7 +17,6 @@ export const SITE = {
 
 export const INSTAGRAM_URL = "https://www.instagram.com/the.lumencode/";
 export const INSTAGRAM_PERSONAL = "https://www.instagram.com/atharva__goyal/";
-export const WEB3_URL = "https://ud.me/thelumencode.professional";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/atharva--goyal/";
 export const CONTACT_EMAIL = SITE.email;
 export const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjyvwgaw";

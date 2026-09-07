@@ -33,5 +33,4 @@ export {
   INSTAGRAM_URL,
   LINKEDIN_URL,
   SITE,
-  WEB3_URL,
 } from "@/lib/site";

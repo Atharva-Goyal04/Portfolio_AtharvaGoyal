@@ -37,7 +37,11 @@ export default function ImageGrid({
 }) {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
 
-  const lightboxItems: LightboxItem[] = items.map((img) => ({
+  const ordered = [...items].sort(
+    (a, b) => (isLandscape(b.src) ? 1 : 0) - (isLandscape(a.src) ? 1 : 0),
+  );
+
+  const lightboxItems: LightboxItem[] = ordered.map((img) => ({
     id: img.src,
     src: img.src,
     title: img.title,
@@ -48,7 +52,7 @@ export default function ImageGrid({
   return (
     <div>
       <div className="grid grid-cols-3 gap-3 sm:gap-4">
-        {items.map((img, i) => {
+        {ordered.map((img, i) => {
           const wide = isLandscape(img.src);
           return (
             <motion.button

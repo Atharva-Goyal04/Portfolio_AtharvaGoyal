@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Download, Maximize, Minimize, X } from "lucide-react";
 import Photo from "@/components/shared/photo";
-import { INSTAGRAM_URL } from "@/lib/utils";
 
 export interface LightboxItem {
   id: string;
@@ -158,7 +157,7 @@ export default function Lightbox({ items, index, onClose, onNavigate }: Lightbox
         exit={{ opacity: 0 }}
         transition={{ duration: 0.25 }}
         onClick={onClose}
-        className="fixed inset-0 z-[100] flex flex-col bg-black/95 backdrop-blur-md"
+        className="fixed inset-0 z-[100] flex flex-col bg-canvas/95 backdrop-blur-md"
         style={{ touchAction: "none" }}
         role="dialog"
         aria-modal="true"
@@ -267,7 +266,7 @@ export default function Lightbox({ items, index, onClose, onNavigate }: Lightbox
           <ChevronRight className="h-6 w-6" />
         </button>
 
-        <div className="flex items-end justify-between gap-6 bg-gradient-to-t from-black/80 to-transparent p-6 md:px-10 md:pb-8">
+        <div className="flex items-end justify-between gap-6 bg-gradient-to-t from-canvas/90 to-transparent p-6 md:px-10 md:pb-8">
           <div className="min-w-0">
             <span className="font-mono text-[10px] uppercase tracking-widest text-brand">
               {current.subtitle}
@@ -279,15 +278,6 @@ export default function Lightbox({ items, index, onClose, onNavigate }: Lightbox
               </p>
             )}
           </div>
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="shrink-0 rounded-full bg-black/40 px-4 py-2.5 font-mono text-xs uppercase tracking-widest text-cream transition-colors hover:bg-black/70 hover:text-white"
-          >
-            Instagram
-          </a>
         </div>
       </motion.div>
     </AnimatePresence>

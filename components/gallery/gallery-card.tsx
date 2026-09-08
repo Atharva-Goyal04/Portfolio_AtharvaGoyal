@@ -36,9 +36,9 @@ export default async function GalleryCard({
             ratio={3 / 4}
             className="aspect-[3/4] transition-transform duration-700 group-hover:scale-[1.04]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-t from-canvas/85 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100" />
           {gallery.password && (
-            <Badge className="absolute left-3 top-3 border-white/20 bg-black/40 text-cream/80 backdrop-blur-sm">
+            <Badge className="absolute left-3 top-3 border-white/20 bg-surface/70 text-cream/80 backdrop-blur-sm">
               Private
             </Badge>
           )}

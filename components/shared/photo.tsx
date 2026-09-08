@@ -43,6 +43,18 @@ export default function Photo({
   };
 
   if (!info) {
+    if (fit === "contain") {
+      return (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={source}
+          alt={alt}
+          loading={eager ? "eager" : "lazy"}
+          decoding="async"
+          className={cn("h-auto w-auto max-w-full", className, imgClassName)}
+        />
+      );
+    }
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img

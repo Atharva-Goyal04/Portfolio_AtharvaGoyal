@@ -4,7 +4,7 @@
   "cover": "r2:gallery/sample-gallery/AG_05440.jpg",
   "description": "A sample client delivery so you can see exactly how your galleries will look — password-protected, private, and downloadable-ready.",
   "password": "test",
-  "download": false,
+  "download": true,
   "featured": false,
   "category": "portrait",
   "location": "Tempe, AZ",

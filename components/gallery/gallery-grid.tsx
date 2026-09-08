@@ -54,7 +54,7 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
                 href={img.src}
                 download
                 aria-label={`Download ${img.title}`}
-                className="pointer-events-auto rounded-full bg-black/40 p-2.5 text-cream/80 backdrop-blur-sm transition-colors hover:bg-black/60 hover:text-white"
+                className="pointer-events-auto rounded-full bg-surface/70 p-2.5 text-cream/80 backdrop-blur-sm transition-colors hover:bg-surface/85 hover:text-white"
               >
                 <Download className="h-3.5 w-3.5" />
               </a>
@@ -99,7 +99,7 @@ function FavoriteButton({ label }: { label: string }) {
         "pointer-events-auto rounded-full p-2.5 backdrop-blur-sm transition-colors",
         favorite
           ? "bg-brand/90 text-brand-foreground"
-          : "bg-black/40 text-cream/80 hover:bg-black/60 hover:text-white",
+          : "bg-surface/70 text-cream/80 hover:bg-surface/85 hover:text-white",
       )}
     >
       <Heart className={cn("h-3.5 w-3.5", favorite && "fill-current")} />

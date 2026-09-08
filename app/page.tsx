@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const featured = [
-  { image: "/images/favorite/DSC_1317.jpg", title: "Golden Hour", category: "Featured" },
+  { image: "/images/favorite/DSC_1249.jpg", title: "Golden Hour", category: "Featured" },
   { image: "/images/favorite/_AG_9030.jpg", title: "In Between", category: "Featured" },
   { image: "/images/favorite/DSC04384.jpg", title: "Desert Study", category: "Featured" },
 ];
@@ -114,17 +114,6 @@ function HomeHero() {
                   priority
                   className="transition-transform duration-700 hover:scale-[1.02]"
                 />
-                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/60 to-transparent p-4">
-                  <div>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-cream/70">
-                      Selected Work
-                    </span>
-                    <p className="font-display text-lg text-cream">Golden Hour</p>
-                  </div>
-                  <span className="rounded-full bg-cream/10 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-cream backdrop-blur">
-                    f/1.8 · 50mm
-                  </span>
-                </div>
               </div>
 
               <div className="absolute -bottom-6 -left-6 hidden w-32 overflow-hidden rounded-xl border-4 border-canvas shadow-lg sm:block">
@@ -162,10 +151,10 @@ function FeaturedSection() {
           <SectionHeading eyebrow="Selected Work" title="Frames that" highlight="caught my eye" />
           <Reveal delay={0.1}>
             <Link
-              href="/journal"
+              href="/projects"
               className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-brand"
             >
-              Read the journal <ArrowRight className="h-4 w-4" />
+              See the portfolio <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>
         </div>

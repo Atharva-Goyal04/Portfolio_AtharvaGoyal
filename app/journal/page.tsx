@@ -45,7 +45,7 @@ export default function JournalPage() {
                     className="aspect-[3/4] transition-transform duration-700 group-hover:scale-[1.04]"
                     eager={i < 3}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-canvas/85 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
                 <div className="p-5">
                   <div className="flex items-center justify-between gap-3">

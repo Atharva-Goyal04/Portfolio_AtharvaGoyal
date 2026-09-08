@@ -81,14 +81,12 @@ export default async function GalleryDetailPage({ params }: GalleryDetailProps) 
             )}
 
             <div className="sticky top-24 z-20 mt-8 flex flex-wrap items-center gap-3 rounded-2xl border border-line bg-surface/85 p-3 backdrop-blur-md">
-              {gallery.download ? (
-                <a
-                  href={`/api/gallery/${gallery.slug}/download`}
-                  className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 font-mono text-xs uppercase tracking-wider text-brand-foreground shadow-lg transition-colors hover:bg-brand/90"
-                >
-                  <ArrowDownToLine className="h-4 w-4" /> Download All
-                </a>
-              ) : null}
+              <a
+                href={`/api/gallery/${gallery.slug}/download`}
+                className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 font-mono text-xs uppercase tracking-wider text-brand-foreground shadow-lg transition-colors hover:bg-brand/90"
+              >
+                <ArrowDownToLine className="h-4 w-4" /> Download All
+              </a>
               <ShareButton title={gallery.title} />
               <span className="ml-auto hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
                 {photoCount} images · {monthYear(gallery.date ?? gallery.expires ?? "")}

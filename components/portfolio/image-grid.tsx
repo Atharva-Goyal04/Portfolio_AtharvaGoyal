@@ -77,7 +77,7 @@ export default function ImageGrid({
                 eager={i < eager}
               />
               {img.subtitle && (
-                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 via-transparent to-transparent p-5 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
+                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-canvas/85 via-transparent to-transparent p-5 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
                   <span className="font-mono text-[10px] uppercase tracking-widest text-cream/80">
                     {img.subtitle}
                   </span>

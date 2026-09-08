@@ -24,10 +24,10 @@ const photographySkills = [
 ];
 
 const gearTimeline = [
-  { name: "Nikon D3100", note: "first camera", current: false },
-  { name: "Sony α3000", note: "first mirrorless", current: false },
-  { name: "Sony α6700", note: "the everyday carry", current: false },
   { name: "Sony a7 IV", note: "now in hand", current: true },
+  { name: "Sony α6700", note: "the everyday carry", current: false },
+  { name: "Sony α3000", note: "first mirrorless", current: false },
+  { name: "Nikon D3100", note: "first camera", current: false },
 ];
 
 const homes = [
@@ -161,7 +161,7 @@ export default function AboutPage() {
                 <span className="eyebrow text-brand">Camera timeline</span>
               </div>
               <h2 className="font-display text-3xl font-medium tracking-tight text-balance md:text-5xl">
-                The gear between me <em className="text-gradient not-italic">and the moment</em>
+                The gear that <em className="text-gradient not-italic">got me here</em>
               </h2>
             </div>
           </Reveal>

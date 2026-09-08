@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 const heroImage = "/images/favorite/DSC_1317.jpg";
+const heroThumb = "/images/favorite/DSC04384.jpg";
 
 const selected = [
   { image: "/images/favorite/_AG_9030.jpg", title: "In Between", category: "Summer Picnic" },
@@ -112,7 +113,7 @@ function HomeHero() {
               </div>
 
               <div className="absolute -bottom-6 -left-6 hidden w-32 overflow-hidden rounded-xl border-4 border-canvas shadow-lg sm:block">
-                <Photo src={selected[2].image} alt={selected[2].title} ratio={1 / 1.15} />
+                <Photo src={heroThumb} alt="Desert study" ratio={1 / 1.15} />
               </div>
 
               <div className="absolute -top-4 -right-4 hidden rotate-3 items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 shadow-md sm:flex">
@@ -161,7 +162,7 @@ function FeaturedSection() {
                 <Photo
                   src={f.image}
                   alt={f.title}
-                  ratio={i === 0 ? 4 / 5 : 3 / 4}
+                  ratio={3 / 4}
                   className="rounded-none transition-transform duration-700 group-hover:scale-[1.03]"
                 />
                 <footer className="flex items-center justify-between px-4 py-3">

@@ -233,10 +233,10 @@ function DisciplineSection() {
                 made for the love of the frame, not the brief.
               </p>
               <Link
-                href="/journal"
+                href="/projects"
                 className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-brand"
               >
-                Read the journal <ArrowRight className="h-4 w-4" />
+                Explore the archive <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </Reveal>

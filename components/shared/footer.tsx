@@ -4,7 +4,6 @@ import { BOOKINGS_EMAIL, CONTACT_EMAIL, INSTAGRAM_URL, LINKEDIN_URL } from "@/li
 const quickLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/journal", label: "Journal" },
   { href: "/gallery", label: "Gallery" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },

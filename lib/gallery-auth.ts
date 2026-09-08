@@ -35,7 +35,7 @@ export function galleryUnlocked(
   cookieStore: CookieReader,
   gallery: Pick<Gallery, "slug" | "password">,
 ): boolean {
-  if (!gallery.password) return true;
+  if (!gallery.password) return false;
   const token = cookieStore.get(galleryCookieName(gallery.slug))?.value;
   return isValidToken(token, gallery.slug);
 }

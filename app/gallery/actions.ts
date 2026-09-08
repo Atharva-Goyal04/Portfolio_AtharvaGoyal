@@ -19,7 +19,7 @@ export async function unlockGallery(
 
   const gallery = await galleryBySlug(slug);
   if (!gallery?.password) {
-    return { success: true };
+    return { error: "This gallery is not configured for password access." };
   }
 
   if (!password || password !== gallery.password) {

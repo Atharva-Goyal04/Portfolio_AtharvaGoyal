@@ -15,9 +15,13 @@ export function allProjects(): Project[] {
     const match = src.match(/^\/images\/([^/]+)\/([^/]+)\.\w+$/);
     if (!match) continue;
     const folder = match[1];
+    if (folder === "favorite") continue;
     const name = match[2];
     const category = CATEGORY_META[folder]?.label ?? titleFromName(folder);
-    const meta = PROJECT_METADATA[`${folder}/${name}`] ?? {};
+    const meta =
+      PROJECT_METADATA[`${folder}/${name}`] ??
+      PROJECT_METADATA[`favorite/${name}`] ??
+      {};
     const project: Project = {
       folder,
       category,
@@ -33,7 +37,7 @@ export function allProjects(): Project[] {
       featured: favoriteNames.has(name),
     };
     const current = byName.get(name);
-    if (!current || (folder === "favorite" && current.folder !== "favorite")) {
+    if (!current) {
       byName.set(name, project);
     }
   }

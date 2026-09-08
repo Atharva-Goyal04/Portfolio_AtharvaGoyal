@@ -12,10 +12,12 @@ export const metadata: Metadata = {
   description: SITE.description,
 };
 
-const featured = [
-  { image: "/images/favorite/DSC_1249.jpg", title: "Golden Hour", category: "Featured" },
-  { image: "/images/favorite/_AG_9030.jpg", title: "In Between", category: "Featured" },
-  { image: "/images/favorite/DSC04384.jpg", title: "Desert Study", category: "Featured" },
+const heroImage = "/images/favorite/DSC_1317.jpg";
+
+const selected = [
+  { image: "/images/favorite/_AG_9030.jpg", title: "In Between", category: "Summer Picnic" },
+  { image: "/images/street/CVA09348.jpg", title: "Street Catch", category: "Street" },
+  { image: "/images/favorite/AG_04225.jpg", title: "Portrait Study", category: "Portrait" },
 ];
 
 export default function HomePage() {
@@ -65,13 +67,6 @@ function HomeHero() {
               </h1>
             </Reveal>
 
-            <Reveal delay={0.16}>
-              <p className="max-w-lg font-body text-lg leading-relaxed text-muted text-pretty">
-                A photographer based in Tempe, Arizona — portraits, street scenes, graduations,
-                and client sessions that outlast the season.
-              </p>
-            </Reveal>
-
             <Reveal delay={0.24}>
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <Link href="/projects">
@@ -107,7 +102,7 @@ function HomeHero() {
             <div className="relative mx-auto max-w-sm lg:max-w-none">
               <div className="relative overflow-hidden rounded-2xl border border-line shadow-xl shadow-brand/10">
                 <Photo
-                  src={featured[0].image}
+                  src={heroImage}
                   alt="Golden hour portrait"
                   ratio={4 / 5}
                   sizes="(max-width: 1024px) 60vw, 40vw"
@@ -117,7 +112,7 @@ function HomeHero() {
               </div>
 
               <div className="absolute -bottom-6 -left-6 hidden w-32 overflow-hidden rounded-xl border-4 border-canvas shadow-lg sm:block">
-                <Photo src={featured[2].image} alt="Desert study" ratio={1 / 1.15} />
+                <Photo src={selected[2].image} alt={selected[2].title} ratio={1 / 1.15} />
               </div>
 
               <div className="absolute -top-4 -right-4 hidden rotate-3 items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 shadow-md sm:flex">
@@ -160,7 +155,7 @@ function FeaturedSection() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
-          {featured.map((f, i) => (
+          {selected.map((f, i) => (
             <Reveal key={f.image} delay={i * 0.08}>
               <figure className="group relative overflow-hidden rounded-xl border border-line bg-surface">
                 <Photo

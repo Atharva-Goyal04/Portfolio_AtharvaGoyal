@@ -55,6 +55,23 @@ export default function Photo({
         />
       );
     }
+    if (ratio) {
+      return (
+        <div
+          className={cn("relative w-full overflow-hidden", className)}
+          style={{ aspectRatio: ratio }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={source}
+            alt={alt}
+            loading={eager ? "eager" : "lazy"}
+            decoding="async"
+            className={cn("h-full w-full object-cover", imgClassName)}
+          />
+        </div>
+      );
+    }
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img

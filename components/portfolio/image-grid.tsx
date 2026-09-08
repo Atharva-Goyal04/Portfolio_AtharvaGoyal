@@ -47,7 +47,7 @@ export default function ImageGrid({
 
   return (
     <div>
-      <div className="grid grid-cols-6 gap-3 sm:gap-4">
+      <div className="grid grid-cols-3 gap-3 sm:gap-4">
         {items.map((img, i) => {
           const wide = isLandscape(img.src);
           return (
@@ -57,11 +57,10 @@ export default function ImageGrid({
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.45, delay: (i % 2) * 0.06 }}
+              transition={{ duration: 0.45, delay: (i % 3) * 0.05 }}
               onClick={() => setLightboxIndex(i)}
               className={cn(
                 "group relative block w-full overflow-hidden rounded-xl text-left",
-                wide ? "col-span-3" : "col-span-2",
                 className,
               )}
             >
@@ -69,11 +68,7 @@ export default function ImageGrid({
                 src={img.src}
                 alt={img.subtitle ?? img.title}
                 ratio={wide ? landscapeRatio(img.src) : 3 / 4}
-                sizes={
-                  wide
-                    ? "(max-width: 640px) 50vw, 50vw"
-                    : "(max-width: 640px) 33vw, 33vw"
-                }
+                sizes="(max-width: 640px) 33vw, 33vw"
                 className="transition-transform duration-700 group-hover:scale-[1.03]"
                 eager={i < eager}
               />

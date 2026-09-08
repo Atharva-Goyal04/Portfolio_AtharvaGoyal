@@ -1,7 +1,7 @@
 # THE.LUMENCODE — Command Reference
 
 Run everything from the `portfolio/` folder. The live site deploys automatically
-from the `main` branch to **https://portfolio-atharvagoyal.vercel.app**.
+from the `main` branch to **https://atharvagoyal.com**.
 
 ---
 
@@ -61,7 +61,7 @@ mkdir deliverables/jane-grad
 npm run uploads:r2 -- jane-grad --client "Jane Doe" --email jane@x.com
 # edit title/category/location in content/galleries/jane-grad/gallery.json
 git add content/galleries/jane-grad && git commit -m "gallery: jane-grad" && git push
-# send client: https://portfolio-atharvagoyal.vercel.app/gallery/jane-grad + password
+# send client: https://atharvagoyal.com/gallery/jane-grad + password
 # later, after the session:  npm run uploads:r2 -- jane-grad --refresh --status delivered
 ```
 
@@ -76,7 +76,7 @@ Vercel dashboard: https://vercel.com — Cloudflare R2: https://dash.cloudflare.
 ## Environment (`.env.local`, git-ignored)
 | Var | Where from |
 | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Live `https://portfolio-atharvagoyal.vercel.app` (also in Vercel env). |
+| `NEXT_PUBLIC_SITE_URL` | Live `https://atharvagoyal.com` (also in Vercel env). |
 | `GALLERY_SECRET` | Random string signing gallery unlock cookies (`openssl rand -hex 32`). |
 | `BLOB_READ_WRITE_TOKEN` | Vercel → Storage → Blob → Connect token. |
 | `R2_ACCOUNT_ID` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` / `R2_BUCKET` | Cloudflare R2 (also set in Vercel Production/Preview). |

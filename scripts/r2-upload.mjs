@@ -105,7 +105,7 @@ const generatePassword = () =>
   `LUMEN-${randomBytes(5).toString("hex").toUpperCase()}`;
 
 const SITE_BASE = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-atharvagoyal.vercel.app"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://atharvagoyal.com"
 ).replace(/\/+$/, "");
 
 const CLIENTS_FILE = path.join(ROOT, "deliverables", "clients.html");

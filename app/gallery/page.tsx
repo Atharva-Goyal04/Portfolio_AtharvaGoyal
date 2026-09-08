@@ -5,6 +5,7 @@ import SectionHeading from "@/components/shared/section-heading";
 import GalleryCard from "@/components/gallery/gallery-card";
 import { galleries } from "@/lib/gallery";
 import { titleFromName } from "@/lib/utils";
+import { GALLERY_EMAIL } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Client Galleries",
@@ -77,6 +78,12 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
             >
               Book a session
             </Link>
+            <a
+              href={`mailto:${GALLERY_EMAIL}`}
+              className="font-mono text-[10px] uppercase tracking-widest text-muted/70 transition-colors hover:text-brand"
+            >
+              Need help? {GALLERY_EMAIL}
+            </a>
           </div>
         )}
       </div>

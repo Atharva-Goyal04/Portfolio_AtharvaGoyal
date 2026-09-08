@@ -6,7 +6,7 @@ import SectionHeading from "@/components/shared/section-heading";
 import Reveal from "@/components/shared/reveal";
 import { Badge } from "@/components/ui/badge";
 import { imageInfo } from "@/lib/images";
-import { SITE } from "@/lib/site";
+import { ATHARVA_EMAIL, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -120,6 +120,13 @@ export default function AboutPage() {
                 See the portfolio
               </Link>
             </div>
+
+            <a
+              href={`mailto:${ATHARVA_EMAIL}`}
+              className="inline-flex w-fit items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-muted/70 transition-colors hover:text-brand"
+            >
+              Recruiters &amp; collaborations → {ATHARVA_EMAIL}
+            </a>
           </Reveal>
 
           <Reveal delay={0.15}>

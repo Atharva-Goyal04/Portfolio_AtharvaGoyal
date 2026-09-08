@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Lock } from "lucide-react";
 import { unlockGallery } from "@/app/gallery/actions";
 import { Button } from "@/components/ui/button";
+import { GALLERY_EMAIL } from "@/lib/utils";
 
 export default function PasswordGate({ slug }: { slug: string }) {
   const router = useRouter();
@@ -53,6 +54,13 @@ export default function PasswordGate({ slug }: { slug: string }) {
         <Button type="submit" className="mt-6 w-full" disabled={isPending}>
           {isPending ? "Checking…" : "Unlock Gallery"}
         </Button>
+
+        <a
+          href={`mailto:${GALLERY_EMAIL}`}
+          className="mt-6 inline-block font-mono text-[10px] uppercase tracking-widest text-muted/70 transition-colors hover:text-brand"
+        >
+          Forgot the password? {GALLERY_EMAIL}
+        </a>
       </form>
     </div>
   );

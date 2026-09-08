@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CONTACT_EMAIL, INSTAGRAM_URL, LINKEDIN_URL } from "@/lib/utils";
+import { BOOKINGS_EMAIL, CONTACT_EMAIL, INSTAGRAM_URL, LINKEDIN_URL } from "@/lib/utils";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -20,10 +20,10 @@ export default function Footer() {
             Photography by Atharva Goyal — light, color, and the moments in between.
           </p>
           <a
-            href={`mailto:${CONTACT_EMAIL}`}
+            href={`mailto:${BOOKINGS_EMAIL}`}
             className="mt-2 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-ink/80 transition-colors hover:border-brand/60 hover:text-brand"
           >
-            Work with me →
+            Book a session →
           </a>
         </div>
 

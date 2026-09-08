@@ -27,10 +27,14 @@ export function titleFromName(name: string): string {
 }
 
 export {
+  ATHARVA_EMAIL,
+  BOOKINGS_EMAIL,
   CALENDLY_URL,
   CONTACT_EMAIL,
   FORMSPREE_ENDPOINT,
+  GALLERY_EMAIL,
   INSTAGRAM_URL,
   LINKEDIN_URL,
+  PHOTOS_EMAIL,
   SITE,
 } from "@/lib/site";

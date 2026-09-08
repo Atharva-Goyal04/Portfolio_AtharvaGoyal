@@ -13,6 +13,7 @@ import { galleryBySlug, isExpired, rawGalleries, resolveGalleryImages } from "@/
 import { galleryUnlocked } from "@/lib/gallery-auth";
 import { imageInfo } from "@/lib/images";
 import { monthYear } from "@/lib/utils";
+import { GALLERY_EMAIL } from "@/lib/utils";
 
 interface GalleryDetailProps {
   params: Promise<{ slug: string }>;
@@ -182,7 +183,7 @@ function ExpiredPanel({
         </div>
         <h2 className="font-display text-3xl font-medium">{gallery.title} has expired</h2>
         <p className="mt-3 font-mono text-xs uppercase tracking-wider text-muted">
-          This gallery is no longer available. Contact me to re-open your delivery.
+          This gallery is no longer available. Email {GALLERY_EMAIL} to re-open your delivery.
         </p>
         {gallery.location && (
           <p className="mt-4 font-mono text-xs text-muted">{gallery.location}</p>

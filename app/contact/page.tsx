@@ -4,7 +4,7 @@ import SectionHeading from "@/components/shared/section-heading";
 import Reveal from "@/components/shared/reveal";
 import ContactForm from "@/components/portfolio/contact-form";
 import CalendlyEmbed from "@/components/portfolio/calendly-embed";
-import { CALENDLY_URL, CONTACT_EMAIL, INSTAGRAM_URL } from "@/lib/utils";
+import { CALENDLY_URL, CONTACT_EMAIL, INSTAGRAM_URL, PHOTOS_EMAIL, BOOKINGS_EMAIL, GALLERY_EMAIL } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -67,8 +67,8 @@ export default function ContactPage() {
               ))}
             </div>
             <p className="font-mono text-[10px] uppercase tracking-widest text-muted/70">
-              Client galleries appear here once your session ships — private, downloadable,
-              and easy to share.
+              General photography inquiries at {PHOTOS_EMAIL} — client galleries appear here
+              once your session ships: private, downloadable, and easy to share.
             </p>
           </Reveal>
 
@@ -96,6 +96,9 @@ export default function ContactPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <CalendlyEmbed />
+            <p className="mt-6 text-center font-mono text-[10px] uppercase tracking-widest text-muted/70">
+              Prefer email? Bookings live at {BOOKINGS_EMAIL} — gallery help at {GALLERY_EMAIL}
+            </p>
           </Reveal>
         </div>
       </div>

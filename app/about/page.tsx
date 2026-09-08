@@ -23,6 +23,13 @@ const photographySkills = [
   "35mm Film",
 ];
 
+const gearTimeline = [
+  { name: "Nikon D3100", note: "first camera", current: false },
+  { name: "Sony α3000", note: "first mirrorless", current: false },
+  { name: "Sony α6700", note: "the everyday carry", current: false },
+  { name: "Sony a7 IV", note: "now in hand", current: true },
+];
+
 const homes = [
   {
     name: "Udaipur",
@@ -143,6 +150,45 @@ export default function AboutPage() {
               </div>
               <div className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-2xl border border-brand/20" />
             </div>
+          </Reveal>
+        </div>
+
+        <div className="mt-24 border-t border-line pt-16">
+          <Reveal>
+            <div className="mb-12 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <span className="glow-line w-10" />
+                <span className="eyebrow text-brand">Camera timeline</span>
+              </div>
+              <h2 className="font-display text-3xl font-medium tracking-tight text-balance md:text-5xl">
+                The gear between me <em className="text-gradient not-italic">and the moment</em>
+              </h2>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <ol className="relative grid gap-8 md:grid-cols-4 md:gap-6">
+              <span
+                aria-hidden
+                className="absolute bottom-2 left-[7px] top-2 w-px bg-brand/25 md:bottom-auto md:left-0 md:right-0 md:top-[7px] md:h-px md:w-auto"
+              />
+              {gearTimeline.map((g) => (
+                <li key={g.name} className="relative pl-10 md:pl-0 md:pt-10">
+                  <span
+                    className={
+                      g.current
+                        ? "absolute left-0 top-1 h-3.5 w-3.5 rounded-full border-2 border-brand bg-brand md:top-0"
+                        : "absolute left-0 top-1 h-3.5 w-3.5 rounded-full border-2 border-brand/40 bg-background md:top-0"
+                    }
+                  />
+                  <p className="font-display text-lg text-ink">{g.name}</p>
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-muted">
+                    {g.note}
+                    {g.current && <span className="ml-2 text-brand">· current</span>}
+                  </p>
+                </li>
+              ))}
+            </ol>
           </Reveal>
         </div>
 

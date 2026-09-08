@@ -45,6 +45,15 @@ export default function PasswordGate({ slug }: { slug: string }) {
           className="mt-8 w-full rounded-xl border border-line bg-canvas px-4 py-3 font-body outline-none transition-colors focus:border-brand"
         />
 
+        <label className="mt-4 flex items-center justify-center gap-2 font-mono text-[10px] uppercase tracking-widest text-muted/70">
+          <input
+            type="checkbox"
+            name="remember"
+            className="h-4 w-4 rounded border-line bg-canvas text-brand focus:ring-brand"
+          />
+          Remember me for 7 days
+        </label>
+
         {state.error && (
           <p role="alert" className="mt-3 font-mono text-xs uppercase tracking-wider text-red-500">
             {state.error}

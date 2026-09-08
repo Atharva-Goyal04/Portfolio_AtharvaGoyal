@@ -80,6 +80,7 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
             subtitle: p.category,
             meta: [p.location, p.date && monthYear(p.date)].filter(Boolean).join(" · "),
           }))}
+          disableSort={active === "featured"}
         />
       </div>
 

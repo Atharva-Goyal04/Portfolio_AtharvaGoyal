@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { cookies } from "next/headers";
 import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import SectionHeading from "@/components/shared/section-heading";
 import GalleryCard from "@/components/gallery/gallery-card";
 import { galleries } from "@/lib/gallery";
+import { galleryUnlocked } from "@/lib/gallery-auth";
 import { titleFromName } from "@/lib/utils";
 import { GALLERY_EMAIL } from "@/lib/utils";
 
@@ -30,6 +32,12 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
   const { category } = await searchParams;
   const all = await galleries();
   const filtered = category ? all.filter((g) => g.category === category) : all;
+
+  const cookieStore = await cookies();
+  const galleriesWithUnlocked = filtered.map((gallery) => ({
+    ...gallery,
+    unlocked: galleryUnlocked(cookieStore, gallery),
+  }));
 
   return (
     <section className="min-h-screen pt-28 md:pt-36">
@@ -60,8 +68,8 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
 
         {filtered.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((gallery, i) => (
-              <GalleryCard key={gallery.slug} gallery={gallery} index={i} />
+            {galleriesWithUnlocked.map((gallery, i) => (
+              <GalleryCard key={gallery.slug} gallery={gallery} index={i} unlocked={gallery.unlocked} />
             ))}
           </div>
         ) : (

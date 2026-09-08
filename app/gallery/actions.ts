@@ -16,6 +16,7 @@ export async function unlockGallery(
 ): Promise<UnlockState> {
   const slug = String(formData.get("slug") ?? "");
   const password = String(formData.get("password") ?? "");
+  const remember = formData.get("remember") === "on";
 
   const gallery = await galleryBySlug(slug);
   if (!gallery?.password) {
@@ -27,13 +28,14 @@ export async function unlockGallery(
   }
 
   const store = await cookies();
-  store.set(galleryCookieName(slug), issueToken(slug), {
+  const cookieOptions = {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: "lax" as const,
     secure: process.env.NODE_ENV === "production",
-    maxAge: 60 * 60 * 24 * 30,
     path: "/",
-  });
+    ...(remember ? { maxAge: 60 * 60 * 24 * 7 } : {}),
+  };
+  store.set(galleryCookieName(slug), issueToken(slug), cookieOptions);
 
   revalidatePath(`/gallery/${slug}`);
   return { success: true };

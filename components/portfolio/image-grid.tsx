@@ -26,20 +26,26 @@ function landscapeRatio(src: string): number {
   return Math.min(Math.max(info.width / info.height, 1.1), 2.4);
 }
 
+interface ImageGridProps {
+  items: GridItem[];
+  eager?: number;
+  className?: string;
+  disableSort?: boolean;
+}
+
 export default function ImageGrid({
   items,
   eager = 6,
   className,
-}: {
-  items: GridItem[];
-  eager?: number;
-  className?: string;
-}) {
+  disableSort = false,
+}: ImageGridProps) {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
 
-  const ordered = [...items].sort(
-    (a, b) => (isLandscape(b.src) ? 1 : 0) - (isLandscape(a.src) ? 1 : 0),
-  );
+  const ordered = disableSort
+    ? items
+    : [...items].sort(
+        (a, b) => (isLandscape(b.src) ? 1 : 0) - (isLandscape(a.src) ? 1 : 0),
+      );
 
   const lightboxItems: LightboxItem[] = ordered.map((img) => ({
     id: img.src,
@@ -57,11 +63,9 @@ export default function ImageGrid({
           return (
             <motion.button
               key={img.src}
-              type="button"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.45, delay: (i % 3) * 0.05 }}
+              layout
+              initial={false}
+              animate={{ opacity: 1, y: 0 }}
               onClick={() => setLightboxIndex(i)}
               className={cn(
                 "group relative block w-full overflow-hidden rounded-xl text-left",

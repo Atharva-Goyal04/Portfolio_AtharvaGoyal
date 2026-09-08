@@ -42,7 +42,7 @@ function HomeHero() {
             "radial-gradient(60% 60% at 75% 20%, hsl(var(--brand) / 0.10) 0%, transparent 70%)",
         }}
       />
-      <span className="pointer-events-none absolute right-6 top-28 hidden select-none font-mono text-[10px] uppercase tracking-[0.3em] text-muted/40 lg:block">
+      <span className="pointer-events-none absolute bottom-8 right-8 hidden select-none font-mono text-[10px] uppercase tracking-[0.3em] text-muted/40 lg:block">
         33.4242° N, 111.9281° W
       </span>
 

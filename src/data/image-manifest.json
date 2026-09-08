@@ -223,30 +223,6 @@
     "blur": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAADwAwCdASoQABgAPrVKnkonJCKhsAgA4BaJYgCdMoHgAAOCvfUdVYwAAM1zKJfylw4L7gnpllPekdEndtp3Da/ckbsnIwD0d8Upz9PMI9b8dbc5CSqIl3z4aaRtiYi8qVHOoyZG65WX0NJLzJP8gOA7DnbUjS+MKLdBiiadMyAAAA==",
     "url": "https://tze8yjovnaioq8g7.public.blob.vercel-storage.com/favorite/_AG_9424.jpg"
   },
-  "/images/film/0297390003.jpg": {
-    "category": "film",
-    "label": "Film",
-    "width": 2000,
-    "height": 1326,
-    "blur": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAACQAgCdASoQAAsAAoBCJbACdDBKSIUKrgAReyUuAAD++OxObGlE/JSJi/LqdrfFPlnpMbL4eybLf60IcAjp7Kr2l+skjgTFEBQJNcbq8SLDovU7ruPPcVT4mz7QwpWRD+K/4e5G4NsVR62o61Hf3ZKeKxMnD/M0LdO/19f/kIg8QVQCguUiOT1BnPk9trNAAAA=",
-    "url": "https://tze8yjovnaioq8g7.public.blob.vercel-storage.com/film/0297390003.jpg"
-  },
-  "/images/film/0297390004.jpg": {
-    "category": "film",
-    "label": "Film",
-    "width": 1326,
-    "height": 2000,
-    "blur": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAAAwBACdASoQABgAPrVInkmnJCKhMAgA4BaJbACdMoMYAEm0a42iZgExKsAA/iGImDugI2REupbY3ie7+Kcu3m4PpF1LY1ipno/4t8QbUYjxnf/loT079giM9Mz3ICHRrGQvgxaWQZcJVMwIwmXWdtm3GS7w6DCunF7Sqo6pb6IljUto7+FV7H+Dvv+AZlLdZgAAAA==",
-    "url": "https://tze8yjovnaioq8g7.public.blob.vercel-storage.com/film/0297390004.jpg"
-  },
-  "/images/film/0297390005.jpg": {
-    "category": "film",
-    "label": "Film",
-    "width": 1326,
-    "height": 2000,
-    "blur": "data:image/webp;base64,UklGRvAAAABXRUJQVlA4IOQAAACQBQCdASoQABgAPrVInkmnJCKhMAgA4BaJbACdL1FWAehPMAJXYVp0C/8J8+tY7GWn2ldTAAD+86yobJTDIkDIu9yP9PsDnIb1T427fB/7zUATopcD56fc+dlCEoNQ21OJiorKSmhVP4BY0aCpFyJsMxeFHEheMEJLQ69m/VCf2akUN5s5+5N6Oa+lnkdq/um/KEWCq1KtX+P3rlr7U++rLWl136OIP5kc6emOENOq3/+g99wQGQ59eLWzPMYRHwax9WZy9BRf+5jTyNcda6yrWltNBTbPo2XeUhdv2PT6EM3N2gA=",
-    "url": "https://tze8yjovnaioq8g7.public.blob.vercel-storage.com/film/0297390005.jpg"
-  },
   "/images/film/0297390006.jpg": {
     "category": "film",
     "label": "Film",
@@ -335,17 +311,17 @@
     "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoQAAsAAoBCJbACdAEJcA/57AAA/vXtlqM5bZOH9HOYsf78nZTomptfc5wAyBOsDDppi3yNdwYtagNjZ6ogBsESn+3Pf+MC2qKxsbOY+SbQAA==",
     "url": "https://tze8yjovnaioq8g7.public.blob.vercel-storage.com/film/0297390022.jpg"
   },
-  "/images/film/0297390023.jpg": {
-    "category": "film",
-    "label": "Film",
+  "/images/portrait/0297390023.jpg": {
+    "category": "portrait",
+    "label": "Portrait",
     "width": 2000,
     "height": 1326,
     "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAQCdASoQAAsAAoBCJbACdAEUxXJ4AAD+8tEasTLCxjMgetRAYhKFHYpKTx0Nh7rDoyGrhnH5+9y/Kinx3yhBGVH/+Bcs5ffIr5P6eoxS++AA",
     "url": "https://tze8yjovnaioq8g7.public.blob.vercel-storage.com/film/0297390023.jpg"
   },
-  "/images/film/0297390024.jpg": {
-    "category": "film",
-    "label": "Film",
+  "/images/portrait/0297390024.jpg": {
+    "category": "portrait",
+    "label": "Portrait",
     "width": 2000,
     "height": 1326,
     "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwAgCdASoQAAsAAoBCJYwCdH8AGZJT4tLdAAD+6kfaKKK7LKetiD4s48oGHuhYEV24UV2JgY1NZMlCs8CPGqHxLfEUIIqd9W4neStKyV+HA4QmdTj98cS3LDdEzX65N/cX7eawgDIAAA==",

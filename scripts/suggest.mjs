@@ -4,7 +4,7 @@ import { readdir } from "node:fs/promises";
 import path from "node:path";
 
 const IMG = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "public", "images");
-const CATS = ["street", "portrait", "architecture", "favorite", "film", "summer-picnic"];
+const CATS = ["ARCHITECTURE", "MISCELLANEOUS PROJECTS", "PORTRAITS", "STREET"];
 
 async function hash256(file) {
   const { data } = await sharp(file).resize({ width: 16, height: 16, fit: "fill" }).grayscale().raw().toBuffer({ resolveWithObject: true });
@@ -19,17 +19,34 @@ const index = [];
 for (const cat of CATS) {
   const dir = path.join(IMG, cat);
   let files = [];
-  try { files = await readdir(dir); } catch { continue; }
-  for (const f of files) {
-    if (!/\.(jpe?g|png|webp)$/i.test(f)) continue;
-    const h = await hash256(path.join(dir, f));
-    index.push({ file: f, cat, hash: h.hash, mean: h.mean });
+  try {
+    const entries = await readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.isDirectory() && !entry.name.startsWith(".")) {
+        const sub = await readdir(path.join(dir, entry.name));
+        for (const f of sub) {
+          if (!/\.(jpe?g|png|webp)$/i.test(f) || f.startsWith(".")) continue;
+          files.push(path.join(dir, entry.name, f));
+        }
+      }
+    }
+  } catch {
+    continue;
+  }
+  for (const file of files) {
+    const h = await hash256(file);
+    index.push({ file: path.basename(file), cat, hash: h.hash, mean: h.mean });
   }
 }
 const byName = new Map(index.map((i) => [i.file, i]));
 const prefix = (f) => f.replace(/-\d+|\.\w+$/g, "").split(/[_\d]/)[0];
 
-const lone = (await readdir(path.join(IMG, "unsorted"))).filter((f) => /\.(jpe?g|png|webp)$/i.test(f));
+let lone = [];
+try {
+  lone = (await readdir(path.join(IMG, "unsorted"))).filter((f) => /\.(jpe?g|png|webp)$/i.test(f));
+} catch {
+  lone = [];
+}
 const results = [];
 for (const f of lone.sort()) {
   const { hash } = await hash256(path.join(IMG, "unsorted", f));

@@ -12,6 +12,10 @@ deliverables/*
 # Raw source assets — only optimized copies live in public/.
 map/
 
+# Cloudflare worker local files
+workers/cdn-worker/node_modules/
+workers/cdn-worker/.dev.vars
+
 # Secrets — never commit local env files.
 .env
 .env.local

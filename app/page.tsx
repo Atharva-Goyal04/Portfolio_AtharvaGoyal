@@ -5,6 +5,7 @@ import Reveal from "@/components/shared/reveal";
 import Photo from "@/components/shared/photo";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/shared/section-heading";
+import { allProjects } from "@/lib/projects";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -12,14 +13,23 @@ export const metadata: Metadata = {
   description: SITE.description,
 };
 
-const heroImage = "/images/architecture/architecture/architecture-1.jpg";
-const heroThumb = "/images/architecture/architecture/architecture-2.jpg";
+const projects = allProjects();
 
-const selected = [
-  { image: "/images/architecture/architecture/architecture-1.jpg", title: "Architecture Study", category: "Architecture" },
-  { image: "/images/portraits/eclectic-art/portrait-eclectic-1.jpg", title: "Eclectic Art", category: "Portraits" },
-  { image: "/images/street/color-hunt-green/street-colorhunt_green-1.jpg", title: "Color Hunt", category: "Street" },
-];
+const heroImage = projects.find((p) => p.category === "portraits")?.coverSrc ?? projects[0].coverSrc;
+const heroThumb =
+  projects.filter((p) => p.category === "portraits")[1]?.coverSrc ?? projects[1].coverSrc;
+
+const CATEGORY_ORDER = ["portraits", "street", "architecture", "miscellaneous-projects"];
+
+const selected = CATEGORY_ORDER.map((cat) => projects.find((p) => p.category === cat))
+  .filter((p) => p !== undefined)
+  .slice(0, 3)
+  .map((p) => ({
+    image: p.coverSrc,
+    title: p.title,
+    category: p.categoryLabel,
+    href: `/projects/${p.category}/${p.slug}`,
+  }));
 
 export default function HomePage() {
   return (
@@ -158,20 +168,22 @@ function FeaturedSection() {
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
           {selected.map((f, i) => (
             <Reveal key={f.image} delay={i * 0.08}>
-              <figure className="group relative overflow-hidden rounded-xl border border-line bg-surface">
-                <Photo
-                  src={f.image}
-                  alt={f.title}
-                  ratio={3 / 4}
-                  className="rounded-none transition-transform duration-700 group-hover:scale-[1.03]"
-                />
-                <footer className="flex items-center justify-between px-4 py-3">
-                  <figcaption className="font-display text-base text-ink">{f.title}</figcaption>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-muted/70">
-                    {f.category.toLowerCase()}
-                  </span>
-                </footer>
-              </figure>
+              <Link href={f.href} className="group block">
+                <figure className="relative overflow-hidden rounded-xl border border-line bg-surface">
+                  <Photo
+                    src={f.image}
+                    alt={f.title}
+                    ratio={3 / 4}
+                    className="rounded-none transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                  <footer className="flex items-center justify-between px-4 py-3">
+                    <figcaption className="font-display text-base text-ink">{f.title}</figcaption>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-muted/70">
+                      {f.category.toLowerCase()}
+                    </span>
+                  </footer>
+                </figure>
+              </Link>
             </Reveal>
           ))}
         </div>

@@ -27,11 +27,11 @@ const JOURNAL_ENTRIES: JournalEntry[] = [
     date: "2024-05",
     location: "Tempe, AZ",
     camera: "Sony a7 IV · 50mm",
-    cover: "/images/favorite/DSC04384.jpg",
+    cover: "/images/portraits/the-quiet-hour/portrait-thequiethour-1.jpg",
     frames: [
-      "/images/favorite/DSC04384.jpg",
-      "/images/favorite/DSC_1317.jpg",
-      "/images/favorite/_AG_9030.jpg",
+      "/images/portraits/the-quiet-hour/portrait-thequiethour-2.jpg",
+      "/images/portraits/the-quiet-hour/portrait-thequiethour-3.jpg",
+      "/images/portraits/the-quiet-hour/portrait-thequiethour-4.jpg",
     ],
     excerpt:
       "Chasing the last light across the Salt River basin — a backlit portrait at golden hour.",
@@ -45,12 +45,12 @@ const JOURNAL_ENTRIES: JournalEntry[] = [
     slug: "summer-picnic-late-sun",
     title: "Summer Picnic — Late Sun",
     category: "Sessions",
-    cover: "/images/summer-picnic/_AG_9030.jpg",
+    cover: "/images/miscellaneous-projects/summer-picnic/miscellaneous-summerpicnic-1.jpg",
     frames: [
-      "/images/summer-picnic/_AG_9013.jpg",
-      "/images/summer-picnic/_AG_9030.jpg",
-      "/images/summer-picnic/_AG_9152.jpg",
-      "/images/summer-picnic/_AG_9387.jpg",
+      "/images/miscellaneous-projects/summer-picnic/miscellaneous-summerpicnic-2.jpg",
+      "/images/miscellaneous-projects/summer-picnic/miscellaneous-summerpicnic-3.jpg",
+      "/images/miscellaneous-projects/summer-picnic/miscellaneous-summerpicnic-4.jpg",
+      "/images/miscellaneous-projects/summer-picnic/miscellaneous-summerpicnic-5.jpg",
     ],
     excerpt:
       "Friends, food, and a late-summer sun that didn't want to leave — candid frames from a golden-hour picnic.",
@@ -67,7 +67,7 @@ const JOURNAL_ENTRIES: JournalEntry[] = [
     date: "2026-09",
     location: "Udaipur · Tempe",
     camera: "Sony a7 IV",
-    cover: "/images/favorite/DSC_1317.jpg",
+    cover: "/maps/udaipur.webp",
     frames: [],
     figures: [
       {
@@ -96,12 +96,11 @@ const JOURNAL_ENTRIES: JournalEntry[] = [
     category: "Notes",
     location: "Tempe, AZ",
     camera: "Sony a7 IV",
-    cover: "/images/street/AG_02856.jpg",
+    cover: "/images/street/color-hunt-green/street-colorhunt_green-1.jpg",
     frames: [
-      "/images/street/AG_02851.jpg",
-      "/images/street/AG_02856-2.jpg",
-      "/images/street/AG_02858.jpg",
-      "/images/street/AG_02901.jpg",
+      "/images/street/color-hunt-green/street-colorhunt_green-2.jpg",
+      "/images/street/color-hunt-green/street-colorhunt_green-3.jpg",
+      "/images/street/color-hunt-green/street-colorhunt_green-4.jpg",
     ],
     excerpt:
       "Notes from an afternoon on the sidewalks — pacing, framing, and the quiet geometry of Tempe.",

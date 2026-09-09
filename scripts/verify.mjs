@@ -39,8 +39,8 @@ function fail(src, why) {
 for (const [src, info] of entries) {
   if (!src.startsWith("/images/")) fail(src, "src does not start with /images/");
   if (!(Number(info.width) > 0) || !(Number(info.height) > 0)) fail(src, "missing/zero dimensions");
-  if (!info.url) fail(src, "no blob url (local originals were deleted)");
-  else if (!info.url.startsWith("https://") || !info.url.includes("blob.vercel-storage.com")) {
+  if (!info.url) fail(src, "no remote url (local originals were deleted)");
+  else if (!info.url.startsWith("https://") || !/^https:\/\/(lumen-cdn\.lumen-cdn\.workers\.dev|.*\.blob\.vercel-storage\.com)/.test(info.url)) {
     fail(src, `unexpected url host: ${info.url}`);
   }
 }

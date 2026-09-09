@@ -19,8 +19,9 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
-      // Portfolio photos are hosted on Vercel Blob.
-      { protocol: "https", hostname: "*.blob.vercel-storage.com" },
+      // Portfolio photos are hosted on R2 and served via the lumen-cdn worker.
+      { protocol: "https", hostname: "lumen-cdn.lumen-cdn.workers.dev" },
+      { protocol: "https", hostname: "*.r2.cloudflarestorage.com" },
     ],
   },
 };

@@ -1,39 +1,11 @@
-// Camera/location metadata migrated from the Vite-era Google Sheet import.
+// Camera/location metadata overlays applied to manifest-backed galleries.
+// Keys match image srcs after stripping the leading `/images/` and extension.
 export const PROJECT_METADATA: Record<
   string,
   { location?: string; date?: string; instagram?: string }
 > = {
-  "favorite/AG_04225": { location: "Tempe, AZ", date: "2024-05" },
+  "portraits/the-quiet-hour/portrait-thequiethour-1": { location: "Tempe, AZ" },
+  "miscellaneous-projects/summer-picnic/miscellaneous-summerpicnic-1": { location: "Tempe, AZ" },
 };
 
 export const DEFAULT_CAMERA = "Sony a7 IV";
-
-export const CATEGORY_META: Record<
-  string,
-  { label: string; description: string }
-> = {
-  street: {
-    label: "Street",
-    description: "Candid frames from Arizona sidewalks and city edges.",
-  },
-  portrait: {
-    label: "Portraits",
-    description: "People, personality, and the quiet in-between moments.",
-  },
-  architecture: {
-    label: "Architecture",
-    description: "Lines, light, and geometry in the built world.",
-  },
-  film: {
-    label: "Film",
-    description: "35mm experiments in color and grain.",
-  },
-  favorite: {
-    label: "Featured",
-    description: "A hand-picked selection of signature frames.",
-  },
-  "summer-picnic": {
-    label: "Summer Picnic",
-    description: "Golden-hour friends, food, and late Arizona sun.",
-  },
-};

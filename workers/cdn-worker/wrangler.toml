@@ -7,14 +7,12 @@ compatibility_flags = ["nodejs_compat"]
 binding = "R2_BUCKET"
 bucket_name = "lumen-photos"
 
-[vars]
-R2_ACCOUNT_ID = "3ee11d74731bd0918c581778a6fbca9b"
-R2_ACCESS_KEY_ID = "5d7720998e4c089b31559222a2f61bc3"
-R2_SECRET_ACCESS_KEY = "25f5e2b3f2f21c87f71c07e454d3de27e3a2e7ed1a33199b447413892f0ed1e6"
-R2_BUCKET_NAME = "lumen-photos"
-
-[build]
-command = ""
-
 [observability]
 enabled = true
+
+# Secrets are injected at deploy time and must NOT be committed here:
+#   wrangler secret put R2_ACCOUNT_ID
+#   wrangler secret put R2_ACCESS_KEY_ID
+#   wrangler secret put R2_SECRET_ACCESS_KEY
+#   wrangler secret put R2_BUCKET_NAME
+# (or set locally in workers/cdn-worker/.dev.vars which is git-ignored)

@@ -8,30 +8,32 @@ from the `main` branch to **https://atharvagoyal.com**.
 ## Everyday
 | Command | What it does |
 | --- | --- |
-| `npm run dev` | Start the dev server at http://localhost:3000 (auto-runs `images` + `og` first). |
-| `npm run build` | Production build (auto-runs `images` + `og` first). |
+| `npm run dev` | Start the dev server at http://localhost:3000 (auto-runs `og` first). |
+| `npm run build` | Production build (auto-runs `og` first). |
 | `npm run start` | Serve an existing production build locally. |
 | `npm run typecheck` | TypeScript check only (`tsc --noEmit`). |
 | `npm run lint` | ESLint check only. |
 | `npm run check` | `lint` + `typecheck` + `build` all in one. |
 
-## Portfolio photos (Vercel Blob)
+## Portfolio photos (R2 + lumen-cdn worker)
+Portfolio images live in `public/images/<CATEGORY>/<PROJECT>/` and are served from
+Cloudflare R2 through the `lumen-cdn` worker (`lumen-cdn.lumen-cdn.workers.dev`).
+
 | Command | What it does |
 | --- | --- |
-| `npm run images` | Scan `public/images/` and write `src/data/image-manifest.json` (uris, dimensions, blur placeholders). |
-| `node scripts/lumen.mjs report` | Audit: counts per category, files still in `unsorted/`, duplicate filenames. |
-| `node scripts/suggest.mjs` | Suggest a category for each photo sitting in `public/images/unsorted/`. |
-| `npm run uploads:blob` | Push `public/images/*` to Vercel Blob and record the URLs in the manifest. |
-| `npm run verify` | Check the manifest + fetch Blob/R2 URLs to confirm every image serves. |
+| `npm run uploads:portfolio` | Upload originals + 1600px WebP previews to R2, extract EXIF, generate blur placeholders, and write `src/data/image-manifest.json`. |
+| `npm run audit` | Report: counts per category/project, photos on disk still unindexed, duplicate filenames. |
+| `node scripts/suggest.mjs` | Suggest a project for each photo sitting in `public/images/unsorted/`. |
+| `npm run verify` | Check the manifest + fetch every image URL to confirm it serves. |
 
-Workflow: drop photos into a category folder under `public/images/` → `npm run uploads:blob`
-to put originals on Blob → `npm run images` to index → commit. New categories need a label
-added in `scripts/lumen.mjs` (`CATEGORY_LABELS`) and `scripts/suggest.mjs` (`CATS`).
+Workflow: drop photos into `public/images/<CATEGORY>/<PROJECT>/` → `npm run uploads:portfolio`
+to upload + re-index → `npm run audit` to confirm → commit the manifest. New categories are
+picked up automatically (folder name → slug + label).
 
 ## OG image
 | Command | What it does |
 | --- | --- |
-| `npm run og` | Regenerate `public/og.jpg` (1200×630) from the featured `favorite/AG_04225.jpg`. |
+| `npm run og` | Regenerate `public/og.jpg` (1200×630) from the first image in the manifest. |
 
 ## Client galleries (Cloudflare R2)
 Drop each shoot's photos in its own folder: `deliverables/<slug>/`.
@@ -78,8 +80,17 @@ Vercel dashboard: https://vercel.com — Cloudflare R2: https://dash.cloudflare.
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Live `https://atharvagoyal.com` (also in Vercel env). |
 | `GALLERY_SECRET` | Random string signing gallery unlock cookies (`openssl rand -hex 32`). |
-| `BLOB_READ_WRITE_TOKEN` | Vercel → Storage → Blob → Connect token. |
-| `R2_ACCOUNT_ID` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` / `R2_BUCKET` | Cloudflare R2 (also set in Vercel Production/Preview). |
+| `R2_ACCOUNT_ID` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` / `R2_BUCKET` | Cloudflare R2 (also set in Vercel Production/Preview; the `lumen-cdn` worker gets its own copies via `wrangler secret put`). |
+
+## lumen-cdn worker (Cloudflare)
+```
+cd workers/cdn-worker
+wrangler secret put R2_ACCOUNT_ID        # one-time, values never committed
+wrangler secret put R2_ACCESS_KEY_ID
+wrangler secret put R2_SECRET_ACCESS_KEY
+wrangler secret put R2_BUCKET_NAME
+wrangler deploy
+```
 
 ## Other endpoints
 Formspree: `https://formspree.io/f/xjyvwgaw` (contact form). Calendly:

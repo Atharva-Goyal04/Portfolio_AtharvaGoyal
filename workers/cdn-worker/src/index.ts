@@ -146,7 +146,7 @@ async function verifyPresignedGet(
     "X-Amz-SignedHeaders": signedHeaders,
   };
 
-  const { uri, query, authorization: expectedAuth } = sign(
+  const { authorization: expectedAuth } = sign(
     { accessKeyId: cfg.accessKeyId, secretAccessKey: cfg.secretAccessKey },
     key,
     "GET",
@@ -161,7 +161,7 @@ async function verifyPresignedGet(
 }
 
 export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+  async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
     const path = url.pathname.slice(1);
 

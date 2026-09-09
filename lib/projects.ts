@@ -1,57 +1,83 @@
 import { imageCatalog } from "@/lib/images";
-import { titleFromName } from "@/lib/utils";
-import type { Project } from "@/lib/types";
-import { CATEGORY_META, DEFAULT_CAMERA, PROJECT_METADATA } from "@/src/data/project-metadata";
+import type { Project, ImageInfo } from "@/lib/types";
 
-export function allProjects(): Project[] {
-  const favoriteNames = new Set<string>();
-  for (const src of Object.keys(imageCatalog)) {
-    const fav = src.match(/^\/images\/favorite\/([^/]+)\.\w+$/);
-    if (fav) favoriteNames.add(fav[1]);
+export function allCategories(): { slug: string; label: string; projectCount: number }[] {
+  const catMap = new Map<string, { label: string; projects: Set<string> }>();
+
+  for (const [, info] of Object.entries(imageCatalog)) {
+    const cat = info.category;
+    const proj = info.project;
+    if (!catMap.has(cat)) catMap.set(cat, { label: info.label, projects: new Set() });
+    catMap.get(cat)!.projects.add(proj);
   }
 
-  const byName = new Map<string, Project>();
-  for (const [src, info] of Object.entries(imageCatalog)) {
-    const match = src.match(/^\/images\/([^/]+)\/([^/]+)\.\w+$/);
-    if (!match) continue;
-    const folder = match[1];
-    if (folder === "favorite") continue;
-    const name = match[2];
-    const category = CATEGORY_META[folder]?.label ?? titleFromName(folder);
-    const meta =
-      PROJECT_METADATA[`${folder}/${name}`] ??
-      PROJECT_METADATA[`favorite/${name}`] ??
-      {};
-    const project: Project = {
-      folder,
-      category,
-      name,
-      image: src,
-      path: `/projects/${folder}/${name}`,
-      title: titleFromName(name),
-      width: info.width,
-      height: info.height,
-      camera: DEFAULT_CAMERA,
-      location: meta.location ?? "",
-      date: meta.date ?? "",
-      featured: favoriteNames.has(name),
-    };
-    const current = byName.get(name);
-    if (!current) {
-      byName.set(name, project);
-    }
-  }
-  return [...byName.values()].sort(
-    (a, b) => a.folder.localeCompare(b.folder) || a.name.localeCompare(b.name),
-  );
+  return [...catMap.entries()]
+    .map(([slug, { label, projects }]) => ({ slug, label, projectCount: projects.size }))
+    .sort((a, b) => a.label.localeCompare(b.label));
 }
 
-export function neighbors(list: Project[], project: Project): { prev: Project | null; next: Project | null } {
-  const same = list.filter((p) => p.folder === project.folder);
-  const idx = same.findIndex((p) => p.name === project.name);
-  if (idx === -1) return { prev: null, next: null };
-  return {
-    prev: same[(idx - 1 + same.length) % same.length],
-    next: same[(idx + 1) % same.length],
-  };
+export function allProjects(): Project[] {
+  const projMap = new Map<string, Project>();
+
+  for (const [src, info] of Object.entries(imageCatalog)) {
+    const catSlug = info.category;
+    const projSlug = info.project;
+    const key = `${catSlug}/${projSlug}`;
+
+    if (!projMap.has(key)) {
+      projMap.set(key, {
+        slug: projSlug,
+        category: catSlug,
+        categoryLabel: info.label,
+        title: info.projectTitle,
+        cover: info.url ?? "",
+        coverSrc: src,
+        imageCount: 0,
+        date: undefined,
+        location: undefined,
+        camera: undefined,
+        hasStory: false,
+        storyPath: undefined,
+        images: [],
+      });
+    }
+
+    const proj = projMap.get(key)!;
+    proj.images.push({ ...info, src });
+    proj.imageCount++;
+
+    if (info.camera && !proj.camera) proj.camera = info.camera;
+  }
+
+  for (const proj of projMap.values()) {
+    proj.images.sort((a, b) => (a.src ?? "").localeCompare(b.src ?? ""));
+    if (!proj.cover && proj.images[0]) proj.cover = proj.images[0].url ?? "";
+  }
+
+  return [...projMap.values()].sort((a, b) => {
+    const catOrder = a.categoryLabel.localeCompare(b.categoryLabel);
+    if (catOrder !== 0) return catOrder;
+    return a.title.localeCompare(b.title);
+  });
+}
+
+export function getProjectsByCategory(categorySlug: string): Project[] {
+  return allProjects().filter((p) => p.category === categorySlug);
+}
+
+export function getProject(categorySlug: string, projectSlug: string): Project | undefined {
+  return allProjects().find((p) => p.category === categorySlug && p.slug === projectSlug);
+}
+
+export function getAllImages(): ImageInfo[] {
+  return Object.values(imageCatalog)
+    .map((info) => ({ ...info, src: info.src ?? "" }))
+    .sort((a, b) => (a.src ?? "").localeCompare(b.src ?? ""));
+}
+
+export function getImagesForProject(categorySlug: string, projectSlug: string): ImageInfo[] {
+  return Object.values(imageCatalog)
+    .filter((i) => i.category === categorySlug && i.project === projectSlug)
+    .map((info) => ({ ...info, src: info.src ?? "" }))
+    .sort((a, b) => (a.src ?? "").localeCompare(b.src ?? ""));
 }

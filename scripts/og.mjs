@@ -5,16 +5,12 @@ import { readFile } from "node:fs/promises";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const MANIFEST = path.join(ROOT, "src", "data", "image-manifest.json");
-const LOCAL_SRC = path.join(ROOT, "public", "images", "favorite", "AG_04225.jpg");
 
 async function sourceBuffer() {
-  let url;
-  try {
-    const manifest = JSON.parse(await readFile(MANIFEST, "utf8"));
-    url = manifest["/images/favorite/AG_04225.jpg"]?.url;
-  } catch {
-    url = undefined;
-  }
+  const manifest = JSON.parse(await readFile(MANIFEST, "utf8"));
+  // Use the first image from the manifest as OG background
+  const firstKey = Object.keys(manifest)[0];
+  const url = manifest[firstKey]?.url;
   if (url) {
     try {
       const res = await fetch(url);
@@ -23,7 +19,17 @@ async function sourceBuffer() {
       // fall through to local
     }
   }
-  return readFile(LOCAL_SRC);
+  // Fallback: try to find a local file
+  const localFiles = Object.keys(manifest).filter((k) => k.startsWith("/images/"));
+  for (const key of localFiles) {
+    const localPath = path.join(ROOT, "public", key);
+    try {
+      return await readFile(localPath);
+    } catch {
+      continue;
+    }
+  }
+  throw new Error("No source image found for OG generation");
 }
 const FONT_BODY = "/System/Library/Fonts/Supplemental/Arial Bold.ttf";
 const FONT_MONO = "/System/Library/Fonts/Supplemental/Courier New Bold.ttf";

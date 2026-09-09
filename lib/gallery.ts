@@ -39,7 +39,7 @@ export function resolveGalleryImages(gallery: Gallery): GalleryImage[] {
     if (!info) continue;
     const key = src.replace(/^\/images\//, "").replace(/\.[a-z0-9]+$/i, "");
     const md = PROJECT_METADATA[key];
-    const meta = [md?.location, md?.date && monthYear(md.date), DEFAULT_CAMERA]
+    const meta = [md?.location, md?.date && monthYear(md.date), info.camera ?? DEFAULT_CAMERA]
       .filter(Boolean)
       .join(" · ");
     out.push({
@@ -47,9 +47,19 @@ export function resolveGalleryImages(gallery: Gallery): GalleryImage[] {
       title: titleFromName(src.split("/").pop() ?? ""),
       category: info.category,
       label: info.label,
+      project: info.project,
+      projectTitle: info.projectTitle,
       width: info.width,
       height: info.height,
       blur: info.blur,
+      url: info.url,
+      camera: info.camera,
+      lens: info.lens,
+      focalLength: info.focalLength,
+      aperture: info.aperture,
+      shutterSpeed: info.shutterSpeed,
+      iso: info.iso,
+      isFilm: info.isFilm,
       meta: meta || undefined,
     });
   }

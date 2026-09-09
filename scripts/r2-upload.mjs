@@ -1,14 +1,17 @@
 import { fileURLToPath } from "node:url";
 import { randomBytes } from "node:crypto";
-import { readFile, readdir, mkdir, writeFile } from "node:fs/promises";
+import { readFile, readdir, mkdir, writeFile, stat } from "node:fs/promises";
 import fs from "node:fs";
 import path from "node:path";
 import { createInterface } from "node:readline";
 import { stdin } from "node:process";
 import sharp from "sharp";
+import exifr from "exifr";
 import {
   r2OriginalKey,
   r2PreviewKey,
+  portfolioOriginalKey,
+  portfolioPreviewKey,
   signedPutHeaders,
 } from "../lib/r2-sign.ts";
 
@@ -36,27 +39,46 @@ if (!cfg.accountId || !cfg.accessKeyId || !cfg.secretAccessKey || !cfg.bucket) {
   process.exit(1);
 }
 
-const usage = `Usage: node scripts/r2-upload.mjs <slug> [sourceDir] [flags]
-  Uploads full-res originals + webp previews of every image in sourceDir to
-  Cloudflare R2 as gallery/<slug>/<file>, then writes
-  content/galleries/<slug>/gallery.json with an auto-generated
-  branded password (LUMEN-<hex>) and a cover pointing at the first upload.
+const usage = `Usage: node scripts/r2-upload.mjs <mode> <slug> [sourceDir] [flags]
 
-  Re-running for an existing gallery keeps its current password and settings.
-  After uploading it asks for optional client details (name, email, phone,
-  status, notes) and adds/updates that client's card in
-  deliverables/clients.html — already set fields are reused on future runs.
+Modes:
+  gallery   Upload client gallery (existing behavior)
+  portfolio Upload entire portfolio from public/images/
 
-Flags (all optional; empty = reuse what's already in the card):
+Gallery mode:
+  node scripts/r2-upload.mjs gallery <slug> [sourceDir] [flags]
+    Uploads full-res originals + webp previews to gallery/<slug>/<file>
+    Writes content/galleries/<slug>/gallery.json with branded password
+
+Portfolio mode:
+  node scripts/r2-upload.mjs portfolio [--refresh]
+    Walks public/images/<category>/<project>/*.jpg
+    Uploads originals + 1600px webp previews to portfolio/<category>/<project>/
+    Outputs manifest to src/data/image-manifest.json
+
+Gallery flags (all optional; empty = reuse what's already in the card):
   --client "Name"   --email x@y.com   --phone 555-0100
   --status upcoming|delivered|archived   --notes "Free text"
-  --refresh         no upload — just re-sync the card from an existing
-                    content/galleries/<slug>/gallery.json`;
+  --refresh         no upload — just re-sync the card from existing gallery.json
 
-const slug = process.argv[2];
+Portfolio flags:
+  --refresh         no upload — just regenerate manifest from existing R2 files
+`;
+
+const mode = process.argv[2] ?? "gallery";
+const slug = mode === "gallery" ? process.argv[3] : undefined;
 const refreshOnly = process.argv.includes("--refresh") || process.argv.includes("--update-only");
-const sourceDir = process.argv[3] ?? path.join(ROOT, "deliverables", slug);
-if (!slug || (!refreshOnly && !fs.existsSync(sourceDir))) {
+
+const sourceDir = mode === "gallery" ? (process.argv[4] ?? path.join(ROOT, "deliverables", slug)) : undefined;
+
+if (mode === "gallery") {
+  if (!slug || (!refreshOnly && !fs.existsSync(sourceDir))) {
+    console.error(usage);
+    process.exit(1);
+  }
+} else if (mode === "portfolio") {
+  // portfolio mode doesn't need slug
+} else {
   console.error(usage);
   process.exit(1);
 }
@@ -290,7 +312,238 @@ async function put(key, body, contentType) {
   if (!res.ok) throw new Error(`PUT ${key} -> ${res.status} ${await res.text().catch(() => "")}`);
 }
 
+const CAMERA_MAP = {
+  "ILCE-7M4": "Sony a7 IV",
+  "ILCE-6700": "Sony a6700",
+  "ILCE-3000": "Sony α3000",
+  "NIKON D3100": "Nikon D3100",
+};
+
+function normalizeCamera(model) {
+  return CAMERA_MAP[model] ?? model;
+}
+
+function slugify(str) {
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+async function extractExif(filePath) {
+  try {
+    const data = await exifr.parse(filePath, { exif: true, iptc: false, xmp: false, icc: false });
+    const rawModel = data.Model ?? "";
+    const rawLens = data.LensModel ?? "";
+    const focalLength = data.FocalLength ? `${Math.round(data.FocalLength)}mm` : undefined;
+    const aperture = data.FNumber ? `f/${data.FNumber}` : undefined;
+    const shutterSpeed = data.ExposureTime ? formatShutter(data.ExposureTime) : undefined;
+    const iso = data.ISOSpeedRatings ? `ISO ${data.ISOSpeedRatings}` : undefined;
+
+    // Film scanner detection
+    const isFilmScan = /NORITSU|FRONTIER|FUJI|SP-3000|EZ Controller/i.test(rawModel);
+
+    return {
+      camera: isFilmScan ? "Pentax Espio 738" : normalizeCamera(rawModel),
+      lens: isFilmScan ? "35mm Film" : rawLens || undefined,
+      focalLength,
+      aperture,
+      shutterSpeed,
+      iso,
+      isFilm: isFilmScan,
+    };
+  } catch {
+    return { camera: "Unknown", lens: undefined, focalLength: undefined, aperture: undefined, shutterSpeed: undefined, iso: undefined, isFilm: false };
+  }
+}
+
+function formatShutter(time) {
+  if (time >= 1) return `${time}s`;
+  const denom = Math.round(1 / time);
+  return `1/${denom}s`;
+}
+
+function naturalSort(a, b) {
+  const re = /(\d+)|(\D+)/g;
+  const aParts = a.match(re) ?? [];
+  const bParts = b.match(re) ?? [];
+  for (let i = 0; i < Math.max(aParts.length, bParts.length); i++) {
+    const aPart = aParts[i] ?? "";
+    const bPart = bParts[i] ?? "";
+    const aNum = parseInt(aPart, 10);
+    const bNum = parseInt(bPart, 10);
+    if (!isNaN(aNum) && !isNaN(bNum)) {
+      if (aNum !== bNum) return aNum - bNum;
+    } else if (aPart !== bPart) {
+      return aPart.localeCompare(bPart);
+    }
+  }
+  return 0;
+}
+
+async function uploadPortfolio() {
+  const imagesDir = path.join(ROOT, "public", "images");
+  const manifest = {};
+  const workerBase = "https://lumen-cdn.lumen-cdn.workers.dev";
+
+  if (!fs.existsSync(imagesDir)) {
+    console.error("[r2] public/images does not exist");
+    process.exit(1);
+  }
+
+  const categories = (await readdir(imagesDir, { withFileTypes: true }))
+    .filter((d) => d.isDirectory() && !d.name.startsWith(".") && d.name !== "optimized")
+    .map((d) => d.name);
+
+  for (const category of categories) {
+    const catDir = path.join(imagesDir, category);
+    const catSlug = slugify(category);
+    const catLabel = category
+      .split(/[\s_-]+/)
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+      .join(" ");
+
+    const entries = await readdir(catDir, { withFileTypes: true });
+    const projects = entries.filter((e) => e.isDirectory() && !e.name.startsWith("."));
+    const flatFiles = entries.filter((e) => e.isFile() && /\.(jpe?g|png|webp|heic)$/i.test(e.name));
+
+    if (flatFiles.length > 0 && projects.length === 0) {
+      // Flat category (like ARCHITECTURE) = single implicit project
+      const projectSlug = catSlug;
+      const files = flatFiles.map((f) => f.name).sort(naturalSort);
+      const coverFile = files[0];
+
+      for (const file of files) {
+        const filePath = path.join(catDir, file);
+        const statInfo = await stat(filePath);
+        const exif = await extractExif(filePath);
+        const originalKey = portfolioOriginalKey(catSlug, projectSlug, file);
+        const previewKey = portfolioPreviewKey(catSlug, projectSlug, file);
+        const previewUrl = `${workerBase}/${previewKey}`;
+
+        if (!refreshOnly) {
+          const body = await readFile(filePath);
+          await put(originalKey, body, mime(file));
+          const preview = await sharp(body).rotate().resize({ width: 1600, withoutEnlargement: true }).webp({ quality: 80 }).toBuffer();
+          await put(previewKey, preview, "image/webp");
+        }
+
+        const src = `/images/${catSlug}/${projectSlug}/${file}`;
+        manifest[src] = {
+          category: catSlug,
+          label: catLabel,
+          project: projectSlug,
+          projectTitle: catLabel,
+          width: 0,
+          height: 0,
+          blur: "",
+          url: previewUrl,
+          camera: exif.camera,
+          lens: exif.lens,
+          focalLength: exif.focalLength,
+          aperture: exif.aperture,
+          shutterSpeed: exif.shutterSpeed,
+          iso: exif.iso,
+          isFilm: exif.isFilm,
+          _localPath: filePath,
+        };
+
+        // Get dimensions for manifest
+        try {
+          const meta = await sharp(filePath).metadata();
+          manifest[src].width = meta.width ?? 0;
+          manifest[src].height = meta.height ?? 0;
+        } catch {}
+      }
+      continue;
+    }
+
+    for (const project of projects) {
+      const projectSlug = slugify(project.name);
+      const projDir = path.join(catDir, project.name);
+      const files = (await readdir(projDir))
+        .filter((f) => /\.(jpe?g|png|webp|heic)$/i.test(f) && !f.startsWith("."))
+        .sort(naturalSort);
+
+      if (!files.length) continue;
+
+      for (const file of files) {
+        const filePath = path.join(projDir, file);
+        const exif = await extractExif(filePath);
+        const originalKey = portfolioOriginalKey(catSlug, projectSlug, file);
+        const previewKey = portfolioPreviewKey(catSlug, projectSlug, file);
+        const previewUrl = `${workerBase}/${previewKey}`;
+
+        if (!refreshOnly) {
+          const body = await readFile(filePath);
+          await put(originalKey, body, mime(file));
+          const preview = await sharp(body).rotate().resize({ width: 1600, withoutEnlargement: true }).webp({ quality: 80 }).toBuffer();
+          await put(previewKey, preview, "image/webp");
+        }
+
+        const src = `/images/${catSlug}/${projectSlug}/${file}`;
+        manifest[src] = {
+          category: catSlug,
+          label: catLabel,
+          project: projectSlug,
+          projectTitle: project.name
+            .split(/[\s_-]+/)
+            .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+            .join(" "),
+          width: 0,
+          height: 0,
+          blur: "",
+          url: previewUrl,
+          camera: exif.camera,
+          lens: exif.lens,
+          focalLength: exif.focalLength,
+          aperture: exif.aperture,
+          shutterSpeed: exif.shutterSpeed,
+          iso: exif.iso,
+          isFilm: exif.isFilm,
+          _localPath: filePath,
+        };
+
+        try {
+          const meta = await sharp(filePath).metadata();
+          manifest[src].width = meta.width ?? 0;
+          manifest[src].height = meta.height ?? 0;
+        } catch {}
+      }
+    }
+  }
+
+  // Generate blur placeholders and write manifest
+  console.log("[r2] generating blur placeholders...");
+  for (const src of Object.keys(manifest)) {
+    const entry = manifest[src];
+    if (entry._localPath && fs.existsSync(entry._localPath)) {
+      try {
+        const buffer = await sharp(entry._localPath)
+          .resize({ width: 16, withoutEnlargement: true })
+          .webp({ quality: 60 })
+          .toBuffer();
+        entry.blur = `data:image/webp;base64,${buffer.toString("base64")}`;
+      } catch {}
+    }
+    delete entry._localPath;
+  }
+
+  const outPath = path.join(ROOT, "src", "data", "image-manifest.json");
+  await mkdir(path.dirname(outPath), { recursive: true });
+  await writeFile(outPath, JSON.stringify(manifest, null, 2) + "\n");
+  console.log(`[r2] wrote manifest with ${Object.keys(manifest).length} images to ${path.relative(ROOT, outPath)}`);
+}
+
 async function main() {
+  if (mode === "portfolio") {
+    await uploadPortfolio();
+    return;
+  }
+
+  // Gallery mode (existing logic)
   if (refreshOnly) {
     const gf = path.join(ROOT, "content", "galleries", slug, "gallery.json");
     if (!fs.existsSync(gf)) {

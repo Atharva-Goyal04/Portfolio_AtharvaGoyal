@@ -1,27 +1,38 @@
 export interface ImageInfo {
+  src?: string;
   category: string;
   label: string;
+  project: string;
+  projectTitle: string;
   width: number;
   height: number;
   blur?: string;
   url?: string;
+  camera?: string;
+  lens?: string;
+  focalLength?: string;
+  aperture?: string;
+  shutterSpeed?: string;
+  iso?: string;
+  isFilm?: boolean;
 }
 
 export type ImageCatalog = Record<string, ImageInfo>;
 
 export interface Project {
-  folder: string;
+  slug: string;
   category: string;
-  name: string;
-  image: string;
-  path: string;
+  categoryLabel: string;
   title: string;
-  width: number;
-  height: number;
-  camera?: string;
-  location?: string;
+  cover: string;
+  coverSrc: string;
+  imageCount: number;
   date?: string;
-  featured?: boolean;
+  location?: string;
+  camera?: string;
+  hasStory: boolean;
+  storyPath?: string;
+  images: ImageInfo[];
 }
 
 export type GalleryCategory =
@@ -47,10 +58,23 @@ export interface Gallery {
   images: string[];
 }
 
-export interface GalleryImage extends ImageInfo {
+export interface GalleryImage {
   src: string;
   title: string;
   width: number;
   height: number;
   meta?: string;
+  category: string;
+  label: string;
+  project: string;
+  projectTitle: string;
+  blur?: string;
+  url?: string;
+  camera?: string;
+  lens?: string;
+  focalLength?: string;
+  aperture?: string;
+  shutterSpeed?: string;
+  iso?: string;
+  isFilm?: boolean;
 }

@@ -22,6 +22,14 @@ export function r2PreviewKey(slug: string, file: string): string {
   return `gallery/${slug}/preview/${file}.webp`;
 }
 
+export function portfolioOriginalKey(category: string, project: string, file: string): string {
+  return `portfolio/${category}/${project}/${file}`;
+}
+
+export function portfolioPreviewKey(category: string, project: string, file: string): string {
+  return `portfolio/${category}/${project}/preview/${file}.webp`;
+}
+
 function canonicalUri(key: string): string {
   return key
     .split("/")

@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   description: SITE.description,
 };
 
-const heroImage = "/images/favorite/DSC_1317.jpg";
-const heroThumb = "/images/favorite/DSC04384.jpg";
+const heroImage = "/images/architecture/architecture/architecture-1.jpg";
+const heroThumb = "/images/architecture/architecture/architecture-2.jpg";
 
 const selected = [
-  { image: "/images/favorite/_AG_9030.jpg", title: "In Between", category: "Summer Picnic" },
-  { image: "/images/street/CVA09348.jpg", title: "Street Catch", category: "Street" },
-  { image: "/images/favorite/AG_04225.jpg", title: "Portrait Study", category: "Portrait" },
+  { image: "/images/architecture/architecture/architecture-1.jpg", title: "Architecture Study", category: "Architecture" },
+  { image: "/images/portraits/eclectic-art/portrait-eclectic-1.jpg", title: "Eclectic Art", category: "Portraits" },
+  { image: "/images/street/color-hunt-green/street-colorhunt_green-1.jpg", title: "Color Hunt", category: "Street" },
 ];
 
 export default function HomePage() {

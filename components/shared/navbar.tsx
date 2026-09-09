@@ -10,8 +10,9 @@ import { useTheme } from "@/components/providers/theme-provider";
 import { INSTAGRAM_URL, LINKEDIN_URL } from "@/lib/utils";
 
 const navLinks = [
-  { href: "/projects", label: "Portfolio" },
-  { href: "/gallery", label: "Gallery" },
+  { href: "/photos", label: "Photos" },
+  { href: "/projects", label: "Projects" },
+  { href: "/gallery", label: "Galleries" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

@@ -10,7 +10,12 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage() {
-  const projects = allProjects();
+  const projects = [...allProjects()].sort(
+    (a, b) =>
+      Number(b.hasStory) - Number(a.hasStory) ||
+      a.categoryLabel.localeCompare(b.categoryLabel) ||
+      a.title.localeCompare(b.title),
+  );
 
   return (
     <section className="min-h-screen pt-28 md:pt-36">

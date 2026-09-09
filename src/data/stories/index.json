@@ -11,6 +11,12 @@
     "title": "",
     "hasStory": true
   },
+  "miscellaneous-projects/wallpapers": {
+    "category": "miscellaneous-projects",
+    "project": "wallpapers",
+    "title": "",
+    "hasStory": true
+  },
   "portraits/eclectic-art": {
     "category": "portraits",
     "project": "eclectic-art",
@@ -32,6 +38,18 @@
   "portraits/the-quiet-hour": {
     "category": "portraits",
     "project": "the-quiet-hour",
+    "title": "",
+    "hasStory": true
+  },
+  "street/color-hunt-green": {
+    "category": "street",
+    "project": "color-hunt-green",
+    "title": "",
+    "hasStory": true
+  },
+  "street/vintage-car-meetup": {
+    "category": "street",
+    "project": "vintage-car-meetup",
     "title": "",
     "hasStory": true
   }

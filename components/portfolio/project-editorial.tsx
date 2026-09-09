@@ -257,7 +257,12 @@ export default async function ProjectEditorial({ story, images, categoryLabel, c
         >
           <ChevronLeft className="h-4 w-4" /> Projects
         </Link>
-        <span className="hidden font-mono text-xs uppercase tracking-widest text-muted/60 sm:block">{categoryLabel}</span>
+        <Link
+          href={`/projects/${nextProject.category}/${nextProject.slug}`}
+          className="hidden items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-brand sm:inline-flex"
+        >
+          Next Project <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
 
       <header>
@@ -277,14 +282,6 @@ export default async function ProjectEditorial({ story, images, categoryLabel, c
           </div>
         </div>
       </header>
-
-      {story.introduction && (
-        <section className="mx-auto mt-20 max-w-2xl md:mt-28">
-          <Reveal>
-            <p className="font-display text-xl leading-relaxed text-balance text-ink/90 md:text-2xl">{story.introduction}</p>
-          </Reveal>
-        </section>
-      )}
 
       <section className="mt-20 md:mt-28">
         {story.visualChapters.map((chapter, i) => (
@@ -323,16 +320,25 @@ export default async function ProjectEditorial({ story, images, categoryLabel, c
         </section>
       )}
 
-      {story.closingStory && (
+      {(story.introduction || story.closingStory) && (
         <section className="mx-auto mt-24 max-w-2xl md:mt-32">
           <Reveal>
-            <div className="mb-6 flex items-center gap-4">
+            <div className="mb-8 flex items-center gap-4">
               <span className="h-px w-10 bg-brand/60" />
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">The Story</span>
             </div>
-            <p className="font-display text-xl leading-relaxed text-balance text-ink/90 whitespace-pre-wrap md:text-2xl">
-              {story.closingStory}
-            </p>
+            <div className="space-y-6">
+              {story.introduction && (
+                <p className="font-display text-lg leading-relaxed whitespace-pre-wrap text-justify text-muted">
+                  {story.introduction}
+                </p>
+              )}
+              {story.closingStory && (
+                <p className="font-display text-xl leading-relaxed whitespace-pre-wrap text-justify text-ink/90 md:text-2xl">
+                  {story.closingStory}
+                </p>
+              )}
+            </div>
           </Reveal>
         </section>
       )}
@@ -360,26 +366,26 @@ export default async function ProjectEditorial({ story, images, categoryLabel, c
         <div className="mb-8 border-t border-line pt-10">
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">Next Project</span>
         </div>
-        <figure className="mx-auto max-w-4xl">
+        <figure className="max-w-sm sm:max-w-xs">
           <div className="overflow-hidden rounded-sm">
             <Photo
               src={nextCoverSrc}
               alt={nextProject.title}
-              sizes="(max-width: 1280px) 100vw, 1024px"
+              sizes="(max-width: 640px) 90vw, 384px"
               className="transition-transform duration-700 group-hover:scale-[1.01]"
             />
           </div>
-          <figcaption className="mt-5 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+          <figcaption className="mt-4 flex items-end justify-between gap-4">
             <span>
               <span className="block font-mono text-[10px] uppercase tracking-[0.25em] text-muted/70">
                 {nextProject.categoryLabel}
               </span>
-              <span className="mt-1 block font-display text-3xl font-medium tracking-tight text-ink md:text-4xl">
+              <span className="mt-1 block font-display text-2xl font-medium tracking-tight text-ink">
                 {nextProject.title}
               </span>
             </span>
             <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-brand">
-              View project <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              View <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </span>
           </figcaption>
         </figure>

@@ -34,7 +34,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailProps) 
 
   const images = getImagesForProject(category, project).filter((img): img is ImageInfo & { src: string } => Boolean(img.src));
 
-  if (story) {
+  if (story && story.visualChapters && story.visualChapters.length > 0) {
     return (
       <ProjectEditorial
         story={story}

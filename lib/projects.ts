@@ -1,8 +1,11 @@
 import { imageCatalog } from "@/lib/images";
 import type { Project } from "@/lib/types";
 import type { ImageInfo } from "@/lib/types";
+import storiesIndex from "@/src/data/stories/index.json";
 
 export type { ImageInfo };
+
+const STORY_KEYS = new Set(Object.keys(storiesIndex));
 
 export interface StoryChapter {
   id: string;
@@ -95,6 +98,7 @@ export function allProjects(): Project[] {
     const catSlug = info.category;
     const projSlug = info.project;
     const key = `${catSlug}/${projSlug}`;
+    const hasStory = STORY_KEYS.has(key);
 
     if (!projMap.has(key)) {
       projMap.set(key, {
@@ -108,8 +112,8 @@ export function allProjects(): Project[] {
         date: undefined,
         location: undefined,
         camera: undefined,
-        hasStory: false,
-        storyPath: undefined,
+        hasStory,
+        storyPath: hasStory ? `../../src/data/stories/${catSlug}/${projSlug}.json` : undefined,
         images: [],
       });
     }

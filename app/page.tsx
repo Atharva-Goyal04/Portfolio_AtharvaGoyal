@@ -44,7 +44,7 @@ export default function HomePage() {
 
 function HomeHero() {
   return (
-    <section className="relative flex min-h-screen flex-col justify-center overflow-hidden">
+    <section className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -56,9 +56,9 @@ function HomeHero() {
         33.4242° N, 111.9281° W
       </span>
 
-      <div className="container-site relative z-10 pb-28 pt-36">
-        <div className="grid items-center gap-14 lg:grid-cols-12">
-          <div className="flex flex-col gap-7 lg:col-span-7">
+      <div className="container-site relative z-10 pb-24 pt-24 md:pb-28 md:pt-36">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="flex flex-col gap-6 self-center lg:col-span-7 lg:gap-7">
             <Reveal>
               <div className="flex items-center gap-3">
                 <span className="glow-line w-10" />
@@ -69,23 +69,23 @@ function HomeHero() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <h1 className="font-display text-6xl font-medium leading-[0.95] tracking-tight text-ink md:text-7xl lg:text-8xl">
-                <span className="block text-balance">Atharva Goyal</span>
-                <span className="mt-2 block text-muted">ordinary moments</span>
-                <em className="text-gradient not-italic">seen differently</em>
+              <h1 className="font-display text-[clamp(2.5rem,6vw,5.5rem)] font-medium leading-[1.02] tracking-tight text-ink text-balance">
+                <span className="block">Atharva Goyal</span>
+                <span className="mb-1 mt-3 block text-muted">ordinary moments</span>
+                <em className="block text-gradient not-italic">seen differently</em>
               </h1>
             </Reveal>
 
             <Reveal delay={0.24}>
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <Link href="/projects">
-                  <Button variant="primary" size="lg">
+              <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+                <Link href="/projects" className="w-full sm:w-auto">
+                  <Button variant="primary" size="lg" className="w-full sm:w-auto">
                     View the Portfolio
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href="/contact">
-                  <Button variant="outline" size="lg">
+                <Link href="/contact" className="w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="w-full sm:w-auto">
                     Work With Me
                   </Button>
                 </Link>
@@ -100,13 +100,13 @@ function HomeHero() {
           </div>
 
           <Reveal delay={0.2} className="lg:col-span-5">
-            <div className="relative mx-auto max-w-sm lg:max-w-none">
+            <div className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none">
               <div className="relative overflow-hidden rounded-2xl border border-line shadow-xl shadow-brand/10">
                 <Photo
                   src={heroImage}
                   alt="Golden hour portrait"
                   ratio={4 / 5}
-                  sizes="(max-width: 1024px) 60vw, 40vw"
+                  sizes="(max-width: 1024px) 80vw, 40vw"
                   priority
                   className="transition-transform duration-700 hover:scale-[1.02]"
                 />
@@ -127,7 +127,7 @@ function HomeHero() {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
+      <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 sm:bottom-8">
         <div className="flex flex-col items-center gap-2">
           <span className="font-mono text-[10px] uppercase tracking-widest text-muted/60">
             Scroll
@@ -143,7 +143,7 @@ function FeaturedSection() {
   return (
     <section className="py-24 md:py-32">
       <div className="container-site">
-        <div className="mb-12 flex flex-col items-end justify-between gap-6 lg:flex-row">
+        <div className="mb-12 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading eyebrow="Selected Work" title="Frames that" highlight="caught my eye" />
           <Reveal delay={0.1}>
             <Link
@@ -186,7 +186,7 @@ function DisciplineSection() {
   return (
     <section className="border-y border-line bg-surface/50 py-24 md:py-32">
       <div className="container-site">
-        <div className="grid gap-12 lg:grid-cols-2">
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <div className="flex flex-col gap-6">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand/10 text-brand">
@@ -237,7 +237,7 @@ function GalleryCta() {
   return (
     <section className="py-24 md:py-32">
       <div className="container-site">
-        <Reveal className="relative overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-surface to-canvas p-10 text-center md:p-20">
+        <Reveal className="relative overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-surface to-canvas p-8 text-center sm:p-10 lg:p-20">
           <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand/60 to-transparent" />
           <div className="flex flex-col items-center gap-6">
             <span className="eyebrow text-brand">Let&apos;s make something</span>

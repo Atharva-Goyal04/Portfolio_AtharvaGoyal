@@ -71,10 +71,8 @@ function HomeHero() {
             <Reveal delay={0.08}>
               <h1 className="font-display text-6xl font-medium leading-[0.95] tracking-tight text-ink md:text-7xl lg:text-8xl">
                 <span className="block text-balance">Atharva Goyal</span>
-                <span className="mt-2 block text-muted">
-                  ordinary moments,{" "}
-                  <em className="text-gradient not-italic">seen differently</em>
-                </span>
+                <span className="mt-2 block text-muted">ordinary moments</span>
+                <em className="text-gradient not-italic">seen differently</em>
               </h1>
             </Reveal>
 

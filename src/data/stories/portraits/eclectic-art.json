@@ -1,0 +1,75 @@
+{
+  "projectTitle": "Eclectic Art",
+  "projectType": "Fashion / Portrait / Editorial Photography",
+  "collaborativeGroup": "The Fashion Collective at ASU (TFC)",
+  "director": "Kara Keene",
+  "location": "ASU Art Museum",
+  "time": "First semester freshman year, September/October",
+  "camera": "Sony A3000 (purchased from KEH, older entry-level mirrorless)",
+  "lens": "Sony Carl Zeiss Vario-Tessar T* E 16-70mm F4 ZA OSS",
+  "coverImage": "portrait-eclectic-12.jpg",
+  "visualChapters": [
+    {
+      "id": "monochrome",
+      "label": "Black & White",
+      "title": "Monochrome",
+      "description": "Removing color allows focus on structure — composition, lighting, subject, shapes, and contrast. When color is gone, attention shifts to the bones of the image.",
+      "images": [
+        {
+          "file": "portrait-eclectic-13.jpg",
+          "editorialTitle": "Eclectic Portrait — Monochrome",
+          "description": "Favorite black-and-white portrait from the project.",
+          "role": "favorite",
+          "favorite": true
+        },
+        {
+          "file": "portrait-eclectic-15.jpg",
+          "editorialTitle": "Structure",
+          "description": "Monochrome portrait emphasizing composition and lighting.",
+          "role": "supporting"
+        },
+        {
+          "file": "portrait-eclectic-14.jpg",
+          "editorialTitle": "Eclectic Portrait — Color",
+          "description": "The color version of the favorite portrait from the project.",
+          "role": "favorite",
+          "favorite": true
+        }
+      ]
+    },
+    {
+      "id": "color",
+      "label": "Color",
+      "title": "Color",
+      "description": "Restrained monotone/duotone look keeping focus on composition and subject while adding a little flair — the cherry on top.",
+      "images": [
+        {
+          "file": "portrait-eclectic-1.jpg",
+          "editorialTitle": "Eclectic Portrait — Color",
+          "description": "Color portrait with restrained duotone treatment.",
+          "role": "supporting"
+        },
+        {
+          "file": "portrait-eclectic-2.jpg",
+          "editorialTitle": "Architecture & Form",
+          "description": "Using the brutalist architecture as compositional element.",
+          "role": "supporting"
+        },
+        {
+          "file": "portrait-eclectic-3.jpg",
+          "editorialTitle": "Symmetry",
+          "description": "Symmetrical composition using museum architecture.",
+          "role": "supporting"
+        }
+      ]
+    }
+  ],
+  "closingStory": "This shoot ended up being a really educational experience. I got to experience what it was like to work with a creative team and learned a lot about how a shoot actually works: communication, direction, working toward a shared vision, and adapting to what is happening around you. More importantly, it made me want to do more photography. Looking back now, I think this shoot was one of the seeds that eventually grew into everything I've continued doing with photography at ASU. I really loved the experience, and it pushed me to seek out more opportunities to create, collaborate, and eventually become more involved in the photography community myself.",
+  "instagramRefs": [
+    { "title": "Black & White", "url": "https://www.instagram.com/p/DTbqDkBj3g1/?img_index=1" },
+    { "title": "Color", "url": "https://www.instagram.com/p/DUpOvKUDT3a/?img_index=1" },
+    { "title": "TFC Shoot", "url": "https://www.instagram.com/p/DQ4wzT2EYTy/?img_index=1" }
+  ],
+  "websitePresentation": "Present as a visual story about one of the early photography experiences at ASU. When discussing black-and-white photography, display 'Eclectic Portrait — Monochrome' (portrait-eclectic-13) near that section. When discussing color/duotone approach, display 'Eclectic Portrait — Color' (portrait-eclectic-14) near that section. The two favorite photographs should be treated as important featured images. Use editorial titles instead of raw filenames. Do not invent technical details. Photographs should support the narrative rather than appear as unrelated gallery. Feel like a photography project case study / visual story, not a formal corporate case study.",
+  "creativeThemes": ["Composition over color", "Finding structure in architecture", "Symmetry and geometry", "Using environment as part of portrait", "Contrast between monochrome and restrained color", "Learning to work within directed creative vision", "Collaboration and communication", "Early experimentation with professional photography"]
+}

@@ -1,0 +1,71 @@
+{
+  "projectTitle": "Wallpapers",
+  "projectType": "Curated Wallpapers / Digital Art",
+  "location": "Various",
+  "time": "2025",
+  "camera": "Various",
+  "lens": "Various",
+  "coverImage": "miscellaneous-wallpapers-1.jpg",
+  "visualChapters": [
+    {
+      "id": "wallpapers",
+      "label": "Wallpapers",
+      "title": "Wallpapers",
+      "description": "Curated collection of images optimized for desktop and mobile wallpapers. Clean compositions, strong colors, and graphic elements that work well as backgrounds.",
+      "images": [
+        {
+          "file": "miscellaneous-wallpapers-1.jpg",
+          "editorialTitle": "Minimal Horizon",
+          "description": "Clean minimal composition suitable for desktop background.",
+          "role": "cover"
+        },
+        {
+          "file": "miscellaneous-wallpapers-2.jpg",
+          "editorialTitle": "Color Field",
+          "description": "Bold color field composition for wallpaper use.",
+          "role": "supporting"
+        },
+        {
+          "file": "miscellaneous-wallpapers-3.jpg",
+          "editorialTitle": "Geometric Balance",
+          "description": "Balanced geometric composition.",
+          "role": "supporting"
+        },
+        {
+          "file": "miscellaneous-wallpapers-4.jpg",
+          "editorialTitle": "Gradient Sky",
+          "description": "Soft gradient sky — calm desktop background.",
+          "role": "supporting"
+        },
+        {
+          "file": "miscellaneous-wallpapers-5.jpg",
+          "editorialTitle": "Abstract Form",
+          "description": "Abstract forms in harmonious colors.",
+          "role": "supporting"
+        },
+        {
+          "file": "miscellaneous-wallpapers-6.jpg",
+          "editorialTitle": "Clean Lines",
+          "description": "Strong clean lines for minimalist aesthetic.",
+          "role": "supporting"
+        },
+        {
+          "file": "miscellaneous-wallpapers-7.jpg",
+          "editorialTitle": "Texture Study",
+          "description": "Subtle texture for depth without distraction.",
+          "role": "supporting"
+        },
+        {
+          "file": "miscellaneous-wallpapers-8.jpg",
+          "editorialTitle": "Monochrome Gradient",
+          "description": "Monochrome gradient for professional look.",
+          "role": "supporting"
+        }
+      ]
+    }
+  ],
+  "closingStory": "A curated collection of images selected and optimized for use as desktop and mobile wallpapers. Each image chosen for clean composition, strong visual impact at various resolutions, and suitability as a background that doesn't compete with UI elements.",
+  "instagramRefs": [],
+  "websitePresentation": "Simple gallery of wallpaper-optimized images. Clean grid presentation, no complex narrative needed.",
+  "creativeThemes": ["Clean composition", "Wallpaper optimization", "Graphic simplicity", "Color harmony", "Resolution independence"]
+}

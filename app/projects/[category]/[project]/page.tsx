@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
-import { getProject, getImagesForProject, allProjects } from "@/lib/projects";
+import { getProject, getImagesForProject, allProjects, getProjectWithStory, type ImageInfo } from "@/lib/projects";
 import Photo from "@/components/shared/photo";
 import ImageGrid from "@/components/portfolio/image-grid";
 import ProjectStory from "@/components/portfolio/project-story";
@@ -28,10 +28,11 @@ export async function generateMetadata({ params }: ProjectDetailProps): Promise<
 
 export default async function ProjectDetailPage({ params }: ProjectDetailProps) {
   const { category, project } = await params;
-  const proj = getProject(category, project);
-  if (!proj) notFound();
+  const result = await getProjectWithStory(category, project);
+  if (!result) notFound();
+  const { project: proj, story } = result;
 
-  const images = getImagesForProject(category, project);
+  const images = getImagesForProject(category, project).filter((img): img is ImageInfo & { src: string } => Boolean(img.src));
 
   return (
     <section className="min-h-screen pt-28 pb-24">
@@ -76,8 +77,8 @@ export default async function ProjectDetailPage({ params }: ProjectDetailProps) 
           </div>
         </div>
 
-        {proj.hasStory && (
-          <ProjectStory project={proj} images={images} />
+        {story && (
+          <ProjectStory story={story} images={images as unknown as { src: string; [key: string]: unknown }[]} />
         )}
 
         <div className="mt-10">

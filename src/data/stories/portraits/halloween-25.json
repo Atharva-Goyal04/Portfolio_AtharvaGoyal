@@ -1,0 +1,79 @@
+{
+  "projectTitle": "Halloween '25",
+  "projectType": "Experimental / Portrait / Conceptual Photography",
+  "event": "Film Photography Club (FPC) Halloween shoot",
+  "location": "Wilson Camera, Phoenix",
+  "time": "Around Halloween",
+  "camera": "Sony A3000",
+  "lens": "Not specified",
+  "coverImage": "portrait-halloween25-4.jpg",
+  "visualChapters": [
+    {
+      "id": "zoom-drag",
+      "label": "Zoom Drag",
+      "title": "Zoom Drag",
+      "description": "Keeping the subject in frame while zooming the lens during a slow exposure creates radial blur pulling surrounding light and environment toward the subject — surreal and distorted.",
+      "images": [
+        {
+          "file": "portrait-halloween25-4.jpg",
+          "editorialTitle": "Pulled Into the Frame",
+          "description": "Experimental portrait created by keeping the subject in the frame while zooming the lens during a slow exposure. The resulting radial blur pulls the surrounding light and environment toward the subject, creating a surreal and distorted feeling.",
+          "role": "featured",
+          "featured": true
+        }
+      ]
+    },
+    {
+      "id": "shutter-drag",
+      "label": "Shutter Drag",
+      "title": "Shutter Drag",
+      "description": "Slow shutter speed with intentional camera movement creates motion and blur across the frame. The movement of the camera itself becomes part of the photograph.",
+      "images": [
+        {
+          "file": "portrait-halloween25-5.jpg",
+          "editorialTitle": "Soul Splitting",
+          "description": "Experimental portrait using slow shutter speed and intentional camera movement, creating motion and blur across the frame.",
+          "role": "featured",
+          "featured": true
+        }
+      ]
+    },
+    {
+      "id": "translucent-screen",
+      "label": "Translucent Screen",
+      "title": "Behind the Screen",
+      "description": "A set with a translucent plastic screen and red lighting. Ghostface appearing behind the screen creates an unsettling Halloween atmosphere — creepy without being overly obvious.",
+      "images": [
+        {
+          "file": "portrait-halloween25-13.jpg",
+          "editorialTitle": "Behind the Screen",
+          "description": "Ghostface appearing behind a translucent plastic screen with red lighting. The figure seems to creep up behind the main subject, creating an unsettling Halloween atmosphere.",
+          "role": "favorite",
+          "favorite": true
+        }
+      ]
+    },
+    {
+      "id": "spiderweb",
+      "label": "Spiderweb Set",
+      "title": "Watched",
+      "description": "Fake spiderweb set with purple and red lighting. Composition creates an unsettling feeling — almost like spying on the subject from the perspective of a stalker or serial killer.",
+      "images": [
+        {
+          "file": "portrait-halloween25-17.jpg",
+          "editorialTitle": "Watched",
+          "description": "Portrait from the fake spiderweb set with purple and red lighting. The composition creates an unsettling feeling, almost as if the subject is being secretly watched.",
+          "role": "favorite",
+          "favorite": true
+        }
+      ]
+    }
+  ],
+  "closingStory": "For me, this shoot wasn't just about the photographs. It was the beginning of finding a community where I could experiment, learn, and keep getting better at photography. Since this was my first time meeting the FPC team, the shoot was also a really interesting social experience. I got to network, meet a lot of people with similar interests, and see how other photographers approached the same environment in completely different ways. I went home that day feeling like I'd found a really good photography community. I had experimented with techniques I hadn't really tried before, met a bunch of interesting people, and came away with some photographs that I genuinely loved.",
+  "instagramRefs": [
+    { "title": "Portrait Project", "url": "https://www.instagram.com/p/DQTFEMkkWygBnMnWPk_6GIPpdMtKdz8iZ31fgU0/?img_index=1" },
+    { "title": "Landscape Project", "url": "https://www.instagram.com/p/DQV_oS2jk5bvX35tlDRBP3eQ0M31BjhW4hS_GE0/?img_index=1" }
+  ],
+  "websitePresentation": "Treat as one of the early experiments with photography. Narrative should communicate: 1) First shoot with FPC, 2) Used freedom to experiment with techniques (shutter drag, zoom drag), 3) Experience introduced to a photography community that encouraged continued creation. Do not make it sound like a formal corporate case study. Preserve personal and reflective tone. Ending should emphasize value was not only photographs but beginning of creative community and willingness to experiment. Display images near relevant story sections: 'Soul Splitting' near shutter drag discussion, 'Pulled Into the Frame' near zoom drag, 'Behind the Screen' near translucent screen discussion, 'Watched' near spiderweb set discussion. Favorite images get stronger visual emphasis. Use editorial titles, not raw filenames. Do not invent technical details. Feel experimental, atmospheric, slightly unsettling, playful — not polished or commercial. Image titles should describe feeling/visual idea/creative intention, not just identify subject.",
+  "creativeThemes": ["Experimentation", "Motion and blur", "Unconventional portraiture", "Creating atmosphere through lighting", "Exploring darker visual styles", "Learning through experimentation", "Finding a photography community", "Spontaneous creative collaboration"]
+}

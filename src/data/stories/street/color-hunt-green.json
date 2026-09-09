@@ -1,0 +1,89 @@
+{
+  "projectTitle": "Color Hunt — Green",
+  "projectType": "Street / Color Study / Editorial",
+  "location": "Phoenix/Tempe area",
+  "time": "2025",
+  "camera": "Sony A7 IV",
+  "lens": "Not specified",
+  "coverImage": "street-colorhunt_green-1.jpg",
+  "visualChapters": [
+    {
+      "id": "color-hunt",
+      "label": "Color Hunt — Green",
+      "title": "Color Hunt — Green",
+      "description": "A focused color study exploring the color green in urban environments. Finding moments where green emerges naturally in the streets — foliage, signage, vehicles, architecture — and framing them as intentional compositions.",
+      "images": [
+        {
+          "file": "street-colorhunt_green-1.jpg",
+          "editorialTitle": "Green Light",
+          "description": "Traffic light or signage glowing green in urban context.",
+          "role": "cover"
+        },
+        {
+          "file": "street-colorhunt_green-2.jpg",
+          "editorialTitle": "Foliage Frame",
+          "description": "Green foliage framing a street scene.",
+          "role": "supporting"
+        },
+        {
+          "file": "street-colorhunt_green-3.jpg",
+          "editorialTitle": "Green Vehicle",
+          "description": "Green car or bike in urban setting.",
+          "role": "supporting"
+        },
+        {
+          "file": "street-colorhunt_green-4.jpg",
+          "editorialTitle": "Signage",
+          "description": "Green signage or wayfinding element.",
+          "role": "supporting"
+        },
+        {
+          "file": "street-colorhunt_green-5.jpg",
+          "editorialTitle": "Window Reflection",
+          "description": "Green reflected in glass or window.",
+          "role": "supporting"
+        },
+        {
+          "file": "street-colorhunt_green-6.jpg",
+          "editorialTitle": "Park Edge",
+          "description": "Where urban meets green space.",
+          "role": "supporting"
+        },
+        {
+          "file": "street-colorhunt_green-7.jpg",
+          "editorialTitle": "Green Door",
+          "description": "A green door or entryway.",
+          "role": "supporting"
+        },
+        {
+          "file": "street-colorhunt_green-8.jpg",
+          "editorialTitle": "Moss & Concrete",
+          "description": "Green moss growing on urban concrete.",
+          "role": "supporting"
+        },
+        {
+          "file": "street-colorhunt_green-9.jpg",
+          "editorialTitle": "Traffic Green",
+          "description": "Green traffic signal or sign.",
+          "role": "supporting"
+        },
+        {
+          "file": "street-colorhunt_green-10.jpg",
+          "editorialTitle": "Alley Green",
+          "description": "Unexpected green in alleyway.",
+          "role": "supporting"
+        },
+        {
+          "file": "street-colorhunt_green-11.jpg",
+          "editorialTitle": "Final Green",
+          "description": "Closing the green hunt with a strong composition.",
+          "role": "supporting"
+        }
+      ]
+    }
+  ],
+  "closingStory": "A focused color study — hunting for the color green in everyday urban environments. The constraint of a single color sharpens the eye and reveals moments that would otherwise go unnoticed.",
+  "instagramRefs": [],
+  "websitePresentation": "Color study presented as a focused series. Clean grid of green-themed street photographs.",
+  "creativeThemes": ["Color study", "Urban observation", "Constraint-based creativity", "Street photography", "Color theory"]
+}

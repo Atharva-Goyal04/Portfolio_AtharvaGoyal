@@ -1,0 +1,125 @@
+{
+  "projectTitle": "The Quiet Hour",
+  "projectType": "Creative Portrait / Nighttime Street Style / Editorial",
+  "location": "Old Main / Durham Hall, Tempe, Arizona",
+  "time": "Spring 2026, Night",
+  "camera": "Sony A7 IV",
+  "cameraNote": "First creative/personal shoot with A7 IV (graduation shoot was client work)",
+  "lens": "Not specified",
+  "flash": "Godox iT32 (detachable) + Godox studio flash with octagonal softbox + Godox on-camera flash as hair/rim light",
+  "lightingSetup": [
+    { "role": "Key", "detail": "Studio flash + octagonal softbox, ~45° from subject" },
+    { "role": "Side/Fill", "detail": "Photographer's detachable Godox flash, low on left side" },
+    { "role": "Hair/Rim", "detail": "Additional Godox flash behind subject on light stand" }
+  ],
+  "coverImage": "portrait-thequiethour-4.jpg",
+  "visualChapters": [
+    {
+      "id": "show",
+      "label": "01 — Show / Blueprint",
+      "title": "Show",
+      "subtitle": "Blueprint",
+      "description": "Begin with the detail-oriented sneaker image. Use the graphic composition and nighttime bokeh to establish the visual language of the project.",
+      "images": [
+        {
+          "file": "portrait-thequiethour-1.jpg",
+          "editorialTitle": "Blueprint",
+          "description": "A low-angle close-up of a white-and-blue Air Jordan against light-wash denim. The sneaker is sharply focused while the nighttime environment dissolves into warm circular bokeh. Pavement lines create perspective through the frame.",
+          "role": "detail"
+        }
+      ]
+    },
+    {
+      "id": "blue",
+      "label": "02 — Blue / Fountain of Youth",
+      "title": "Blue",
+      "subtitle": "Fountain of Youth",
+      "description": "Move into the blue outfit and nighttime environmental portraits. The cooler styling, fountain, warm background lights, and playful Bob-omb accessory establish the youthful and relaxed side of the project.",
+      "images": [
+        {
+          "file": "portrait-thequiethour-6.jpg",
+          "editorialTitle": "Fountain of Youth",
+          "description": "Subject seated at a fountain at night in a blue hoodie and light denim, accompanied by the Club Mocchi-Mocchi Super Mario Bob-Omb plush. Cool clothing tones contrast with warm background lights.",
+          "role": "environmental"
+        },
+        {
+          "file": "portrait-thequiethour-7.jpg",
+          "editorialTitle": "Blue Hour",
+          "description": "Nighttime environmental portrait in blue outfit with fountain setting.",
+          "role": "environmental"
+        },
+        {
+          "file": "portrait-thequiethour-8.jpg",
+          "editorialTitle": "Playful",
+          "description": "Casual moment with Bob-omb plush accessory.",
+          "role": "detail"
+        },
+        {
+          "file": "portrait-thequiethour-9.jpg",
+          "editorialTitle": "Denim & Lights",
+          "description": "Blue jeans and sneakers against warm nighttime bokeh.",
+          "role": "detail"
+        },
+        {
+          "file": "portrait-thequiethour-10.jpg",
+          "editorialTitle": "Night Walker",
+          "description": "Environmental portrait walking through campus at night.",
+          "role": "environmental"
+        },
+        {
+          "file": "portrait-thequiethour-11.jpg",
+          "editorialTitle": "Blue Mood",
+          "description": "Cool-toned portrait with nighttime atmosphere.",
+          "role": "portrait"
+        },
+        {
+          "file": "portrait-thequiethour-12.jpg",
+          "editorialTitle": "Fountain Reflection",
+          "description": "Subject near fountain with reflection and night lights.",
+          "role": "environmental"
+        }
+      ]
+    },
+    {
+      "id": "red",
+      "label": "03 — Red / Heatwave",
+      "title": "Red",
+      "subtitle": "Heatwave",
+      "description": "Transition into the black-and-red outfit at Durham Hall. The brick architecture, warm directional lighting, and darker styling create the most dramatic visual chapter.",
+      "images": [
+        {
+          "file": "portrait-thequiethour-13.jpg",
+          "editorialTitle": "Heatwave",
+          "description": "Subject in black-and-red flame outfit against brick wall with warm directional lighting. Asymmetrical composition, turned gaze, and concentrated highlights create a restrained cinematic mood.",
+          "role": "editorial"
+        },
+        {
+          "file": "portrait-thequiethour-14.jpg",
+          "editorialTitle": "Flame",
+          "description": "Dramatic editorial portrait in black-and-red outfit against brick.",
+          "role": "editorial"
+        }
+      ]
+    }
+  ],
+  "favoriteImages": [
+    {
+      "file": "portrait-thequiethour-4.jpg",
+      "editorialTitle": "Untitled — Personal Favorite",
+      "description": "Subject looks away from the key light and smiles while the rear flash is visible behind him, shining toward the lens and creating a distinctive flare.",
+      "role": "favorite",
+      "note": "Photographer's personal favorite. Key visual element: rear flash shining toward camera while subject looks away from main light and smiles. Flare and layered lighting create unusual nighttime portrait with spontaneous, atmospheric quality."
+    }
+  ],
+  "closingStory": "What I like most about The Quiet Hour is that it was never meant to be a perfectly controlled studio production. It started with me asking my suitemate if he wanted to take some pictures, turned into an outfit discussion, and eventually became a late-night experiment with three Godox flashes, a new camera, a new flash, two outfits, multiple locations, and two photographers taking turns trying things. I got to experiment with flash power, shutter speed, ISO, aperture, light placement, and the relationship between artificial light and nighttime ambient light. More importantly, I got to see how much you can create with a relatively simple setup when you are willing to experiment. The shoot gave me a chance to try a category of photography I had been wanting to explore, while also becoming one of my first real creative projects with the A7 IV. It was a fun way to end the semester: go outside at night, bring way too much lighting equipment, take what feels like a million photographs, move around until something works, and figure things out as we go. And honestly, that's probably why I enjoyed it so much.",
+  "instagramRefs": [
+    { "title": "Part 1", "url": "https://www.instagram.com/p/DaWBJcbjJHB/?img_index=1" },
+    { "title": "Part 2", "url": "https://www.instagram.com/p/DaYgZtwjea6/?img_index=1" }
+  ],
+  "websitePresentation": "Present The Quiet Hour as a nighttime creative portrait project rather than a traditional portrait session. Visual progression through three chapters: 01 Show/Blueprint (detail-oriented sneaker image, graphic composition, nighttime bokeh), 02 Blue/Fountain of Youth (blue outfit, fountain, warm lights, Bob-omb, youthful relaxed side), 03 Red/Heatwave (black-and-red at Durham Hall, brick architecture, warm directional lighting, dramatic editorial). Feel like exploration of nighttime light, streetwear, and flash photography. Don't make overly technical. Communicate active experimentation, not perfectly controlled commercial production. Featured image recommendation: portrait-thequiethour-4 (personal favorite, demonstrates experimental lighting) or portrait-thequiethour-6 (clearest intro to nighttime street-style). Use editorial titles: Blueprint, Fountain of Youth, Heatwave. Visual chapter labels: Show, Blue, Red. Do not use 'New Beginnings' as title (internal joke). Do not invent lens info, aperture, shutter speed, ISO, exact flash power, exact light modifiers, exact camera settings, additional equipment, exact dates. Use metadata from images for technical details. Keep writing personal and conversational.",
+  "outfits": {
+    "blue": ["Blue hoodie", "White T-shirt", "Light blue jeans", "Blue-and-white Jordans", "Club Mocchi-Mocchi Super Mario Bob-Omb Mega 15 inch Plush"],
+    "red": ["Black sweatshirt with red flames", "Black pants with red flames", "Black-and-red Jordans"]
+  },
+  "creativeThemes": ["Experimentation", "Learning through practice", "New equipment", "Creative lighting", "DIY studio techniques", "Nighttime portraiture", "Streetwear", "Collaboration", "Personal creative growth"]
+}

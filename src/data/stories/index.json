@@ -1,0 +1,38 @@
+{
+  "architecture/architecture": {
+    "category": "architecture",
+    "project": "architecture",
+    "title": "",
+    "hasStory": true
+  },
+  "miscellaneous-projects/summer-picnic": {
+    "category": "miscellaneous-projects",
+    "project": "summer-picnic",
+    "title": "",
+    "hasStory": true
+  },
+  "portraits/eclectic-art": {
+    "category": "portraits",
+    "project": "eclectic-art",
+    "title": "",
+    "hasStory": true
+  },
+  "portraits/halloween-25": {
+    "category": "portraits",
+    "project": "halloween-25",
+    "title": "",
+    "hasStory": true
+  },
+  "portraits/nikon-tour": {
+    "category": "portraits",
+    "project": "nikon-tour",
+    "title": "",
+    "hasStory": true
+  },
+  "portraits/the-quiet-hour": {
+    "category": "portraits",
+    "project": "the-quiet-hour",
+    "title": "",
+    "hasStory": true
+  }
+}

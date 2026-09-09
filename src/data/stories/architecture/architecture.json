@@ -1,0 +1,83 @@
+{
+  "projectTitle": "Architecture",
+  "projectType": "Architecture / Urban Photography",
+  "location": "Various locations",
+  "time": "2025",
+  "camera": "vivo V30 (phone)",
+  "lens": "Built-in (6mm, 2mm wide)",
+  "coverImage": "architecture-1.jpg",
+  "visualChapters": [
+    {
+      "id": "architecture",
+      "label": "Architecture",
+      "title": "Architecture",
+      "description": "Architectural and urban photography captured on vivo V30. Clean lines, geometric forms, and the interplay of light and structure.",
+      "images": [
+        {
+          "file": "architecture-1.jpg",
+          "editorialTitle": "Urban Geometry",
+          "description": "Architectural composition with strong geometric lines.",
+          "role": "cover"
+        },
+        {
+          "file": "architecture-2.jpg",
+          "editorialTitle": "Vertical Rhythm",
+          "description": "Repetitive vertical elements creating visual rhythm.",
+          "role": "supporting"
+        },
+        {
+          "file": "architecture-3.jpg",
+          "editorialTitle": "Light & Shadow",
+          "description": "Play of light and shadow on building facade.",
+          "role": "supporting"
+        },
+        {
+          "file": "architecture-4.jpg",
+          "editorialTitle": "Corner Study",
+          "description": "Architectural corner detail with clean lines.",
+          "role": "supporting"
+        },
+        {
+          "file": "architecture-5.jpg",
+          "editorialTitle": "Wide Perspective",
+          "description": "Ultra-wide architectural perspective (2mm equivalent).",
+          "role": "supporting"
+        },
+        {
+          "file": "architecture-6.jpg",
+          "editorialTitle": "Facade Pattern",
+          "description": "Repetitive facade pattern creating texture.",
+          "role": "supporting"
+        },
+        {
+          "file": "architecture-7.jpg",
+          "editorialTitle": "Minimal Form",
+          "description": "Minimalist architectural composition.",
+          "role": "supporting"
+        },
+        {
+          "file": "architecture-8.jpg",
+          "editorialTitle": "Structural Lines",
+          "description": "Strong structural lines leading the eye.",
+          "role": "supporting"
+        },
+        {
+          "file": "architecture-9.jpg",
+          "editorialTitle": "Glass & Steel",
+          "description": "Modern glass and steel architecture.",
+          "role": "supporting"
+        },
+        {
+          "file": "architecture-10.jpg",
+          "editorialTitle": "Urban Silhouette",
+          "description": "Building silhouette against the sky.",
+          "role": "supporting"
+        }
+      ]
+    }
+  ],
+  "closingStory": "Architecture photography captured on a vivo V30 phone — exploring geometric forms, clean lines, and the interplay of light and structure in the built environment.",
+  "instagramRefs": [],
+  "websitePresentation": "Simple architectural photography gallery. No complex narrative — just clean architectural images presented in a grid. Captured on vivo V30 phone camera.",
+  "creativeThemes": ["Geometric forms", "Clean lines", "Light and shadow", "Urban structure", "Mobile photography"]
+}

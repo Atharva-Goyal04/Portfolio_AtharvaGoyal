@@ -1,0 +1,80 @@
+{
+  "projectTitle": "Nikon Tour '25",
+  "projectType": "Studio Portrait / Fashion / Experimental Photography",
+  "location": "Tempe Camera, Tempe, Arizona",
+  "time": "Nikon Tour — Phoenix stop",
+  "camera": "Nikon Z5II",
+  "cameraOwned": "Sony A6700",
+  "lens": "Not specified",
+  "coverImage": "portrait-nikon_shoot-1.jpg",
+  "visualChapters": [
+    {
+      "id": "clean-studio",
+      "label": "01 — Clean Studio",
+      "title": "Clean Studio",
+      "description": "Controlled, bright, straightforward portraiture.",
+      "images": [
+        {
+          "file": "portrait-nikon_shoot-5.jpg",
+          "editorialTitle": "Quiet Confidence",
+          "description": "A clean studio fashion portrait against a bright white seamless background. The subject leans casually against a stool, creating a relaxed editorial pose with plenty of negative space around her.",
+          "role": "opening"
+        },
+        {
+          "file": "portrait-nikon_shoot-6.jpg",
+          "editorialTitle": "Clean Frame",
+          "description": "Straightforward studio portrait with soft lighting and minimal composition.",
+          "role": "supporting"
+        }
+      ]
+    },
+    {
+      "id": "monotone",
+      "label": "02 — Monotone",
+      "title": "Monotone",
+      "description": "Darker, more introspective imagery that reflects the established visual preferences.",
+      "images": [
+        {
+          "file": "portrait-nikon_shoot-7.jpg",
+          "editorialTitle": "Inward",
+          "description": "A dramatic monochrome portrait against a completely dark background. The subject looks downward with her hands held near her chest, creating an introspective and cinematic atmosphere.",
+          "role": "opening"
+        },
+        {
+          "file": "portrait-nikon_shoot-8.jpg",
+          "editorialTitle": "Silence",
+          "description": "Moody monochrome portrait emphasizing texture and shadow.",
+          "role": "supporting"
+        }
+      ]
+    },
+    {
+      "id": "shutter-drag",
+      "label": "03 — Shutter Drag",
+      "title": "Shutter Drag",
+      "description": "The most experimental section, introducing movement and abstraction.",
+      "images": [
+        {
+          "file": "portrait-nikon_shoot-13.jpg",
+          "editorialTitle": "Motion Within",
+          "description": "An experimental portrait created through intentional shutter drag. The subject's movement creates trails and distortions around the head and hands while the darker background isolates the motion.",
+          "role": "featured",
+          "featured": true
+        },
+        {
+          "file": "portrait-nikon_shoot-14.jpg",
+          "editorialTitle": "Blur Study",
+          "description": "Experimental shutter drag with intentional camera movement.",
+          "role": "supporting"
+        }
+      ]
+    }
+  ],
+  "closingStory": "One of my favorite things about this shoot was that I could take the exact same studio environment and approach it in three completely different ways: clean and commercial, dark and monotone, and finally experimental and abstract. As for the editing, I kept each set fairly straightforward and edited the photographs according to what I wanted each one to feel like. The clean portraits stayed clean, the monotone set leaned into the dramatic black-and-white look, and the shutter-drag images were edited to emphasize the movement and abstraction rather than trying to make them look more conventional. Overall, I really enjoyed the Nikon Tour experience. I got to try a completely different camera system, learn something new, experiment with a technique I had only recently discovered, and make three very different kinds of photographs in the same shoot. And honestly, it left me thinking that maybe one day I really will own a camera from every major camera company. If I have the money for it, of course.",
+  "instagramRefs": [
+    { "title": "Clean Studio", "url": "https://www.instagram.com/p/DUcH6aVETsB/?img_index=1" },
+    { "title": "Monotone", "url": "https://www.instagram.com/p/DUe4MHLEfNb/?img_index=1" },
+    { "title": "Shutter Drag", "url": "https://www.instagram.com/p/DUnJf6sFAI3/?img_index=1" }
+  ],
+  "websitePresentation": "Present this project as a three-part visual progression: 01 Clean Studio (controlled, bright, straightforward), 02 Monotone (darker, introspective), 03 Shutter Drag (experimental, movement, abstraction). The progression communicates that the same studio environment allowed exploration of three very different approaches to portraiture. Use provided editorial image titles instead of raw filenames. Do not invent camera settings, lens specifications, lighting equipment, or exact technical details not explicitly provided. Preserve the personal, conversational tone — keep the humor, personal gear philosophy, camera-brand bucket-list tangent, and small personal observations."
+}

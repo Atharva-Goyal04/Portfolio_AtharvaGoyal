@@ -145,14 +145,14 @@ export async function getProjectWithStory(categorySlug: string, projectSlug: str
 }
 
 export function getAllImages(): ImageInfo[] {
-  return Object.values(imageCatalog)
-    .map((info) => ({ ...info, src: info.src ?? "" }))
+  return Object.entries(imageCatalog)
+    .map(([src, info]) => ({ ...info, src }))
     .sort((a, b) => (a.src ?? "").localeCompare(b.src ?? ""));
 }
 
 export function getImagesForProject(categorySlug: string, projectSlug: string): ImageInfo[] {
-  return Object.values(imageCatalog)
-    .filter((i) => i.category === categorySlug && i.project === projectSlug)
-    .map((info) => ({ ...info, src: info.src ?? "" }))
+  return Object.entries(imageCatalog)
+    .filter(([, info]) => info.category === categorySlug && info.project === projectSlug)
+    .map(([src, info]) => ({ ...info, src }))
     .sort((a, b) => (a.src ?? "").localeCompare(b.src ?? ""));
 }

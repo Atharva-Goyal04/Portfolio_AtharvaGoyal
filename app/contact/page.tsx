@@ -20,6 +20,12 @@ const contacts = [
     icon: Mail,
   },
   {
+    name: "Photography Inquiries",
+    value: PHOTOS_EMAIL,
+    href: `mailto:${PHOTOS_EMAIL}`,
+    icon: Mail,
+  },
+  {
     name: "Instagram",
     value: "@the.lumencode",
     href: INSTAGRAM_URL,
@@ -66,10 +72,6 @@ export default function ContactPage() {
                 </a>
               ))}
             </div>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-muted/70">
-              General photography inquiries at {PHOTOS_EMAIL} — client galleries appear here
-              once your session ships: private, downloadable, and easy to share.
-            </p>
           </Reveal>
 
           <Reveal delay={0.15}>

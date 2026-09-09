@@ -72,8 +72,8 @@ function HomeHero() {
               <h1 className="font-display text-6xl font-medium leading-[0.95] tracking-tight text-ink md:text-7xl lg:text-8xl">
                 <span className="block text-balance">Atharva Goyal</span>
                 <span className="mt-2 block text-muted">
-                  chasing{" "}
-                  <em className="text-gradient not-italic">light, color, and the moment</em>
+                  ordinary moments,{" "}
+                  <em className="text-gradient not-italic">seen differently</em>
                 </span>
               </h1>
             </Reveal>
@@ -88,23 +88,15 @@ function HomeHero() {
                 </Link>
                 <Link href="/contact">
                   <Button variant="outline" size="lg">
-                    Book a Session
+                    Work With Me
                   </Button>
                 </Link>
               </div>
             </Reveal>
 
             <Reveal delay={0.3}>
-              <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-widest text-muted/70">
-                <span className="inline-flex items-center gap-1.5">
-                  <Camera className="h-3.5 w-3.5" /> portraits
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <Sparkles className="h-3.5 w-3.5" /> graduations
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5" /> street &amp; editorial
-                </span>
+              <div className="mt-4 font-mono text-[11px] uppercase tracking-widest text-muted/70">
+                Portraits · Graduations · Street &amp; Editorial
               </div>
             </Reveal>
           </div>

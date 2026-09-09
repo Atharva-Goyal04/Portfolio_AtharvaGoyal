@@ -57,6 +57,39 @@ export default function ContactForm() {
         />
       </div>
       <div>
+        <label htmlFor="inquiry" className="eyebrow mb-2 block text-brand">
+          Inquiry Type
+        </label>
+        <select
+          id="inquiry"
+          name="inquiry"
+          required
+          className={inputCls}
+        >
+          <option value="" disabled>
+            Select an option
+          </option>
+          <option value="Photoshoot — Portraits">
+            Photoshoot — Portraits
+          </option>
+          <option value="Photoshoot — Graduation">
+            Photoshoot — Graduation
+          </option>
+          <option value="Photoshoot — Event">
+            Photoshoot — Event
+          </option>
+          <option value="General Question">
+            General Question
+          </option>
+          <option value="Collaboration / Business">
+            Collaboration / Business
+          </option>
+          <option value="Other">
+            Other
+          </option>
+        </select>
+      </div>
+      <div>
         <label htmlFor="message" className="eyebrow mb-2 block text-brand">
           Message
         </label>

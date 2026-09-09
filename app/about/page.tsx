@@ -136,7 +136,7 @@ export default function AboutPage() {
             </a>
           </Reveal>
 
-          <Reveal delay={0.15}>
+          <Reveal delay={0.15} className="self-start -mt-8">
             <div className="relative">
               <div className="aspect-[3/4] overflow-hidden rounded-2xl">
                 <Image

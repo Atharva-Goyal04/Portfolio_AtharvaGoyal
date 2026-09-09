@@ -97,7 +97,7 @@ export default async function GalleryDetailPage({ params }: GalleryDetailProps) 
               {isR2 ? (
                 <R2Gallery slug={gallery.slug} />
               ) : (
-                <GalleryGrid images={images} />
+                <GalleryGrid images={images} gallerySlug={gallery.slug} />
               )}
             </div>
           </>

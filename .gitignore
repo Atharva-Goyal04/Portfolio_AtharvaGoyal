@@ -5,7 +5,7 @@ dist/
 .DS_Store
 *.tsbuildinfo
 next-env.d.ts
-public/images/optimized/
+public/images/
 deliverables/*
 !deliverables/README.txt
 

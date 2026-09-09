@@ -8,7 +8,7 @@ import Lightbox, { type LightboxItem } from "@/components/shared/lightbox";
 import type { GalleryImage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
+export default function GalleryGrid({ images, gallerySlug }: { images: GalleryImage[]; gallerySlug: string }) {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
 
   const lightboxItems: LightboxItem[] = useMemo(
@@ -51,8 +51,7 @@ export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
             <div className="pointer-events-none absolute right-3 top-3 flex gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <FavoriteButton label={img.title} />
               <a
-                href={img.src}
-                download
+                href={`/api/gallery/${gallerySlug}/download/${img.src.split("/").pop()}`}
                 aria-label={`Download ${img.title}`}
                 className="pointer-events-auto rounded-full bg-surface/70 p-2.5 text-cream/80 backdrop-blur-sm transition-colors hover:bg-surface/85 hover:text-white"
               >

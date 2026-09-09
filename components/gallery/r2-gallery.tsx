@@ -83,8 +83,7 @@ export default function R2Gallery({ slug }: R2GalleryProps) {
               </div>
             </button>
             <a
-              href={image.url}
-              download
+              href={`/api/gallery/${slug}/download/${image.name}`}
               aria-label={`Download ${image.name}`}
               className={cn(
                 "pointer-events-none absolute right-3 top-3 rounded-full p-2.5 text-cream/80 opacity-0 backdrop-blur-sm transition-opacity duration-300",

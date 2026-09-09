@@ -13,11 +13,14 @@ export interface StoryChapter {
   images: StoryImage[];
 }
 
+export type EditorialLayout = "full" | "large" | "medium" | "two-up" | "offset" | "detail";
+
 export interface StoryImage {
   file: string;
   editorialTitle: string;
   description: string;
   role: string;
+  layout?: EditorialLayout;
   featured?: boolean;
   favorite?: boolean;
   alsoInWallpapers?: boolean;
@@ -33,6 +36,8 @@ export interface ProjectStory {
   cameraNote?: string;
   lens?: string;
   flash?: string;
+  tagline?: string;
+  introduction?: string;
   lightingSetup?: Array<{ role: string; detail: string }>;
   coverImage: string;
   visualChapters: StoryChapter[];

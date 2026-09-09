@@ -5,7 +5,7 @@ import { ChevronLeft } from "lucide-react";
 import { getProject, getImagesForProject, allProjects, getProjectWithStory, type ImageInfo } from "@/lib/projects";
 import Photo from "@/components/shared/photo";
 import ImageGrid from "@/components/portfolio/image-grid";
-import ProjectStory from "@/components/portfolio/project-story";
+import ProjectEditorial from "@/components/portfolio/project-editorial";
 
 interface ProjectDetailProps {
   params: Promise<{ category: string; project: string }>;
@@ -33,6 +33,18 @@ export default async function ProjectDetailPage({ params }: ProjectDetailProps) 
   const { project: proj, story } = result;
 
   const images = getImagesForProject(category, project).filter((img): img is ImageInfo & { src: string } => Boolean(img.src));
+
+  if (story) {
+    return (
+      <ProjectEditorial
+        story={story}
+        images={images}
+        categoryLabel={proj.categoryLabel}
+        category={category}
+        slug={project}
+      />
+    );
+  }
 
   return (
     <section className="min-h-screen pt-28 pb-24">
@@ -76,10 +88,6 @@ export default async function ProjectDetailPage({ params }: ProjectDetailProps) 
             </p>
           </div>
         </div>
-
-        {story && (
-          <ProjectStory story={story} images={images as unknown as { src: string; [key: string]: unknown }[]} />
-        )}
 
         <div className="mt-10">
           <ImageGrid

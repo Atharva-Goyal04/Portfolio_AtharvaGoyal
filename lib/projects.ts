@@ -3,10 +3,26 @@ import type { Project } from "@/lib/types";
 import type { ImageInfo } from "@/lib/types";
 import { STORY_REGISTRY } from "@/src/data/stories/registry";
 import { PROJECT_META } from "@/src/data/project-metadata";
+import eclecticArt from "@/src/data/stories/portraits/eclectic-art.json";
+import halloween25 from "@/src/data/stories/portraits/halloween-25.json";
+import nikonTour from "@/src/data/stories/portraits/nikon-tour.json";
+import theQuietHour from "@/src/data/stories/portraits/the-quiet-hour.json";
+import summerPicnic from "@/src/data/stories/side-projects/summer-picnic.json";
 
 export type { ImageInfo };
 
 const STORY_KEYS = new Set(Object.keys(STORY_REGISTRY));
+
+const COVERS_BY_PROJECT: Record<string, string> = {
+  "portraits/eclectic-art": eclecticArt.coverImage,
+  "portraits/halloween-25": halloween25.coverImage,
+  "portraits/nikon-tour": nikonTour.coverImage,
+  "portraits/the-quiet-hour": theQuietHour.coverImage,
+  "side-projects/summer-picnic": summerPicnic.coverImage,
+  "portraits/valentines-26-digital": "portrait-valentine_digital-5.jpg",
+  "portraits/valentines-26-film": "portrait-valentine_filml-12.jpg",
+  "street/vintage-car-meetup": "street-vintagecarmeetup-6.jpg",
+};
 
 /**
  * Curated ordering for category chips/filters across the site.
@@ -185,9 +201,22 @@ export function allProjects(): Project[] {
     if (info.camera && !proj.camera) proj.camera = info.camera;
   }
 
-  for (const proj of projMap.values()) {
+  for (const [key, proj] of projMap) {
     proj.images.sort((a, b) => (a.src ?? "").localeCompare(b.src ?? ""));
     if (!proj.cover && proj.images[0]) proj.cover = proj.images[0].url ?? "";
+
+    const coverFile = COVERS_BY_PROJECT[key];
+    if (coverFile) {
+      const coverBase = coverFile.replace(/\.[^.]+$/, "").toLowerCase();
+      const match = proj.images.find((img) => {
+        const imgBase = (img.src ?? "").split("/").pop()?.replace(/\.[^.]+$/, "").toLowerCase();
+        return imgBase === coverBase;
+      });
+      if (match) {
+        proj.cover = match.url ?? "";
+        proj.coverSrc = match.src ?? "";
+      }
+    }
   }
 
   return [...projMap.values()].sort((a, b) => {

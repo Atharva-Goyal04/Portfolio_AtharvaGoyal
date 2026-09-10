@@ -114,25 +114,33 @@ export default function PhotosFeed({ initialImages }: { initialImages: FeedImage
           </div>
 
           {/* Grid density selector */}
-          <div
-            className="flex items-center gap-1 self-start rounded-full border border-line p-1"
-            role="group"
-            aria-label="Grid columns"
-          >
-            {([2, 3, 4] as const).map((n) => (
-              <button
-                key={n}
-                type="button"
-                onClick={() => handleColumnsChange(n)}
-                aria-pressed={columns === n}
-                className={cn(
-                  "rounded-full px-3.5 py-1.5 font-mono text-xs uppercase tracking-wider transition-colors",
-                  columns === n ? "bg-brand text-brand-foreground" : "text-ink/70 hover:text-ink",
-                )}
-              >
-                {n}
-              </button>
-            ))}
+          <div className="flex items-center gap-4 self-start">
+            <span
+              className="hidden font-mono text-[11px] uppercase tracking-widest text-muted sm:block"
+              aria-live="polite"
+            >
+              {visible.length}/{pool.length}
+            </span>
+            <div
+              className="flex items-center gap-1 rounded-full border border-line p-1"
+              role="group"
+              aria-label="Grid columns"
+            >
+              {([2, 3, 4] as const).map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  onClick={() => handleColumnsChange(n)}
+                  aria-pressed={columns === n}
+                  className={cn(
+                    "rounded-full px-3.5 py-1.5 font-mono text-xs uppercase tracking-wider transition-colors",
+                    columns === n ? "bg-brand text-brand-foreground" : "text-ink/70 hover:text-ink",
+                  )}
+                >
+                  {n}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -168,10 +176,6 @@ export default function PhotosFeed({ initialImages }: { initialImages: FeedImage
           </button>
         </div>
 
-        <div className="mt-4 text-sm font-mono text-muted">
-          Showing {visible.length} of {pool.length} photos
-        </div>
-
         <ImageGrid
           columns={columns}
           items={visible.map((img) => ({
@@ -179,6 +183,9 @@ export default function PhotosFeed({ initialImages }: { initialImages: FeedImage
             title: img.projectTitle,
             subtitle: img.camera,
             meta: [img.lens, img.aperture, img.shutterSpeed, img.iso].filter(Boolean).join(" · "),
+            iso: img.iso,
+            shutterSpeed: img.shutterSpeed,
+            aperture: img.aperture,
           }))}
         />
 

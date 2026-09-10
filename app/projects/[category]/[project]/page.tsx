@@ -96,6 +96,9 @@ export default async function ProjectDetailPage({ params }: ProjectDetailProps) 
               title: img.projectTitle,
               subtitle: img.camera,
               meta: [img.lens, img.aperture, img.shutterSpeed, img.iso].filter(Boolean).join(" · "),
+              iso: img.iso,
+              shutterSpeed: img.shutterSpeed,
+              aperture: img.aperture,
             }))}
           />
         </div>

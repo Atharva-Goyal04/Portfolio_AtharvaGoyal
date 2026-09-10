@@ -12,6 +12,7 @@
     "focalLength": "6mm",
     "aperture": "f/1.9",
     "shutterSpeed": "1/1400s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/architecture/architecture/architecture-2.jpg": {
@@ -27,6 +28,7 @@
     "focalLength": "6mm",
     "aperture": "f/1.9",
     "shutterSpeed": "1/1400s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/architecture/architecture/architecture-3.jpg": {
@@ -42,6 +44,7 @@
     "focalLength": "6mm",
     "aperture": "f/1.4",
     "shutterSpeed": "1/35s",
+    "iso": "ISO 2378",
     "isFilm": false
   },
   "/images/architecture/architecture/architecture-4.jpg": {
@@ -57,6 +60,7 @@
     "focalLength": "6mm",
     "aperture": "f/1.9",
     "shutterSpeed": "1/1100s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/architecture/architecture/architecture-5.jpg": {
@@ -72,6 +76,7 @@
     "focalLength": "2mm",
     "aperture": "f/2",
     "shutterSpeed": "1/100s",
+    "iso": "ISO 51",
     "isFilm": false
   },
   "/images/architecture/architecture/architecture-6.jpg": {
@@ -87,6 +92,7 @@
     "focalLength": "6mm",
     "aperture": "f/1.9",
     "shutterSpeed": "1/320s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/architecture/architecture/architecture-7.jpg": {
@@ -102,6 +108,7 @@
     "focalLength": "6mm",
     "aperture": "f/1.9",
     "shutterSpeed": "1/590s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/architecture/architecture/architecture-8.jpg": {
@@ -117,6 +124,7 @@
     "focalLength": "6mm",
     "aperture": "f/1.9",
     "shutterSpeed": "1/120s",
+    "iso": "ISO 70",
     "isFilm": false
   },
   "/images/architecture/architecture/architecture-9.jpg": {
@@ -132,6 +140,7 @@
     "focalLength": "2mm",
     "aperture": "f/2",
     "shutterSpeed": "1/100s",
+    "iso": "ISO 365",
     "isFilm": false
   },
   "/images/architecture/architecture/architecture-10.jpg": {
@@ -147,6 +156,7 @@
     "focalLength": "2mm",
     "aperture": "f/2",
     "shutterSpeed": "1/30s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/featured/featured/architecture-4.jpg": {
@@ -162,6 +172,7 @@
     "focalLength": "6mm",
     "aperture": "f/1.9",
     "shutterSpeed": "1/1100s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/featured/featured/miscellaneous-summerpicnic-2.jpg": {
@@ -178,6 +189,7 @@
     "focalLength": "18mm",
     "aperture": "f/4",
     "shutterSpeed": "1/500s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/featured/featured/miscellaneous-summerpicnic-3.jpg": {
@@ -194,6 +206,7 @@
     "focalLength": "34mm",
     "aperture": "f/5",
     "shutterSpeed": "1/640s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/featured/featured/portrait-eclectic-11.jpg": {
@@ -210,6 +223,7 @@
     "focalLength": "70mm",
     "aperture": "f/8",
     "shutterSpeed": "1/250s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/featured/featured/portrait-eclectic-13.jpg": {
@@ -226,6 +240,7 @@
     "focalLength": "26mm",
     "aperture": "f/14",
     "shutterSpeed": "1/100s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/featured/featured/portrait-halloween25-13.jpg": {
@@ -242,6 +257,7 @@
     "focalLength": "21mm",
     "aperture": "f/13",
     "shutterSpeed": "1/2s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/featured/featured/portrait-halloween25-16.jpg": {
@@ -258,6 +274,7 @@
     "focalLength": "69mm",
     "aperture": "f/4",
     "shutterSpeed": "1/160s",
+    "iso": "ISO 2000",
     "isFilm": false
   },
   "/images/featured/featured/portrait-nikon_shoot-2.jpg": {
@@ -274,6 +291,7 @@
     "focalLength": "55mm",
     "aperture": "f/6.3",
     "shutterSpeed": "1/200s",
+    "iso": "ISO 320",
     "isFilm": false
   },
   "/images/featured/featured/portrait-nikon_shoot-7.jpg": {
@@ -290,6 +308,7 @@
     "focalLength": "71mm",
     "aperture": "f/6",
     "shutterSpeed": "1/6s",
+    "iso": "ISO 200",
     "isFilm": false
   },
   "/images/featured/featured/portrait-nikon_shoot-9.jpg": {
@@ -306,6 +325,7 @@
     "focalLength": "48mm",
     "aperture": "f/5.6",
     "shutterSpeed": "1/60s",
+    "iso": "ISO 6400",
     "isFilm": false
   },
   "/images/featured/featured/portrait-nikon_shoot-14.jpg": {
@@ -322,6 +342,7 @@
     "focalLength": "63mm",
     "aperture": "f/6",
     "shutterSpeed": "1/2s",
+    "iso": "ISO 125",
     "isFilm": false
   },
   "/images/featured/featured/portrait-thequiethour-4.jpg": {
@@ -338,6 +359,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 200",
     "isFilm": false
   },
   "/images/featured/featured/portrait-thequiethour-12.jpg": {
@@ -354,6 +376,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/featured/featured/portrait-valentine_digital-5.jpg": {
@@ -370,6 +393,7 @@
     "focalLength": "40mm",
     "aperture": "f/4",
     "shutterSpeed": "1/30s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/featured/featured/portrait-valentine_filml-12.jpg": {
@@ -377,8 +401,8 @@
     "label": "Featured",
     "project": "featured",
     "projectTitle": "Featured",
-    "width": 6774,
-    "height": 4492,
+    "width": 4492,
+    "height": 6774,
     "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoQAAsAAoBCJbACdAEUzNVuTAAA/vLRGrEywsYzIHrUUkwNUwCdtCBsIbVvTD6Mhq419/w/jn/KVJ008NtpBrH+zuEpniaEery14hZuv4AAAA==",
     "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/featured/featured/preview/portrait-valentine_filml-12.jpg.webp",
     "camera": "Pentax Espio 738",
@@ -390,8 +414,8 @@
     "label": "Featured",
     "project": "featured",
     "projectTitle": "Featured",
-    "width": 6774,
-    "height": 4492,
+    "width": 4492,
+    "height": 6774,
     "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoQAAsAAoBCJbACdAEe0m0mjvgA/ubniu4uqCEXLBArJR5liUXyIjIO1/rVe3RFsRJoMgnJ1QdKfvAYioEeoJIAI6llbi68GpV6ckv0szY/lf8D1+1zD+zWWQAAAA==",
     "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/featured/featured/preview/portrait-valentine_filml-16.jpg.webp",
     "camera": "Pentax Espio 738",
@@ -425,6 +449,7 @@
     "focalLength": "23mm",
     "aperture": "f/16",
     "shutterSpeed": "1/100s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-2.jpg": {
@@ -441,6 +466,7 @@
     "focalLength": "26mm",
     "aperture": "f/9",
     "shutterSpeed": "1/250s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-3.jpg": {
@@ -457,6 +483,7 @@
     "focalLength": "23mm",
     "aperture": "f/11",
     "shutterSpeed": "1/400s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-4.jpg": {
@@ -473,6 +500,7 @@
     "focalLength": "61mm",
     "aperture": "f/5",
     "shutterSpeed": "1/1250s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-5.jpg": {
@@ -489,6 +517,7 @@
     "focalLength": "28mm",
     "aperture": "f/16",
     "shutterSpeed": "1/100s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-6.jpg": {
@@ -505,6 +534,7 @@
     "focalLength": "70mm",
     "aperture": "f/11",
     "shutterSpeed": "1/500s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-7.jpg": {
@@ -521,6 +551,7 @@
     "focalLength": "70mm",
     "aperture": "f/4",
     "shutterSpeed": "1/160s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-8.jpg": {
@@ -537,6 +568,7 @@
     "focalLength": "33mm",
     "aperture": "f/10",
     "shutterSpeed": "1/160s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-9.jpg": {
@@ -553,6 +585,7 @@
     "focalLength": "41mm",
     "aperture": "f/5.6",
     "shutterSpeed": "1/400s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-10.jpg": {
@@ -569,6 +602,7 @@
     "focalLength": "58mm",
     "aperture": "f/5.6",
     "shutterSpeed": "1/400s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-11.jpg": {
@@ -585,6 +619,7 @@
     "focalLength": "70mm",
     "aperture": "f/8",
     "shutterSpeed": "1/250s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-12.jpg": {
@@ -601,6 +636,7 @@
     "focalLength": "40mm",
     "aperture": "f/8",
     "shutterSpeed": "1/250s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-13.jpg": {
@@ -617,6 +653,7 @@
     "focalLength": "26mm",
     "aperture": "f/14",
     "shutterSpeed": "1/100s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-14.jpg": {
@@ -633,6 +670,7 @@
     "focalLength": "26mm",
     "aperture": "f/10",
     "shutterSpeed": "1/320s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-15.jpg": {
@@ -649,6 +687,7 @@
     "focalLength": "23mm",
     "aperture": "f/16",
     "shutterSpeed": "1/125s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/eclectic-art/portrait-eclectic-31.jpg": {
@@ -665,6 +704,7 @@
     "focalLength": "16mm",
     "aperture": "f/16",
     "shutterSpeed": "1/125s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-1.jpg": {
@@ -681,6 +721,7 @@
     "focalLength": "27mm",
     "aperture": "f/4",
     "shutterSpeed": "1s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-3.jpg": {
@@ -697,6 +738,7 @@
     "focalLength": "70mm",
     "aperture": "f/6.3",
     "shutterSpeed": "1/8s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-4.jpg": {
@@ -713,6 +755,7 @@
     "focalLength": "19mm",
     "aperture": "f/5",
     "shutterSpeed": "1/3s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-5.jpg": {
@@ -729,6 +772,7 @@
     "focalLength": "47mm",
     "aperture": "f/4",
     "shutterSpeed": "1/3s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-6.jpg": {
@@ -745,6 +789,7 @@
     "focalLength": "30mm",
     "aperture": "f/4.5",
     "shutterSpeed": "1/3s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-7.jpg": {
@@ -761,6 +806,7 @@
     "focalLength": "38mm",
     "aperture": "f/4",
     "shutterSpeed": "1/160s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-8.jpg": {
@@ -777,6 +823,7 @@
     "focalLength": "57mm",
     "aperture": "f/8",
     "shutterSpeed": "1/15s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-9.jpg": {
@@ -793,6 +840,7 @@
     "focalLength": "23mm",
     "aperture": "f/9",
     "shutterSpeed": "1/3s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-10.jpg": {
@@ -809,6 +857,7 @@
     "focalLength": "45mm",
     "aperture": "f/11",
     "shutterSpeed": "1/3s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-11.jpg": {
@@ -825,6 +874,7 @@
     "focalLength": "62mm",
     "aperture": "f/13",
     "shutterSpeed": "1/2s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-12.jpg": {
@@ -841,6 +891,7 @@
     "focalLength": "35mm",
     "aperture": "f/22",
     "shutterSpeed": "10s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-13.jpg": {
@@ -857,6 +908,7 @@
     "focalLength": "21mm",
     "aperture": "f/13",
     "shutterSpeed": "1/2s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-14.jpg": {
@@ -873,6 +925,7 @@
     "focalLength": "32mm",
     "aperture": "f/4",
     "shutterSpeed": "1/2s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-15.jpg": {
@@ -889,6 +942,7 @@
     "focalLength": "28mm",
     "aperture": "f/4",
     "shutterSpeed": "1/160s",
+    "iso": "ISO 3200",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-16.jpg": {
@@ -905,6 +959,7 @@
     "focalLength": "69mm",
     "aperture": "f/4",
     "shutterSpeed": "1/160s",
+    "iso": "ISO 2000",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-17.jpg": {
@@ -921,6 +976,7 @@
     "focalLength": "21mm",
     "aperture": "f/4",
     "shutterSpeed": "1/25s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-18.jpg": {
@@ -937,6 +993,7 @@
     "focalLength": "46mm",
     "aperture": "f/4",
     "shutterSpeed": "1/160s",
+    "iso": "ISO 1600",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-19.jpg": {
@@ -953,6 +1010,7 @@
     "focalLength": "16mm",
     "aperture": "f/4",
     "shutterSpeed": "1/160s",
+    "iso": "ISO 1000",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-20.jpg": {
@@ -969,6 +1027,7 @@
     "focalLength": "13mm",
     "aperture": "f/4.5",
     "shutterSpeed": "1/20s",
+    "iso": "ISO 1600",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-21.jpg": {
@@ -984,6 +1043,7 @@
     "focalLength": "13mm",
     "aperture": "f/2.6",
     "shutterSpeed": "1/35s",
+    "iso": "ISO 748",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-22.jpg": {
@@ -999,6 +1059,7 @@
     "focalLength": "13mm",
     "aperture": "f/2.6",
     "shutterSpeed": "1/50s",
+    "iso": "ISO 365",
     "isFilm": false
   },
   "/images/portraits/halloween-25/portrait-halloween25-23.jpg": {
@@ -1015,6 +1076,7 @@
     "focalLength": "85mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/125s",
+    "iso": "ISO 160",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-1.jpg": {
@@ -1031,6 +1093,7 @@
     "focalLength": "101mm",
     "aperture": "f/6.3",
     "shutterSpeed": "1/200s",
+    "iso": "ISO 320",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-2.jpg": {
@@ -1047,6 +1110,7 @@
     "focalLength": "55mm",
     "aperture": "f/6.3",
     "shutterSpeed": "1/200s",
+    "iso": "ISO 320",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-3.jpg": {
@@ -1063,6 +1127,7 @@
     "focalLength": "47mm",
     "aperture": "f/6.3",
     "shutterSpeed": "1/200s",
+    "iso": "ISO 320",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-4.jpg": {
@@ -1079,6 +1144,7 @@
     "focalLength": "46mm",
     "aperture": "f/6.3",
     "shutterSpeed": "1/200s",
+    "iso": "ISO 320",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-5.jpg": {
@@ -1095,6 +1161,7 @@
     "focalLength": "54mm",
     "aperture": "f/6.3",
     "shutterSpeed": "1/200s",
+    "iso": "ISO 320",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-6.jpg": {
@@ -1111,6 +1178,7 @@
     "focalLength": "73mm",
     "aperture": "f/6",
     "shutterSpeed": "1/60s",
+    "iso": "ISO 5000",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-7.jpg": {
@@ -1127,6 +1195,7 @@
     "focalLength": "71mm",
     "aperture": "f/6",
     "shutterSpeed": "1/6s",
+    "iso": "ISO 200",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-8.jpg": {
@@ -1143,6 +1212,7 @@
     "focalLength": "36mm",
     "aperture": "f/4.8",
     "shutterSpeed": "1/60s",
+    "iso": "ISO 3200",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-9.jpg": {
@@ -1159,6 +1229,7 @@
     "focalLength": "48mm",
     "aperture": "f/5.6",
     "shutterSpeed": "1/60s",
+    "iso": "ISO 6400",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-10.jpg": {
@@ -1175,6 +1246,7 @@
     "focalLength": "102mm",
     "aperture": "f/6.3",
     "shutterSpeed": "1/125s",
+    "iso": "ISO 500",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-11.jpg": {
@@ -1191,6 +1263,7 @@
     "focalLength": "49mm",
     "aperture": "f/5.6",
     "shutterSpeed": "1/5s",
+    "iso": "ISO 200",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-12.jpg": {
@@ -1207,6 +1280,7 @@
     "focalLength": "61mm",
     "aperture": "f/6",
     "shutterSpeed": "1/2s",
+    "iso": "ISO 125",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-13.jpg": {
@@ -1223,6 +1297,7 @@
     "focalLength": "54mm",
     "aperture": "f/5.6",
     "shutterSpeed": "1/5s",
+    "iso": "ISO 125",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-14.jpg": {
@@ -1239,6 +1314,7 @@
     "focalLength": "63mm",
     "aperture": "f/6",
     "shutterSpeed": "1/2s",
+    "iso": "ISO 125",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-15.jpg": {
@@ -1255,6 +1331,7 @@
     "focalLength": "45mm",
     "aperture": "f/6.3",
     "shutterSpeed": "1/2s",
+    "iso": "ISO 125",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-1.jpg": {
@@ -1271,6 +1348,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 400",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-2.jpg": {
@@ -1287,6 +1365,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 400",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-3.jpg": {
@@ -1303,6 +1382,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 200",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-4.jpg": {
@@ -1319,6 +1399,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 200",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-5.jpg": {
@@ -1335,6 +1416,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 200",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-6.jpg": {
@@ -1351,6 +1433,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 200",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-7.jpg": {
@@ -1367,6 +1450,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 400",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-8.jpg": {
@@ -1383,6 +1467,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-9.jpg": {
@@ -1399,6 +1484,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-10.jpg": {
@@ -1415,6 +1501,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-11.jpg": {
@@ -1431,6 +1518,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-12.jpg": {
@@ -1447,6 +1535,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/80s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-13.jpg": {
@@ -1463,6 +1552,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/40s",
+    "iso": "ISO 4000",
     "isFilm": false
   },
   "/images/portraits/the-quiet-hour/portrait-thequiethour-14.jpg": {
@@ -1479,6 +1569,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/40s",
+    "iso": "ISO 4000",
     "isFilm": false
   },
   "/images/portraits/valentines-26-digital/portrait-valentine_digital-1.jpg": {
@@ -1495,6 +1586,7 @@
     "focalLength": "70mm",
     "aperture": "f/4",
     "shutterSpeed": "1/100s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/portraits/valentines-26-digital/portrait-valentine_digital-2.jpg": {
@@ -1511,6 +1603,7 @@
     "focalLength": "40mm",
     "aperture": "f/4",
     "shutterSpeed": "1/60s",
+    "iso": "ISO 250",
     "isFilm": false
   },
   "/images/portraits/valentines-26-digital/portrait-valentine_digital-3.jpg": {
@@ -1527,6 +1620,7 @@
     "focalLength": "28mm",
     "aperture": "f/4",
     "shutterSpeed": "1/500s",
+    "iso": "ISO 250",
     "isFilm": false
   },
   "/images/portraits/valentines-26-digital/portrait-valentine_digital-4.jpg": {
@@ -1543,6 +1637,7 @@
     "focalLength": "56mm",
     "aperture": "f/4",
     "shutterSpeed": "1/15s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/portraits/valentines-26-digital/portrait-valentine_digital-5.jpg": {
@@ -1559,6 +1654,7 @@
     "focalLength": "40mm",
     "aperture": "f/4",
     "shutterSpeed": "1/30s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/valentines-26-digital/portrait-valentine_digital-6.jpg": {
@@ -1575,6 +1671,7 @@
     "focalLength": "70mm",
     "aperture": "f/4",
     "shutterSpeed": "1/40s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/portraits/valentines-26-digital/portrait-valentine_digital-7.jpg": {
@@ -1591,6 +1688,7 @@
     "focalLength": "61mm",
     "aperture": "f/4",
     "shutterSpeed": "1/1250s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/portraits/valentines-26-digital/portrait-valentine_digital-8.jpg": {
@@ -1607,6 +1705,7 @@
     "focalLength": "70mm",
     "aperture": "f/4",
     "shutterSpeed": "1/400s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/portraits/valentines-26-film/portrait-valentine_filml-1.jpg": {
@@ -1614,8 +1713,8 @@
     "label": "Portraits",
     "project": "valentines-26-film",
     "projectTitle": "Valentine's 26 (film)",
-    "width": 6774,
-    "height": 4492,
+    "width": 4492,
+    "height": 6774,
     "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAQCdASoQAAsAAoBCJbACdAENg39rAAD+wb+d4V71VqdEFj1s7b3xjqzd7OO0T7SX0gcpj9BR7APVDUuSBAcwqmu1ct05RVdwP2AwXW9AHH/y00zk2SxsyH/kuhyzSmFgAAAA",
     "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/valentines-26-film/preview/portrait-valentine_filml-1.jpg.webp",
     "camera": "Pentax Espio 738",
@@ -1679,8 +1778,8 @@
     "label": "Portraits",
     "project": "valentines-26-film",
     "projectTitle": "Valentine's 26 (film)",
-    "width": 6774,
-    "height": 4492,
+    "width": 4492,
+    "height": 6774,
     "blur": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADQAQCdASoQAAsAAoBCJbACdADPjOSNkAD+9tenW/a0oUb9pXbGUw6QdFRPmc8L54J/nXxRCx+dyjQ3EZMHf8hVXs7AMpHVfyIJKHitXYx1GAYK6OsoZfs4+DfVCj/5yy+VQ94v+u69xAcwtm9RH/gA",
     "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/valentines-26-film/preview/portrait-valentine_filml-6.jpg.webp",
     "camera": "Pentax Espio 738",
@@ -1692,8 +1791,8 @@
     "label": "Portraits",
     "project": "valentines-26-film",
     "projectTitle": "Valentine's 26 (film)",
-    "width": 6774,
-    "height": 4492,
+    "width": 4492,
+    "height": 6774,
     "blur": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAABQAgCdASoQAAsAAoBCJYgCdAYtLy3sFJ+s6rAA/vld2qC/b3i/Kif1So/eT0ywkhuKMznbBuoaueE0dRLcRYAkVyfpUTBuYodmBH74l7Sc6WBpPecTYX7JKz6oKm81/cKKPfsf8u2Sv5AOIs/IikciCsGo+Mg1HQQqjrkRahgAAA==",
     "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/valentines-26-film/preview/portrait-valentine_filml-7.jpg.webp",
     "camera": "Pentax Espio 738",
@@ -1731,8 +1830,8 @@
     "label": "Portraits",
     "project": "valentines-26-film",
     "projectTitle": "Valentine's 26 (film)",
-    "width": 6774,
-    "height": 4492,
+    "width": 4492,
+    "height": 6774,
     "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQAgCdASoQAAsAAoBCJZgCdAYn+YGuEkE+CgAA/vt6vvOKDiWEgsbhWUbmpF7scOHuQ/ny49jHdnrhTAwKy4ku5IqRFEPbkWSLPu0AQWnm3v8eJQP1N0GbD+AAAA==",
     "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/valentines-26-film/preview/portrait-valentine_filml-10.jpg.webp",
     "camera": "Pentax Espio 738",
@@ -1744,8 +1843,8 @@
     "label": "Portraits",
     "project": "valentines-26-film",
     "projectTitle": "Valentine's 26 (film)",
-    "width": 6774,
-    "height": 4492,
+    "width": 4492,
+    "height": 6774,
     "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAACwAQCdASoQAAsAAoBCJbACdAEJcAHsAP717ZajOW2Th/RzmMQeBEW9ODmLgpFMGEsh8+EysKckU+ziUd+fQx32e+pxspzyMSH8qt/8YEHb62vpXJNoAA==",
     "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/valentines-26-film/preview/portrait-valentine_filml-11.jpg.webp",
     "camera": "Pentax Espio 738",
@@ -1757,8 +1856,8 @@
     "label": "Portraits",
     "project": "valentines-26-film",
     "projectTitle": "Valentine's 26 (film)",
-    "width": 6774,
-    "height": 4492,
+    "width": 4492,
+    "height": 6774,
     "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoQAAsAAoBCJbACdAEUzNVuTAAA/vLRGrEywsYzIHrUUkwNUwCdtCBsIbVvTD6Mhq419/w/jn/KVJ008NtpBrH+zuEpniaEery14hZuv4AAAA==",
     "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/valentines-26-film/preview/portrait-valentine_filml-12.jpg.webp",
     "camera": "Pentax Espio 738",
@@ -1770,8 +1869,8 @@
     "label": "Portraits",
     "project": "valentines-26-film",
     "projectTitle": "Valentine's 26 (film)",
-    "width": 6774,
-    "height": 4492,
+    "width": 4492,
+    "height": 6774,
     "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAwAgCdASoQAAsAAoBCJYwCdAECmW385jTDgAD+6kfaKO+Bty24qez7sxvj3lzJWHOrcLIHGZnceFkQ+9RSzebTM891K5hciEZF9tag18A7nhCWo4v/tAj/3tqFoBQhH8/NwTGVADoGAAAA",
     "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/valentines-26-film/preview/portrait-valentine_filml-13.jpg.webp",
     "camera": "Pentax Espio 738",
@@ -1809,8 +1908,8 @@
     "label": "Portraits",
     "project": "valentines-26-film",
     "projectTitle": "Valentine's 26 (film)",
-    "width": 6774,
-    "height": 4492,
+    "width": 4492,
+    "height": 6774,
     "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoQAAsAAoBCJbACdAEe0m0mjvgA/ubniu4uqCEXLBArJR5liUXyIjIO1/rVe3RFsRJoMgnJ1QdKfvAYioEeoJIAI6llbi68GpV6ckv0szY/lf8D1+1zD+zWWQAAAA==",
     "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/valentines-26-film/preview/portrait-valentine_filml-16.jpg.webp",
     "camera": "Pentax Espio 738",
@@ -1883,6 +1982,7 @@
     "focalLength": "70mm",
     "aperture": "f/4",
     "shutterSpeed": "1/1250s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/side-projects/summer-picnic/miscellaneous-summerpicnic-2.jpg": {
@@ -1899,6 +1999,7 @@
     "focalLength": "18mm",
     "aperture": "f/4",
     "shutterSpeed": "1/500s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/side-projects/summer-picnic/miscellaneous-summerpicnic-3.jpg": {
@@ -1915,6 +2016,7 @@
     "focalLength": "34mm",
     "aperture": "f/5",
     "shutterSpeed": "1/640s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/side-projects/summer-picnic/miscellaneous-summerpicnic-4.jpg": {
@@ -1931,6 +2033,7 @@
     "focalLength": "16mm",
     "aperture": "f/5",
     "shutterSpeed": "1/250s",
+    "iso": "ISO 64",
     "isFilm": false
   },
   "/images/side-projects/summer-picnic/miscellaneous-summerpicnic-5.jpg": {
@@ -1947,6 +2050,7 @@
     "focalLength": "70mm",
     "aperture": "f/4",
     "shutterSpeed": "1/800s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/side-projects/summer-picnic/miscellaneous-summerpicnic-6.jpg": {
@@ -1963,6 +2067,7 @@
     "focalLength": "42mm",
     "aperture": "f/4",
     "shutterSpeed": "1/400s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/side-projects/summer-picnic/miscellaneous-summerpicnic-7.jpg": {
@@ -1979,6 +2084,7 @@
     "focalLength": "70mm",
     "aperture": "f/4",
     "shutterSpeed": "1/400s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/side-projects/summer-picnic/miscellaneous-summerpicnic-8.jpg": {
@@ -1995,6 +2101,7 @@
     "focalLength": "27mm",
     "aperture": "f/4",
     "shutterSpeed": "1/800s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/side-projects/wallpapers/miscellaneous-wallpapers-1.jpg": {
@@ -2011,6 +2118,7 @@
     "focalLength": "70mm",
     "aperture": "f/4",
     "shutterSpeed": "1/800s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/side-projects/wallpapers/miscellaneous-wallpapers-2.jpg": {
@@ -2027,6 +2135,7 @@
     "focalLength": "70mm",
     "aperture": "f/4",
     "shutterSpeed": "1/400s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/side-projects/wallpapers/miscellaneous-wallpapers-3.jpg": {
@@ -2043,6 +2152,7 @@
     "focalLength": "32mm",
     "aperture": "f/9",
     "shutterSpeed": "1/320s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/side-projects/wallpapers/miscellaneous-wallpapers-4.jpg": {
@@ -2059,6 +2169,7 @@
     "focalLength": "35mm",
     "aperture": "f/10",
     "shutterSpeed": "1/1000s",
+    "iso": "ISO 400",
     "isFilm": false
   },
   "/images/side-projects/wallpapers/miscellaneous-wallpapers-5.jpg": {
@@ -2075,6 +2186,7 @@
     "focalLength": "35mm",
     "aperture": "f/10",
     "shutterSpeed": "1/1000s",
+    "iso": "ISO 400",
     "isFilm": false
   },
   "/images/side-projects/wallpapers/miscellaneous-wallpapers-6.jpg": {
@@ -2091,6 +2203,7 @@
     "focalLength": "70mm",
     "aperture": "f/5",
     "shutterSpeed": "1/800s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/side-projects/wallpapers/miscellaneous-wallpapers-7.jpg": {
@@ -2106,6 +2219,7 @@
     "focalLength": "2mm",
     "aperture": "f/2",
     "shutterSpeed": "1/100s",
+    "iso": "ISO 51",
     "isFilm": false
   },
   "/images/side-projects/wallpapers/miscellaneous-wallpapers-8.jpg": {
@@ -2122,6 +2236,7 @@
     "focalLength": "70mm",
     "aperture": "f/5",
     "shutterSpeed": "1/800s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/street/color-hunt-green/street-colorhunt_green-1.jpg": {
@@ -2138,6 +2253,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/500s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/street/color-hunt-green/street-colorhunt_green-2.jpg": {
@@ -2154,6 +2270,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/500s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/street/color-hunt-green/street-colorhunt_green-3.jpg": {
@@ -2170,6 +2287,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/500s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/street/color-hunt-green/street-colorhunt_green-4.jpg": {
@@ -2186,6 +2304,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/500s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/street/color-hunt-green/street-colorhunt_green-5.jpg": {
@@ -2202,6 +2321,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/3200s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/street/color-hunt-green/street-colorhunt_green-6.jpg": {
@@ -2218,6 +2338,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/1250s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/street/color-hunt-green/street-colorhunt_green-7.jpg": {
@@ -2234,6 +2355,7 @@
     "focalLength": "50mm",
     "aperture": "f/4",
     "shutterSpeed": "1/40s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/street/color-hunt-green/street-colorhunt_green-8.jpg": {
@@ -2250,6 +2372,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/500s",
+    "iso": "ISO 50",
     "isFilm": false
   },
   "/images/street/color-hunt-green/street-colorhunt_green-9.jpg": {
@@ -2266,6 +2389,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/800s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/street/color-hunt-green/street-colorhunt_green-10.jpg": {
@@ -2282,6 +2406,7 @@
     "focalLength": "50mm",
     "aperture": "f/9",
     "shutterSpeed": "1/400s",
+    "iso": "ISO 1000",
     "isFilm": false
   },
   "/images/street/color-hunt-green/street-colorhunt_green-11.jpg": {
@@ -2298,6 +2423,7 @@
     "focalLength": "50mm",
     "aperture": "f/1.8",
     "shutterSpeed": "1/640s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/street/vintage-car-meetup/street-vintagecarmeetup-1.jpg": {
@@ -2314,6 +2440,7 @@
     "focalLength": "29mm",
     "aperture": "f/4",
     "shutterSpeed": "1/160s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/street/vintage-car-meetup/street-vintagecarmeetup-2.jpg": {
@@ -2330,6 +2457,7 @@
     "focalLength": "31mm",
     "aperture": "f/4",
     "shutterSpeed": "1/800s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/street/vintage-car-meetup/street-vintagecarmeetup-3.jpg": {
@@ -2346,6 +2474,7 @@
     "focalLength": "31mm",
     "aperture": "f/4",
     "shutterSpeed": "1/800s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/street/vintage-car-meetup/street-vintagecarmeetup-4.jpg": {
@@ -2362,6 +2491,7 @@
     "focalLength": "24mm",
     "aperture": "f/4",
     "shutterSpeed": "1/500s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/street/vintage-car-meetup/street-vintagecarmeetup-5.jpg": {
@@ -2378,6 +2508,7 @@
     "focalLength": "41mm",
     "aperture": "f/4",
     "shutterSpeed": "1/1000s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/street/vintage-car-meetup/street-vintagecarmeetup-6.jpg": {
@@ -2394,6 +2525,7 @@
     "focalLength": "52mm",
     "aperture": "f/4",
     "shutterSpeed": "1/1000s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/street/vintage-car-meetup/street-vintagecarmeetup-7.jpg": {
@@ -2410,6 +2542,7 @@
     "focalLength": "20mm",
     "aperture": "f/4",
     "shutterSpeed": "1/1000s",
+    "iso": "ISO 100",
     "isFilm": false
   },
   "/images/street/vintage-car-meetup/street-vintagecarmeetup-8.jpg": {
@@ -2426,6 +2559,7 @@
     "focalLength": "40mm",
     "aperture": "f/4",
     "shutterSpeed": "1/1000s",
+    "iso": "ISO 100",
     "isFilm": false
   }
 }

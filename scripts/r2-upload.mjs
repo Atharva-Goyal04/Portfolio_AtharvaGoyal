@@ -340,7 +340,8 @@ async function extractExif(filePath) {
     const focalLength = data.FocalLength ? `${Math.round(data.FocalLength)}mm` : undefined;
     const aperture = data.FNumber ? `f/${data.FNumber}` : undefined;
     const shutterSpeed = data.ExposureTime ? formatShutter(data.ExposureTime) : undefined;
-    const iso = data.ISOSpeedRatings ? `ISO ${data.ISOSpeedRatings}` : undefined;
+    const rawIso = data.ISO ?? data.ISOSpeedRatings;
+    const iso = rawIso ? `ISO ${rawIso}` : undefined;
 
     // Film scanner detection
     const isFilmScan = /NORITSU|FRONTIER|FUJI|SP-3000|EZ Controller/i.test(rawModel);
@@ -381,6 +382,18 @@ function naturalSort(a, b) {
     }
   }
   return 0;
+}
+
+// Manifest width/height must reflect the served (EXIF-rotated) preview, not the
+// raw sensor frame. Otherwise portrait scans with an orientation tag render as
+// landscape.
+async function rotatedDims(filePath) {
+  try {
+    const { info } = await sharp(filePath).rotate().toBuffer({ resolveWithObject: true });
+    return { width: info.width, height: info.height };
+  } catch {
+    return { width: 0, height: 0 };
+  }
 }
 
 async function uploadPortfolio() {
@@ -430,14 +443,24 @@ async function uploadPortfolio() {
           await put(previewKey, preview, "image/webp");
         }
 
+        let dims = { width: 0, height: 0 };
+        if (!refreshOnly) {
+          try {
+            const pmeta = await sharp(preview).metadata();
+            dims = { width: pmeta.width ?? 0, height: pmeta.height ?? 0 };
+          } catch {}
+        } else {
+          dims = await rotatedDims(filePath);
+        }
+
         const src = `/images/${catSlug}/${projectSlug}/${file}`;
         manifest[src] = {
           category: catSlug,
           label: catLabel,
           project: projectSlug,
           projectTitle: catLabel,
-          width: 0,
-          height: 0,
+          width: dims.width,
+          height: dims.height,
           blur: "",
           url: previewUrl,
           camera: exif.camera,
@@ -449,13 +472,6 @@ async function uploadPortfolio() {
           isFilm: exif.isFilm,
           _localPath: filePath,
         };
-
-        // Get dimensions for manifest
-        try {
-          const meta = await sharp(filePath).metadata();
-          manifest[src].width = meta.width ?? 0;
-          manifest[src].height = meta.height ?? 0;
-        } catch {}
       }
       continue;
     }
@@ -483,6 +499,16 @@ async function uploadPortfolio() {
           await put(previewKey, preview, "image/webp");
         }
 
+        let dims = { width: 0, height: 0 };
+        if (!refreshOnly) {
+          try {
+            const pmeta = await sharp(preview).metadata();
+            dims = { width: pmeta.width ?? 0, height: pmeta.height ?? 0 };
+          } catch {}
+        } else {
+          dims = await rotatedDims(filePath);
+        }
+
         const src = `/images/${catSlug}/${projectSlug}/${file}`;
         manifest[src] = {
           category: catSlug,
@@ -492,8 +518,8 @@ async function uploadPortfolio() {
             .split(/[\s_-]+/)
             .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
             .join(" "),
-          width: 0,
-          height: 0,
+          width: dims.width,
+          height: dims.height,
           blur: "",
           url: previewUrl,
           camera: exif.camera,
@@ -505,12 +531,6 @@ async function uploadPortfolio() {
           isFilm: exif.isFilm,
           _localPath: filePath,
         };
-
-        try {
-          const meta = await sharp(filePath).metadata();
-          manifest[src].width = meta.width ?? 0;
-          manifest[src].height = meta.height ?? 0;
-        } catch {}
       }
     }
   }

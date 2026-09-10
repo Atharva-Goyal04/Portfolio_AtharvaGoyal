@@ -12,6 +12,9 @@ export interface GridItem {
   title: string;
   subtitle?: string;
   meta?: string;
+  iso?: string;
+  shutterSpeed?: string;
+  aperture?: string;
 }
 
 function isLandscape(src: string): boolean {
@@ -90,9 +93,16 @@ export default function ImageGrid({
               />
               {img.subtitle && (
                 <div className="absolute inset-0 flex items-end bg-gradient-to-t from-canvas/85 via-transparent to-transparent p-5 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-cream/80">
-                    {img.subtitle}
-                  </span>
+                  <div className="flex w-full items-end justify-between gap-4">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-cream/80">
+                      {img.subtitle}
+                    </span>
+                    {[img.iso, img.shutterSpeed, img.aperture].some(Boolean) && (
+                      <span className="font-mono text-[10px] tracking-widest text-cream/70">
+                        {[img.iso, img.shutterSpeed, img.aperture].filter(Boolean).join(" · ")}
+                      </span>
+                    )}
+                  </div>
                 </div>
               )}
             </motion.button>

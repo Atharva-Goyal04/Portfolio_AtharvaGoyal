@@ -15,6 +15,10 @@ import {
   type StorySection,
 } from "@/lib/projects";
 
+// Shared aspect ratio for images shown side by side in a pair so that
+// adjacent photos render at equal dimensions and captions stay aligned.
+const PAIR_ASPECT_RATIO = 3 / 4;
+
 interface ProjectEditorialProps {
   story: ProjectStory;
   images: { src?: string }[];
@@ -156,7 +160,7 @@ function ExifLine({ src, camera }: { src: string; camera?: string }) {
   );
 }
 
-function Figure({ image, eager, className, camera }: { image: ResolvedImage; eager?: boolean; className?: string; camera?: string }) {
+function Figure({ image, eager, className, camera, ratio }: { image: ResolvedImage; eager?: boolean; className?: string; camera?: string; ratio?: number }) {
   return (
     <figure className={className}>
       <div className="overflow-hidden rounded-sm">
@@ -164,6 +168,7 @@ function Figure({ image, eager, className, camera }: { image: ResolvedImage; eag
           src={image.src}
           alt={image.editorialTitle}
           eager={eager}
+          ratio={ratio}
           sizes="(max-width: 1280px) 100vw, 1024px"
           className="transition-transform duration-700 hover:scale-[1.01]"
         />
@@ -183,8 +188,8 @@ function ChapterBlocks({ chapter, images, chapterIndex, camera }: { chapter: Sto
           return (
             <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05}>
               <div className="grid gap-10 sm:grid-cols-2 sm:items-start sm:gap-8">
-                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} camera={camera} />
-                <Figure image={block.b} className={cn("sm:mt-12")} camera={camera} />
+                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} ratio={PAIR_ASPECT_RATIO} camera={camera} />
+                <Figure image={block.b} ratio={PAIR_ASPECT_RATIO} camera={camera} />
               </div>
             </Reveal>
           );
@@ -193,8 +198,8 @@ function ChapterBlocks({ chapter, images, chapterIndex, camera }: { chapter: Sto
           return (
             <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05}>
               <div className="grid gap-10 sm:grid-cols-12 sm:items-start sm:gap-8">
-                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} className="sm:col-span-7" camera={camera} />
-                <Figure image={block.b} className="mt-0 sm:col-span-5 sm:mt-14" camera={camera} />
+                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} className="sm:col-span-7" ratio={PAIR_ASPECT_RATIO} camera={camera} />
+                <Figure image={block.b} className="sm:col-span-5" ratio={PAIR_ASPECT_RATIO} camera={camera} />
               </div>
             </Reveal>
           );
@@ -203,8 +208,8 @@ function ChapterBlocks({ chapter, images, chapterIndex, camera }: { chapter: Sto
           return (
             <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05}>
               <div className="mx-auto grid max-w-3xl gap-10 sm:grid-cols-2 sm:items-start sm:gap-8">
-                <Figure image={block.a} camera={camera} />
-                <Figure image={block.b} className="sm:mt-10" camera={camera} />
+                <Figure image={block.a} ratio={PAIR_ASPECT_RATIO} camera={camera} />
+                <Figure image={block.b} ratio={PAIR_ASPECT_RATIO} camera={camera} />
               </div>
             </Reveal>
           );

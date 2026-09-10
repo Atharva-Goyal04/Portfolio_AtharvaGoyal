@@ -17,6 +17,28 @@ export const CATEGORY_ORDER = ["featured", "portraits", "street", "side-projects
 /** Categories that render as "Side Projects" (feed + projects page). */
 export const SIDE_CATEGORIES = new Set(["side-projects"]);
 
+/**
+ * Website-only re-categorization. Internal storage (folders, manifest keys,
+ * story files) stays untouched — only the displayed category/label changes.
+ * Keyed by the internal `<category>/<project>` pair.
+ */
+const DISPLAY_CATEGORY: Record<string, { category: string; label: string }> = {
+  "side-projects/summer-picnic": { category: "portraits", label: "Portraits" },
+};
+
+/** Display key (<displayCategory>/<slug>) -> internal key (<internalCategory>/<slug>). */
+const DISPLAY_TO_INTERNAL: Record<string, string> = Object.fromEntries(
+  Object.entries(DISPLAY_CATEGORY).map(([internal, { category }]) => [`${category}/${internal.split("/")[1]}`, internal]),
+);
+
+function displayCategoryFor(internalKey: string, fallbackCategory: string, fallbackLabel: string): { category: string; label: string } {
+  return DISPLAY_CATEGORY[internalKey] ?? { category: fallbackCategory, label: fallbackLabel };
+}
+
+function internalKeyFor(displayKey: string): string {
+  return DISPLAY_TO_INTERNAL[displayKey] ?? displayKey;
+}
+
 export interface StoryChapter {
   id: string;
   label: string;
@@ -103,7 +125,9 @@ async function loadStory(categorySlug: string, projectSlug: string): Promise<Pro
 }
 
 export async function getProjectStory(categorySlug: string, projectSlug: string): Promise<ProjectStory | null> {
-  return loadStory(categorySlug, projectSlug);
+  const internal = internalKeyFor(`${categorySlug}/${projectSlug}`);
+  const [internalCat, internalProj] = internal.split("/");
+  return loadStory(internalCat, internalProj);
 }
 
 export function allCategories(): { slug: string; label: string; projectCount: number }[] {
@@ -131,12 +155,13 @@ export function allProjects(): Project[] {
     const key = `${catSlug}/${projSlug}`;
     const hasStory = STORY_KEYS.has(key);
     const overlay = PROJECT_META[key];
+    const display = displayCategoryFor(key, catSlug, info.label);
 
     if (!projMap.has(key)) {
       projMap.set(key, {
         slug: projSlug,
-        category: catSlug,
-        categoryLabel: info.label,
+        category: display.category,
+        categoryLabel: display.label,
         title: overlay?.title ?? info.projectTitle,
         description: overlay?.description,
         type: overlay?.type,

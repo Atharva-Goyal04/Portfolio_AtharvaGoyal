@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { Fragment } from "react";
 import { ArrowRight, ChevronLeft } from "lucide-react";
 import Photo from "@/components/shared/photo";
 import Reveal from "@/components/shared/reveal";
+import ContinueReading from "@/components/portfolio/continue-reading";
 import { imageInfo } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import {
@@ -302,11 +304,13 @@ function StorySections({
   images,
   camera,
   context,
+  patterns,
 }: {
   sections: StorySection[];
   images: { src?: string }[];
   camera?: string;
   context: Array<{ file: string; editorialTitle?: string; description?: string }>;
+  patterns: string[];
 }) {
   return (
     <div className="space-y-14 md:space-y-20">
@@ -318,8 +322,8 @@ function StorySections({
           return (
             <div key={i} className="space-y-12 md:space-y-16">
               <Reveal>
-                <p className="mx-auto max-w-2xl text-lg leading-relaxed whitespace-pre-wrap text-pretty text-ink/85 md:text-xl">
-                  {section.text}
+                <p className="mx-auto max-w-2xl text-lg leading-relaxed whitespace-pre-wrap text-justify text-pretty text-ink/85 md:text-xl">
+                  <Highlight text={section.text} patterns={patterns} />
                 </p>
               </Reveal>
               {pinnedSrc && (
@@ -344,6 +348,31 @@ function StorySections({
   );
 }
 
+const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+// Paints editorial titles + referenced image filenames in the golden brand color.
+function Highlight({ text, patterns }: { text: string; patterns: string[] }) {
+  if (!text || patterns.length === 0) return <>{text}</>;
+  const re = new RegExp(`\\b(?:${patterns.map(escapeRegExp).join("|")})\\b`, "g");
+  const parts = text.split(re);
+  const matches = text.match(re);
+  if (!matches || matches.length === 0) return <>{text}</>;
+  return (
+    <>
+      {parts.map((part, i) => (
+        <Fragment key={i}>
+          {part}
+          {i < matches.length && (
+            <mark className="rounded-sm bg-transparent px-0.5 font-medium text-brand">
+              {matches[i]}
+            </mark>
+          )}
+        </Fragment>
+      ))}
+    </>
+  );
+}
+
 // Find editorial title/description for a pinned story image across chapters + favorites.
 function findImageContext(
   file: string,
@@ -353,6 +382,25 @@ function findImageContext(
   if (!hit) return undefined;
   return { editorialTitle: hit.editorialTitle || undefined, description: hit.description || undefined };
 }
+
+// Every image file referenced anywhere in the story (with/without extension), so a
+// filename the author mentions in the narrative gets highlighted in gold.
+const collectStoryFiles = (sections: StorySection[], story: ProjectStory): string[] => {
+  const files = new Set<string>();
+  const add = (f: string) => {
+    const base = f.replace(/\.(jpe?g|png|heic|tiff|webp)$/i, "").toLowerCase();
+    if (!base) return;
+    files.add(base);
+    files.add(`${base}.jpg`);
+  };
+  for (const s of sections) {
+    if (s.image) add(s.image);
+    for (const r of s.related ?? []) add(r.file);
+  }
+  for (const ch of story.visualChapters ?? []) for (const img of ch.images ?? []) add(img.file);
+  for (const fav of story.favoriteImages ?? []) add(fav.file);
+  return [...files];
+};
 
 const detailOrder: Array<[key: string, label: string]> = [
   ["projectType", "Type"],
@@ -403,6 +451,23 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
   const sections = story.sections ?? [];
   const editingStory = story.editingStory;
   const conclusion = story.conclusion ?? story.closingStory;
+
+  const highlightPatterns = [
+    ...new Set([
+      ...imageContext
+        .map((c) => c.editorialTitle)
+        .filter((t): t is string => Boolean(t) && !/^untitled/i.test(t)),
+      ...collectStoryFiles(sections, story),
+    ]),
+  ].sort((a, b) => b.length - a.length);
+
+  const PREVIEW_SECTIONS = 2;
+  const previewSections = sections.slice(0, PREVIEW_SECTIONS);
+  const restSections = sections.slice(PREVIEW_SECTIONS);
+  const storyNodes = {
+    preview: <StorySections sections={previewSections} images={images} camera={story.camera} context={imageContext} patterns={highlightPatterns} />,
+    rest: <StorySections sections={restSections} images={images} camera={story.camera} context={imageContext} patterns={highlightPatterns} />,
+  };
 
   return (
     <article className="mx-auto w-full max-w-6xl px-6 pb-28 pt-24 md:pb-32 md:pt-28">
@@ -467,7 +532,11 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">The Story</span>
             </div>
           </Reveal>
-          <StorySections sections={sections} images={images} camera={story.camera} context={imageContext} />
+          {restSections.length > 0 ? (
+            <ContinueReading preview={storyNodes.preview}>{storyNodes.rest}</ContinueReading>
+          ) : (
+            storyNodes.preview
+          )}
         </section>
       )}
 
@@ -488,7 +557,7 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
           <Reveal>
             <SectionLabel>Editing</SectionLabel>
             <p className="font-display text-xl leading-relaxed whitespace-pre-wrap text-justify text-pretty text-ink/85 md:text-2xl">
-              {editingStory}
+              <Highlight text={editingStory} patterns={highlightPatterns} />
             </p>
           </Reveal>
         </section>
@@ -498,7 +567,9 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
         <section className="mx-auto mt-24 max-w-2xl md:mt-32">
           <Reveal>
             <SectionLabel>Looking Back</SectionLabel>
-            <p className="text-lg leading-relaxed whitespace-pre-wrap text-pretty text-muted md:text-xl">{conclusion}</p>
+            <p className="text-lg leading-relaxed whitespace-pre-wrap text-justify text-pretty text-muted md:text-xl">
+              <Highlight text={conclusion} patterns={highlightPatterns} />
+            </p>
           </Reveal>
         </section>
       )}

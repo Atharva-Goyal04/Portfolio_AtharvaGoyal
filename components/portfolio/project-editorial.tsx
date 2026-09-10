@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import { ArrowRight, ChevronLeft } from "lucide-react";
 import Photo from "@/components/shared/photo";
 import Reveal from "@/components/shared/reveal";
+import ContinueReading from "@/components/portfolio/continue-reading";
 import { imageInfo } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import {
@@ -473,6 +474,35 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
   const pullQuote = pullQuoteFor(storySections);
   const pullQuoteAfter = pullQuote ? Math.floor(storySections.length / 2) : -1;
 
+  // Surface the first paragraphs, then let the reader continue the story.
+  const PREVIEW_SECTIONS = 2;
+  const previewSections = storySections.slice(0, PREVIEW_SECTIONS);
+  const restSections = storySections.slice(PREVIEW_SECTIONS);
+  const storyNodes = {
+    preview: (
+      <StorySections
+        sections={previewSections}
+        images={images}
+        camera={story.camera}
+        context={imageContext}
+        patterns={highlightPatterns}
+        pullQuote={pullQuoteAfter < PREVIEW_SECTIONS ? pullQuote : undefined}
+        pullQuoteAfter={pullQuoteAfter < PREVIEW_SECTIONS ? pullQuoteAfter : -1}
+      />
+    ),
+    rest: (
+      <StorySections
+        sections={restSections}
+        images={images}
+        camera={story.camera}
+        context={imageContext}
+        patterns={highlightPatterns}
+        pullQuote={pullQuoteAfter >= PREVIEW_SECTIONS ? pullQuote : undefined}
+        pullQuoteAfter={pullQuoteAfter >= PREVIEW_SECTIONS ? pullQuoteAfter - PREVIEW_SECTIONS : -1}
+      />
+    ),
+  };
+
   return (
     <article className="mx-auto w-full max-w-6xl px-6 pb-28 pt-24 md:pb-32 md:pt-28">
       <div className="mb-12 flex items-center justify-between">
@@ -536,16 +566,10 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">The Story</span>
             </div>
           </Reveal>
-          {storySections.length > 0 && (
-            <StorySections
-              sections={storySections}
-              images={images}
-              camera={story.camera}
-              context={imageContext}
-              patterns={highlightPatterns}
-              pullQuote={pullQuote}
-              pullQuoteAfter={pullQuoteAfter}
-            />
+          {restSections.length > 0 ? (
+            <ContinueReading preview={storyNodes.preview}>{storyNodes.rest}</ContinueReading>
+          ) : (
+            storyNodes.preview
           )}
         </section>
       )}

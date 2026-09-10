@@ -383,25 +383,6 @@ function findImageContext(
   return { editorialTitle: hit.editorialTitle || undefined, description: hit.description || undefined };
 }
 
-// Every image file referenced anywhere in the story (with/without extension), so a
-// filename the author mentions in the narrative gets highlighted in gold.
-const collectStoryFiles = (sections: StorySection[], story: ProjectStory): string[] => {
-  const files = new Set<string>();
-  const add = (f: string) => {
-    const base = f.replace(/\.(jpe?g|png|heic|tiff|webp)$/i, "").toLowerCase();
-    if (!base) return;
-    files.add(base);
-    files.add(`${base}.jpg`);
-  };
-  for (const s of sections) {
-    if (s.image) add(s.image);
-    for (const r of s.related ?? []) add(r.file);
-  }
-  for (const ch of story.visualChapters ?? []) for (const img of ch.images ?? []) add(img.file);
-  for (const fav of story.favoriteImages ?? []) add(fav.file);
-  return [...files];
-};
-
 const detailOrder: Array<[key: string, label: string]> = [
   ["projectType", "Type"],
   ["camera", "Camera"],
@@ -426,6 +407,29 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
     description: img.description,
   }));
 
+  // Map an image filename to its editorial title so raw filenames never appear
+  // in the narrative — the title stands in for the "important bit".
+  const titleForFile = new Map<string, string>();
+  const noteTitle = (file: string, title?: string) => {
+    if (!title || !title.trim()) return;
+    const base = file.replace(/\.(jpe?g|png|heic|tiff|webp)$/i, "").toLowerCase();
+    if (base && !titleForFile.has(base)) titleForFile.set(base, title.trim());
+  };
+  for (const c of imageContext) noteTitle(c.file, c.editorialTitle);
+
+  const highlightPatterns = [
+    ...new Set(imageContext.map((c) => c.editorialTitle).filter((t): t is string => Boolean(t && t.trim()))),
+  ].sort((a, b) => b.length - a.length);
+
+  const polishStory = (text: string) => {
+    let out = text;
+    for (const [base, title] of titleForFile) {
+      const re = new RegExp(`\\b${escapeRegExp(base)}(?:\\.(?:jpe?g|png|heic|tiff|webp))?\\b`, "gi");
+      out = out.replace(re, title);
+    }
+    return out.replace(/\s+([.,!?])(?=\s|\s*$)/g, "$1").trim();
+  };
+
   const projects = allProjects();
   const others = projects.filter((p) => !(p.category === category && p.slug === slug));
   const sameCategory = others.filter((p) => p.category === category);
@@ -448,18 +452,9 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
     ]);
   }
 
-  const sections = story.sections ?? [];
-  const editingStory = story.editingStory;
-  const conclusion = story.conclusion ?? story.closingStory;
-
-  const highlightPatterns = [
-    ...new Set([
-      ...imageContext
-        .map((c) => c.editorialTitle)
-        .filter((t): t is string => Boolean(t) && !/^untitled/i.test(t)),
-      ...collectStoryFiles(sections, story),
-    ]),
-  ].sort((a, b) => b.length - a.length);
+  const sections = (story.sections ?? []).map((s) => ({ ...s, text: polishStory(s.text) }));
+  const editingStory = polishStory(story.editingStory ?? "");
+  const conclusion = polishStory(story.conclusion ?? story.closingStory ?? "");
 
   const PREVIEW_SECTIONS = 2;
   const previewSections = sections.slice(0, PREVIEW_SECTIONS);

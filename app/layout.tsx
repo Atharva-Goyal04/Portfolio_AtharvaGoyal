@@ -86,7 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("lumencode-theme")||"light";document.documentElement.classList.toggle("dark",t==="dark")}catch(e){}`,
+            __html: `try{var t=localStorage.getItem("lumencode-theme")||"dark";document.documentElement.classList.toggle("dark",t==="dark")}catch(e){}`,
           }}
         />
         <script

@@ -25,7 +25,7 @@ export interface ProjectOverlay {
  */
 export const PROJECT_META: Record<string, ProjectOverlay> = {
   "side-projects/summer-picnic": {
-    title: "Summer",
+    title: "Summer Picnic",
     description: "a collection of photographs from summer",
     type: "collection",
   },

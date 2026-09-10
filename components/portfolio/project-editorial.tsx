@@ -16,9 +16,18 @@ import {
   type StorySection,
 } from "@/lib/projects";
 
-// Shared aspect ratio for images shown side by side in a pair so that
-// adjacent photos render at equal dimensions and captions stay aligned.
-const PAIR_ASPECT_RATIO = 3 / 4;
+// Normalize a filename (with or without path/extension) to its lowercase base
+// so exact matching can never collide on substrings (e.g. `-1` vs `-10`).
+function fileBase(file: string): string {
+  return (file.split("/").pop() ?? file).replace(/\.[a-z0-9]+$/i, "").toLowerCase();
+}
+
+// Matches an image exactly by filename (case/path-insensitive) so a reference
+// like `portrait-eclectic-1` can never resolve to `portrait-eclectic-10.jpg`.
+function srcFor(file: string, images: { src?: string }[]): string {
+  const want = fileBase(file);
+  return images.find((img) => fileBase(img.src ?? "") === want)?.src ?? "";
+}
 
 interface ProjectEditorialProps {
   story: ProjectStory;
@@ -42,11 +51,6 @@ type Block =
   | { type: "two-up"; a: ResolvedImage; b: ResolvedImage }
   | { type: "offset"; a: ResolvedImage; b: ResolvedImage }
   | { type: "detail-pair"; a: ResolvedImage; b: ResolvedImage };
-
-function srcFor(file: string, images: { src?: string }[]): string {
-  const found = images.find((img) => img.src?.includes(file));
-  return found?.src ?? "";
-}
 
 function resolve(image: StoryImage, images: { src?: string }[], overrides?: { layout?: EditorialLayout }): ResolvedImage {
   return {
@@ -189,8 +193,8 @@ function ChapterBlocks({ chapter, images, chapterIndex, camera }: { chapter: Sto
           return (
             <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05}>
               <div className="grid gap-10 sm:grid-cols-2 sm:items-start sm:gap-8">
-                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} ratio={PAIR_ASPECT_RATIO} camera={camera} />
-                <Figure image={block.b} ratio={PAIR_ASPECT_RATIO} camera={camera} />
+                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} camera={camera} />
+                <Figure image={block.b} camera={camera} />
               </div>
             </Reveal>
           );
@@ -199,8 +203,8 @@ function ChapterBlocks({ chapter, images, chapterIndex, camera }: { chapter: Sto
           return (
             <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05}>
               <div className="grid gap-10 sm:grid-cols-12 sm:items-start sm:gap-8">
-                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} className="sm:col-span-7" ratio={PAIR_ASPECT_RATIO} camera={camera} />
-                <Figure image={block.b} className="sm:col-span-5" ratio={PAIR_ASPECT_RATIO} camera={camera} />
+                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} className="sm:col-span-7" camera={camera} />
+                <Figure image={block.b} className="sm:col-span-5" camera={camera} />
               </div>
             </Reveal>
           );
@@ -209,8 +213,8 @@ function ChapterBlocks({ chapter, images, chapterIndex, camera }: { chapter: Sto
           return (
             <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05}>
               <div className="mx-auto grid max-w-3xl gap-10 sm:grid-cols-2 sm:items-start sm:gap-8">
-                <Figure image={block.a} ratio={PAIR_ASPECT_RATIO} camera={camera} />
-                <Figure image={block.b} ratio={PAIR_ASPECT_RATIO} camera={camera} />
+                <Figure image={block.a} camera={camera} />
+                <Figure image={block.b} camera={camera} />
               </div>
             </Reveal>
           );
@@ -222,7 +226,7 @@ function ChapterBlocks({ chapter, images, chapterIndex, camera }: { chapter: Sto
               ? "mx-auto max-w-2xl"
               : block.width === "wide"
                 ? "mx-auto max-w-4xl"
-                : "";
+                : "mx-auto max-w-5xl";
         return (
           <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05} className={width}>
             <Figure image={block.image} eager={chapterIndex === 0 && i === 0} camera={camera} />
@@ -313,6 +317,7 @@ function StorySections({
   patterns,
   pullQuote,
   pullQuoteAfter,
+  skipFiles,
 }: {
   sections: StorySection[];
   images: { src?: string }[];
@@ -321,6 +326,7 @@ function StorySections({
   patterns: string[];
   pullQuote?: string;
   pullQuoteAfter?: number;
+  skipFiles?: Set<string>;
 }) {
   return (
     <div className="space-y-14 md:space-y-20">
@@ -328,6 +334,7 @@ function StorySections({
         .filter((s) => s.text.trim())
         .map((section, i) => {
           const pinnedSrc = section.image ? srcFor(section.image, images) : "";
+          const pinnedVisible = Boolean(pinnedSrc) && !(skipFiles?.has(fileBase(pinnedSrc)));
           const pinned = section.image ? findImageContext(section.image, context) : undefined;
           return (
             <div key={i} className="space-y-12 md:space-y-16">
@@ -336,16 +343,20 @@ function StorySections({
                   <Highlight text={section.text} patterns={patterns} />
                 </p>
               </Reveal>
-              {pinnedSrc && (
+              {pinnedVisible && (
                 <Reveal delay={0.05}>
                   <StoryFigure src={pinnedSrc} title={pinned?.editorialTitle} camera={camera} />
                 </Reveal>
               )}
-              {section.related?.map((r, j) => (
-                <Reveal key={j} delay={0.08}>
-                  <RelatedFigure related={r} images={images} camera={camera} />
-                </Reveal>
-              ))}
+              {section.related?.map((r, j) => {
+                const relatedSrc = srcFor(r.file, images);
+                if (!relatedSrc || skipFiles?.has(fileBase(relatedSrc))) return null;
+                return (
+                  <Reveal key={j} delay={0.08}>
+                    <RelatedFigure related={r} images={images} camera={camera} />
+                  </Reveal>
+                );
+              })}
               {pullQuote && i === pullQuoteAfter && <PullQuote quote={pullQuote} />}
             </div>
           );
@@ -384,7 +395,7 @@ function findImageContext(
   file: string,
   all: Array<{ file: string; editorialTitle?: string; description?: string }>,
 ): { editorialTitle?: string; description?: string } | undefined {
-  const hit = all.find((img) => img.file.includes(file) || file.includes(img.file));
+  const hit = all.find((img) => fileBase(img.file) === fileBase(file));
   if (!hit) return undefined;
   return { editorialTitle: hit.editorialTitle || undefined, description: hit.description || undefined };
 }
@@ -412,6 +423,23 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
     editorialTitle: img.editorialTitle,
     description: img.description,
   }));
+
+  // Each image appears exactly once on the page. The visual chapters are the
+  // canonical home for every image they reference; the hero renders its own
+  // cover. Story figures (pinned + related) only render images that are shown
+  // nowhere else, so a photo never repeats lower down the page.
+  const coverKey = fileBase(story.coverImage);
+  const chapterFileBases = new Set<string>();
+  for (const ch of story.visualChapters ?? []) for (const img of ch.images ?? []) chapterFileBases.add(fileBase(img.file));
+  const skipStoryFiles = new Set<string>([coverKey, ...chapterFileBases]);
+
+  // Drop the hero cover from a chapter only when the chapter still has other
+  // images to show; a single-image chapter keeps its image.
+  const chapters = (story.visualChapters ?? []).map((ch) => {
+    if (ch.images.length === 1) return ch;
+    const images = ch.images.filter((img) => fileBase(img.file) !== coverKey);
+    return images.length > 0 ? { ...ch, images } : ch;
+  });
 
   // Every image file referenced in the story — any raw filename the author wrote
   // gets removed from the prose (files are reference, not story content).
@@ -488,6 +516,7 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
         patterns={highlightPatterns}
         pullQuote={pullQuoteAfter < PREVIEW_SECTIONS ? pullQuote : undefined}
         pullQuoteAfter={pullQuoteAfter < PREVIEW_SECTIONS ? pullQuoteAfter : -1}
+        skipFiles={skipStoryFiles}
       />
     ),
     rest: (
@@ -499,6 +528,7 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
         patterns={highlightPatterns}
         pullQuote={pullQuoteAfter >= PREVIEW_SECTIONS ? pullQuote : undefined}
         pullQuoteAfter={pullQuoteAfter >= PREVIEW_SECTIONS ? pullQuoteAfter - PREVIEW_SECTIONS : -1}
+        skipFiles={skipStoryFiles}
       />
     ),
   };
@@ -574,10 +604,10 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
         </section>
       )}
 
-      {story.visualChapters?.length > 0 && (
+      {chapters.length > 0 && (
         <section className="mt-24 md:mt-32">
           <SectionLabel>Visual Chapters</SectionLabel>
-          {story.visualChapters.map((chapter, i) => (
+          {chapters.map((chapter, i) => (
             <div key={chapter.id} className={cn("space-y-14 md:space-y-20", i > 0 && "mt-24 md:mt-32")}>
               <ChapterHeader chapter={chapter} index={i} />
               <ChapterBlocks chapter={chapter} images={images} chapterIndex={i} camera={story.camera} />

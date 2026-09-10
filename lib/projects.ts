@@ -216,13 +216,18 @@ export async function getProjectWithStory(categorySlug: string, projectSlug: str
 
 export function getAllImages(): ImageInfo[] {
   return Object.entries(imageCatalog)
-    .map(([src, info]) => ({ ...info, src }))
+    .map(([src, info]) => {
+      const display = displayCategoryFor(`${info.category}/${info.project}`, info.category, info.label);
+      return { ...info, src, category: display.category, label: display.label };
+    })
     .sort((a, b) => (a.src ?? "").localeCompare(b.src ?? ""));
 }
 
 export function getImagesForProject(categorySlug: string, projectSlug: string): ImageInfo[] {
+  const internal = internalKeyFor(`${categorySlug}/${projectSlug}`);
+  const [internalCat, internalProj] = internal.split("/");
   return Object.entries(imageCatalog)
-    .filter(([, info]) => info.category === categorySlug && info.project === projectSlug)
+    .filter(([, info]) => info.category === internalCat && info.project === internalProj)
     .map(([src, info]) => ({ ...info, src }))
     .sort((a, b) => (a.src ?? "").localeCompare(b.src ?? ""));
 }

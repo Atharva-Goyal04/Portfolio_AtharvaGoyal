@@ -444,13 +444,10 @@ async function uploadPortfolio() {
         }
 
         let dims = { width: 0, height: 0 };
-        if (!refreshOnly) {
-          try {
-            const pmeta = await sharp(preview).metadata();
-            dims = { width: pmeta.width ?? 0, height: pmeta.height ?? 0 };
-          } catch {}
-        } else {
+        try {
           dims = await rotatedDims(filePath);
+        } catch {
+          // leave zero dims
         }
 
         const src = `/images/${catSlug}/${projectSlug}/${file}`;
@@ -500,13 +497,10 @@ async function uploadPortfolio() {
         }
 
         let dims = { width: 0, height: 0 };
-        if (!refreshOnly) {
-          try {
-            const pmeta = await sharp(preview).metadata();
-            dims = { width: pmeta.width ?? 0, height: pmeta.height ?? 0 };
-          } catch {}
-        } else {
+        try {
           dims = await rotatedDims(filePath);
+        } catch {
+          // leave zero dims
         }
 
         const src = `/images/${catSlug}/${projectSlug}/${file}`;

@@ -31,13 +31,21 @@ interface ImageGridProps {
   eager?: number;
   className?: string;
   disableSort?: boolean;
+  columns?: 2 | 3 | 4;
 }
+
+const COLUMN_CLASS: Record<2 | 3 | 4, string> = {
+  2: "grid-cols-2",
+  3: "grid-cols-3",
+  4: "grid-cols-4",
+};
 
 export default function ImageGrid({
   items,
   eager = 6,
   className,
   disableSort = false,
+  columns = 3,
 }: ImageGridProps) {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
 
@@ -57,7 +65,7 @@ export default function ImageGrid({
 
   return (
     <div>
-      <div className="grid grid-cols-3 gap-3 sm:gap-4">
+      <div className={cn("grid gap-3 sm:gap-4", COLUMN_CLASS[columns])}>
         {ordered.map((img, i) => {
           const wide = isLandscape(img.src);
           return (
@@ -76,7 +84,7 @@ export default function ImageGrid({
                 src={img.src}
                 alt={img.subtitle ?? img.title}
                 ratio={wide ? landscapeRatio(img.src) : 3 / 4}
-                sizes="(max-width: 640px) 33vw, 33vw"
+                sizes={{ 2: "50vw", 3: "33vw", 4: "25vw" }[columns]}
                 className="transition-transform duration-700 group-hover:scale-[1.03]"
                 eager={i < eager}
               />

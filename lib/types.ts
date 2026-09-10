@@ -24,6 +24,9 @@ export interface Project {
   category: string;
   categoryLabel: string;
   title: string;
+  description?: string;
+  type?: string;
+  ongoing?: boolean;
   cover: string;
   coverSrc: string;
   imageCount: number;

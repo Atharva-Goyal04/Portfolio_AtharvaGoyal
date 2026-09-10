@@ -45,12 +45,12 @@ const JOURNAL_ENTRIES: JournalEntry[] = [
     slug: "summer-picnic-late-sun",
     title: "Summer Picnic — Late Sun",
     category: "Sessions",
-    cover: "/images/miscellaneous-projects/summer-picnic/miscellaneous-summerpicnic-1.jpg",
+    cover: "/images/side-projects/summer-picnic/miscellaneous-summerpicnic-1.jpg",
     frames: [
-      "/images/miscellaneous-projects/summer-picnic/miscellaneous-summerpicnic-2.jpg",
-      "/images/miscellaneous-projects/summer-picnic/miscellaneous-summerpicnic-3.jpg",
-      "/images/miscellaneous-projects/summer-picnic/miscellaneous-summerpicnic-4.jpg",
-      "/images/miscellaneous-projects/summer-picnic/miscellaneous-summerpicnic-5.jpg",
+      "/images/side-projects/summer-picnic/miscellaneous-summerpicnic-2.jpg",
+      "/images/side-projects/summer-picnic/miscellaneous-summerpicnic-3.jpg",
+      "/images/side-projects/summer-picnic/miscellaneous-summerpicnic-4.jpg",
+      "/images/side-projects/summer-picnic/miscellaneous-summerpicnic-5.jpg",
     ],
     excerpt:
       "Friends, food, and a late-summer sun that didn't want to leave — candid frames from a golden-hour picnic.",

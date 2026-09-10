@@ -8,9 +8,9 @@ const MANIFEST = path.join(ROOT, "src", "data", "image-manifest.json");
 
 async function sourceBuffer() {
   const manifest = JSON.parse(await readFile(MANIFEST, "utf8"));
-  // Use the first image from the manifest as OG background
-  const firstKey = Object.keys(manifest)[0];
-  const url = manifest[firstKey]?.url;
+  // Use a non-featured image from the manifest as OG background
+  const nonFeaturedKey = Object.keys(manifest).find((k) => manifest[k]?.category !== "featured");
+  const url = manifest[nonFeaturedKey]?.url;
   if (url) {
     try {
       const res = await fetch(url);

@@ -5,7 +5,7 @@ import type { ImageInfo } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Photos",
-  description: "All photographs — filter by category or project, or just browse the feed.",
+  description: "All photographs — curated picks first, then browse by category.",
 };
 
 export default function PhotosPage() {

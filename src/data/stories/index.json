@@ -1,56 +1,32 @@
 {
-  "architecture/architecture": {
-    "category": "architecture",
-    "project": "architecture",
-    "title": "",
-    "hasStory": true
-  },
-  "miscellaneous-projects/summer-picnic": {
-    "category": "miscellaneous-projects",
-    "project": "summer-picnic",
-    "title": "",
-    "hasStory": true
-  },
-  "miscellaneous-projects/wallpapers": {
-    "category": "miscellaneous-projects",
-    "project": "wallpapers",
-    "title": "",
-    "hasStory": true
-  },
   "portraits/eclectic-art": {
     "category": "portraits",
     "project": "eclectic-art",
-    "title": "",
+    "title": "Eclectic Art",
     "hasStory": true
   },
   "portraits/halloween-25": {
     "category": "portraits",
     "project": "halloween-25",
-    "title": "",
+    "title": "Halloween '25",
     "hasStory": true
   },
   "portraits/nikon-tour": {
     "category": "portraits",
     "project": "nikon-tour",
-    "title": "",
+    "title": "Nikon Tour '25",
     "hasStory": true
   },
   "portraits/the-quiet-hour": {
     "category": "portraits",
     "project": "the-quiet-hour",
-    "title": "",
+    "title": "The Quiet Hour",
     "hasStory": true
   },
-  "street/color-hunt-green": {
-    "category": "street",
-    "project": "color-hunt-green",
-    "title": "",
-    "hasStory": true
-  },
-  "street/vintage-car-meetup": {
-    "category": "street",
-    "project": "vintage-car-meetup",
-    "title": "",
+  "side-projects/summer-picnic": {
+    "category": "side-projects",
+    "project": "summer-picnic",
+    "title": "Summer",
     "hasStory": true
   }
 }

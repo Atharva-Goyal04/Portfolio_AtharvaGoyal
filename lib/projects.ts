@@ -1,11 +1,21 @@
 import { imageCatalog } from "@/lib/images";
 import type { Project } from "@/lib/types";
 import type { ImageInfo } from "@/lib/types";
-import storiesIndex from "@/src/data/stories/index.json";
+import { STORY_REGISTRY } from "@/src/data/stories/registry";
+import { PROJECT_META } from "@/src/data/project-metadata";
 
 export type { ImageInfo };
 
-const STORY_KEYS = new Set(Object.keys(storiesIndex));
+const STORY_KEYS = new Set(Object.keys(STORY_REGISTRY));
+
+/**
+ * Curated ordering for category chips/filters across the site.
+ * "featured" is a feed-only category (never a /projects card).
+ */
+export const CATEGORY_ORDER = ["featured", "portraits", "street", "architecture", "side-projects"];
+
+/** Categories that render as "Side Projects" (feed + projects page). */
+export const SIDE_CATEGORIES = new Set(["side-projects"]);
 
 export interface StoryChapter {
   id: string;
@@ -96,21 +106,26 @@ export function allProjects(): Project[] {
 
   for (const [src, info] of Object.entries(imageCatalog)) {
     const catSlug = info.category;
+    if (catSlug === "featured") continue; // feed-only category, not a shoot
     const projSlug = info.project;
     const key = `${catSlug}/${projSlug}`;
     const hasStory = STORY_KEYS.has(key);
+    const overlay = PROJECT_META[key];
 
     if (!projMap.has(key)) {
       projMap.set(key, {
         slug: projSlug,
         category: catSlug,
         categoryLabel: info.label,
-        title: info.projectTitle,
+        title: overlay?.title ?? info.projectTitle,
+        description: overlay?.description,
+        type: overlay?.type,
+        ongoing: overlay?.ongoing,
+        date: overlay?.date,
+        location: overlay?.location,
         cover: info.url ?? "",
         coverSrc: src,
         imageCount: 0,
-        date: undefined,
-        location: undefined,
         camera: undefined,
         hasStory,
         storyPath: hasStory ? `../../src/data/stories/${catSlug}/${projSlug}.json` : undefined,
@@ -131,9 +146,10 @@ export function allProjects(): Project[] {
   }
 
   return [...projMap.values()].sort((a, b) => {
-    const catOrder = a.categoryLabel.localeCompare(b.categoryLabel);
-    if (catOrder !== 0) return catOrder;
-    return a.title.localeCompare(b.title);
+    const aCat = CATEGORY_ORDER.indexOf(a.category);
+    const bCat = CATEGORY_ORDER.indexOf(b.category);
+    return (aCat === -1 ? CATEGORY_ORDER.length : aCat) - (bCat === -1 ? CATEGORY_ORDER.length : bCat) ||
+      a.title.localeCompare(b.title);
   });
 }
 

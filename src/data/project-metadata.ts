@@ -29,6 +29,11 @@ export const PROJECT_META: Record<string, ProjectOverlay> = {
     description: "a collection of photographs from summer",
     type: "collection",
   },
+  "side-projects/architecture": {
+    title: "Architecture",
+    description: "shapes, symmetry, and structure through the lens",
+    type: "collection",
+  },
   "side-projects/wallpapers": {
     title: "Wallpaper",
     description: "an ever-growing collection of photographs made to live beyond the portfolio",

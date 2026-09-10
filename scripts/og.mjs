@@ -29,6 +29,12 @@ async function sourceBuffer() {
       continue;
     }
   }
+  // Final fallback: use the about-me portrait
+  try {
+    return await readFile(path.join(ROOT, "public", "about-me.jpeg"));
+  } catch {
+    // ignore
+  }
   throw new Error("No source image found for OG generation");
 }
 const FONT_BODY = "/System/Library/Fonts/Supplemental/Arial Bold.ttf";

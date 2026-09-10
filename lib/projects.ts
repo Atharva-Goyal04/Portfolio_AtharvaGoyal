@@ -12,7 +12,7 @@ const STORY_KEYS = new Set(Object.keys(STORY_REGISTRY));
  * Curated ordering for category chips/filters across the site.
  * "featured" is a feed-only category (never a /projects card).
  */
-export const CATEGORY_ORDER = ["featured", "portraits", "street", "architecture", "side-projects"];
+export const CATEGORY_ORDER = ["featured", "portraits", "street", "side-projects"];
 
 /** Categories that render as "Side Projects" (feed + projects page). */
 export const SIDE_CATEGORIES = new Set(["side-projects"]);

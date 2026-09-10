@@ -19,7 +19,7 @@ const heroImage = projects.find((p) => p.category === "portraits")?.coverSrc ?? 
 const heroThumb =
   projects.filter((p) => p.category === "portraits")[1]?.coverSrc ?? projects[1].coverSrc;
 
-const CATEGORY_ORDER = ["portraits", "street", "architecture", "side-projects"];
+const CATEGORY_ORDER = ["portraits", "street", "side-projects"];
 
 const selected = CATEGORY_ORDER.map((cat) => projects.find((p) => p.category === cat))
   .filter((p) => p !== undefined)

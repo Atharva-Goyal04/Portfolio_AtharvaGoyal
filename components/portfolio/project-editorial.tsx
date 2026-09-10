@@ -130,29 +130,10 @@ function blocksForChapter(chapter: StoryChapter, images: { src?: string }[], cha
   return blocks;
 }
 
-function Caption({
-  title,
-  description,
-  note,
-  storyConnection,
-  src,
-  camera,
-}: {
-  title?: string;
-  description?: string;
-  note?: string;
-  storyConnection?: string;
-  src?: string;
-  camera?: string;
-}) {
+function Caption({ title, src, camera }: { title?: string; src?: string; camera?: string }) {
   return (
     <div className="mt-4 max-w-lg">
       {title && <h3 className="font-display text-lg font-medium tracking-tight text-ink">{title}</h3>}
-      {description && <p className="mt-1 text-sm leading-relaxed text-muted text-pretty">{description}</p>}
-      {storyConnection && (
-        <p className="mt-1 text-xs italic leading-relaxed text-muted/80">{storyConnection}</p>
-      )}
-      {note && <p className="mt-2 text-xs italic leading-relaxed text-muted/80">{note}</p>}
       {src && <ExifLine src={src} camera={camera} />}
     </div>
   );
@@ -188,14 +169,7 @@ function Figure({ image, eager, className, camera }: { image: ResolvedImage; eag
           className="transition-transform duration-700 hover:scale-[1.01]"
         />
       </div>
-      <Caption
-        title={image.editorialTitle}
-        description={image.description}
-        note={image.note}
-        storyConnection={image.storyConnection}
-        src={image.src}
-        camera={camera}
-      />
+      <Caption title={image.editorialTitle} src={image.src} camera={camera} />
     </figure>
   );
 }
@@ -266,7 +240,6 @@ function ChapterHeader({ chapter, index }: { chapter: StoryChapter; index: numbe
       <h2 className="mt-3 font-display text-3xl font-medium tracking-tight text-balance text-ink md:text-4xl">
         {chapter.subtitle ?? chapter.title}
       </h2>
-      {chapter.story && <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted text-pretty md:text-xl">{chapter.story}</p>}
     </header>
   );
 }
@@ -280,7 +253,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function StoryFigure({ src, title, description, connection, camera }: { src: string; title?: string; description?: string; connection?: string; camera?: string }) {
+function StoryFigure({ src, title, camera }: { src: string; title?: string; camera?: string }) {
   const info = imageInfo(src);
   const isPortrait = info ? info.height > info.width : false;
   return (
@@ -288,7 +261,7 @@ function StoryFigure({ src, title, description, connection, camera }: { src: str
       <div className="overflow-hidden rounded-sm bg-surface">
         <Photo src={src} alt={title ?? ""} fit="contain" sizes="(max-width: 1280px) 100vw, 1024px" />
       </div>
-      <Caption title={title} description={description} storyConnection={connection} src={src} camera={camera} />
+      <Caption title={title} src={src} camera={camera} />
     </figure>
   );
 }
@@ -296,7 +269,7 @@ function StoryFigure({ src, title, description, connection, camera }: { src: str
 function RelatedFigure({ related, images, camera }: { related: StoryRelated; images: { src?: string }[]; camera?: string }) {
   const src = srcFor(related.file, images);
   if (!src) return null;
-  return <StoryFigure src={src} title={related.title} description={related.description} connection={related.storyConnection} camera={camera} />;
+  return <StoryFigure src={src} title={related.title} camera={camera} />;
 }
 
 function StorySections({
@@ -328,12 +301,7 @@ function StorySections({
               </Reveal>
               {pinnedSrc && (
                 <Reveal delay={0.05}>
-                  <StoryFigure
-                    src={pinnedSrc}
-                    title={pinned?.editorialTitle}
-                    description={pinned?.description}
-                    camera={camera}
-                  />
+                  <StoryFigure src={pinnedSrc} title={pinned?.editorialTitle} camera={camera} />
                 </Reveal>
               )}
               {section.related?.map((r, j) => (

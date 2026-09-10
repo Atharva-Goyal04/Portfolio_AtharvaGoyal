@@ -64,6 +64,7 @@ export default function ContactForm() {
           id="inquiry"
           name="inquiry"
           required
+          defaultValue=""
           className={inputCls}
         >
           <option value="" disabled>

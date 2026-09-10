@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const TRACKS = ["/audio/audio_01.mp3", "/audio/audio_02.mp3", "/audio/audio_03.mp3", "/audio/audio_04.mp3"];
+const TRACKS = ["/audio/audio_01.mp3", "/audio/audio_02.mp3", "/audio/audio_3.mp3", "/audio/audio_4.mp3", "/audio/audio_5.mp3"];
 
 const PALETTE = ["#8a3b34", "#67b6bd", "#534b27", "#bfce72", "#1b1b1b"];
 

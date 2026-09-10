@@ -5,7 +5,6 @@ import { ArrowRight, Camera, MapPin } from "lucide-react";
 import SectionHeading from "@/components/shared/section-heading";
 import Reveal from "@/components/shared/reveal";
 import { Badge } from "@/components/ui/badge";
-import { imageInfo } from "@/lib/images";
 import { ATHARVA_EMAIL, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -140,7 +139,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="aspect-[3/4] overflow-hidden rounded-2xl">
                 <Image
-                  src={imageInfo("/images/about-me.jpg")?.url ?? "/images/about-me.jpg"}
+                  src="/about-me.jpeg"
                   alt="Atharva Goyal"
                   width={960}
                   height={1280}

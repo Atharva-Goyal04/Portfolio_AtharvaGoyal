@@ -59,7 +59,7 @@ export default function VinylPlayer() {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-30">
+    <div className="absolute bottom-5 right-5">
       <audio
         ref={audioRef}
         src={TRACKS[currentTrack]}

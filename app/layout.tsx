@@ -113,9 +113,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ScrollProgress />
           <Navbar />
           <main>{children}</main>
+          <div id="sticky-controls" className="sticky bottom-0 z-30">
+            <VinylPlayer />
+            <BackToTop />
+          </div>
           <Footer />
-          <VinylPlayer />
-          <BackToTop />
           <Analytics />
           <SpeedInsights />
         </Providers>

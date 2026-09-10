@@ -24,6 +24,7 @@ export interface StoryChapter {
   subtitle?: string;
   description: string;
   images: StoryImage[];
+  story?: string;
 }
 
 export type EditorialLayout = "full" | "large" | "medium" | "two-up" | "offset" | "detail";
@@ -38,6 +39,22 @@ export interface StoryImage {
   favorite?: boolean;
   alsoInWallpapers?: boolean;
   note?: string;
+  storyConnection?: string;
+}
+
+export interface StoryRelated {
+  file: string;
+  title: string;
+  description?: string;
+  storyConnection?: string;
+}
+
+/** A paragraph of the photographer's own narrative, optionally pinned to an image. */
+export interface StorySection {
+  text: string;
+  /** File (with or without extension) referenced near this section. */
+  image?: string;
+  related?: StoryRelated[];
 }
 
 export interface ProjectStory {
@@ -71,6 +88,9 @@ export interface ProjectStory {
     inspiration: string;
     style: string;
   };
+  sections?: StorySection[];
+  editingStory?: string;
+  conclusion?: string;
 }
 
 async function loadStory(categorySlug: string, projectSlug: string): Promise<ProjectStory | null> {

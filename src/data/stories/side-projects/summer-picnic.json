@@ -18,7 +18,8 @@
           "file": "miscellaneous-summerpicnic-7.jpg",
           "editorialTitle": "Framed in Spring",
           "description": "A spring flower photographed through surrounding foliage. The leaves naturally frame the flower and isolate it as the main subject.",
-          "role": "featured"
+          "role": "featured",
+          "storyConnection": "This image should appear alongside or near the section describing the spring flowers and the decision to photograph the flower through the foliage."
         }
       ]
     },
@@ -33,7 +34,8 @@
           "editorialTitle": "Orange in the Grass",
           "description": "A minimal photograph of an orange lying in the green grass. The green and orange create a complementary color contrast.",
           "role": "featured",
-          "alsoInWallpapers": true
+          "alsoInWallpapers": true,
+          "storyConnection": "This image should appear alongside or near the section describing the orange tree and the orange found on the grass."
         }
       ]
     },
@@ -46,8 +48,9 @@
         {
           "file": "miscellaneous-summerpicnic-1.jpg",
           "editorialTitle": "Picnic Moments",
-          "description": "Candid moments from the picnic — cards, fruit, conversation.",
-          "role": "supporting"
+          "description": "Miscellaneous photographs from the Summer Picnic project.",
+          "role": "supporting",
+          "storyConnection": "Use where appropriate to visually support the overall event/story."
         },
         {
           "file": "miscellaneous-summerpicnic-2.jpg",
@@ -84,8 +87,14 @@
   ],
   "closingStory": "Overall, this was a really fun shoot. I went into it wanting to create something with a strong film-inspired look, and this event ended up giving me exactly the kind of environment I needed. I'm really satisfied with how the photographs came together — and, more importantly, with how closely the final result matched the feeling I had in my head when I started.",
   "instagramRefs": [
-    { "title": "FPC Event", "url": "https://www.instagram.com/p/DWPfnGoFFUq/?img_index=1" },
-    { "title": "Project Post", "url": "https://www.instagram.com/p/DaTTnrtDdzv/?img_index=1" }
+    {
+      "title": "FPC Event",
+      "url": "https://www.instagram.com/p/DWPfnGoFFUq/?img_index=1"
+    },
+    {
+      "title": "Project Post",
+      "url": "https://www.instagram.com/p/DaTTnrtDdzv/?img_index=1"
+    }
   ],
   "websitePresentation": "Feel like a visual story rather than a standard photography gallery. When an image is specifically referenced in the story, use that image near the relevant paragraph so the viewer can see the photograph while reading about the creative decision behind it. Use editorial image titles instead of filenames — titles should feel photographic and intentional rather than generic labels like 'Flower' or 'Orange'. Do not invent specific technical details. Story remains primary narrative, images act as visual punctuation. Do not make writing sound like a formal case study — preserve personal, reflective, conversational character.",
   "editing": {
@@ -93,5 +102,37 @@
     "inspiration": "Kodak Ultramax",
     "style": "Warm and vibrant color treatment, slightly hazy film aesthetic"
   },
-  "creativeThemes": ["Finding interesting compositions in ordinary moments", "Using natural elements as frames", "Complementary colors", "Translating a feeling into a visual aesthetic", "Recreating the character of film through digital editing"]
+  "creativeThemes": [
+    "Finding interesting compositions in ordinary moments",
+    "Using natural elements as frames",
+    "Complementary colors",
+    "Translating a feeling into a visual aesthetic",
+    "Recreating the character of film through digital editing"
+  ],
+  "favoriteImages": [],
+  "featuredImages": [],
+  "sections": [
+    {
+      "text": "The Film Photography Club (FPC) hosted an event called \"Pic Nic\"a little pun on \"picnic.\" The idea was simple: just spend some time together, hang out, and enjoy the Secret Garden at ASU. I went during spring break and ended up being the first one there. Not many people showed uponly two or three of usbut honestly, that made the whole thing feel even more intimate and fun."
+    },
+    {
+      "text": "We had a picnic blanket, played cards, brought some fruit, and spent the afternoon taking photographs. Although most people used film cameras, I brought my digital camera with me. The sun was out, the grass was green, and everything around us felt colorful and vibrant. There were also a few props like bubbles and oranges, which ended up becoming some of my favorite little details from the shoot."
+    },
+    {
+      "text": "Since it was spring, there were also a lot of flowers around the garden. One of them caught my eye, and I wanted to photograph it in a way that made it stand out from everything around it. I shot it through the surrounding foliage, using the leaves to naturally frame the flower and make it the main subject of the photograph. I really liked how something as simple as changing the way I looked at the scene could turn it into a much more intentional composition."
+    },
+    {
+      "text": "It was actually my first time in the Secret Garden, and I didn't even know there was an orange tree there. There were oranges scattered around the grass, and I came across one that I thought looked surprisingly good against the green. I photographed it almost like a little still life. The combination of the green grass and the orange immediately stood out to me because of how complementary the colors were. It ended up being one of those simple photographs that I could genuinely see myself using as a wallpaper someday. In fact, that photograph actually ended up in my website's wallpaper section."
+    },
+    {
+      "text": "The whole atmosphere reminded me of a warm, colorful film photograph, which is where the name \"Summer Picnic\" came from. It wasn't necessarily summer, but the way everything looked and felt gave me that feeling."
+    },
+    {
+      "text": "I tried to recreate that aesthetic in Lightroom, and I'm honestly really happy with how the photographs turned out. The final images felt very close to what I had originally imagined when I pictured the Summer Picnic aesthetic."
+    },
+    {
+      "text": "Overall, this was a really fun shoot. I went into it wanting to create something with a strong film-inspired look, and this event ended up giving me exactly the kind of environment I needed. I'm really satisfied with how the photographs came togetherand, more importantly, with how closely the final result matched the feeling I had in my head when I started."
+    }
+  ],
+  "editingStory": "For the editing, I wanted to fully commit to a film aesthetic. I started researching different film stocks and how their colors and tones translated into photographs. I already knew I wanted something vibrant and warm, with a slightly hazy feel inspired by the look of Fujifilm. Eventually, I found myself really liking the look of Kodak Ultramax. I loved how the colors seemed to pop without losing that nostalgic feeling, and it felt like the perfect match for the atmosphere I had in mind."
 }

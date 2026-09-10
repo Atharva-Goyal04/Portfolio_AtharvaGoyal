@@ -17,9 +17,10 @@
         {
           "file": "portrait-halloween25-4.jpg",
           "editorialTitle": "Pulled Into the Frame",
-          "description": "Experimental portrait created by keeping the subject in the frame while zooming the lens during a slow exposure. The resulting radial blur pulls the surrounding light and environment toward the subject, creating a surreal and distorted feeling.",
+          "description": "An experimental portrait created by keeping the subject in the frame while zooming the lens during a slow exposure. The resulting radial blur pulls the surrounding light and environment toward the subject, creating a surreal and distorted feeling.",
           "role": "featured",
-          "featured": true
+          "featured": true,
+          "storyConnection": "Display alongside the section discussing zoom drag and experimentation with movement and blur."
         }
       ]
     },
@@ -32,9 +33,10 @@
         {
           "file": "portrait-halloween25-5.jpg",
           "editorialTitle": "Soul Splitting",
-          "description": "Experimental portrait using slow shutter speed and intentional camera movement, creating motion and blur across the frame.",
+          "description": "An experimental portrait created using a slow shutter speed and intentional camera movement, creating motion and blur across the frame.",
           "role": "featured",
-          "featured": true
+          "featured": true,
+          "storyConnection": "Display alongside the section explaining shutter drag."
         }
       ]
     },
@@ -49,7 +51,8 @@
           "editorialTitle": "Behind the Screen",
           "description": "Ghostface appearing behind a translucent plastic screen with red lighting. The figure seems to creep up behind the main subject, creating an unsettling Halloween atmosphere.",
           "role": "favorite",
-          "favorite": true
+          "favorite": true,
+          "storyConnection": "Display alongside the section describing the translucent-screen set."
         }
       ]
     },
@@ -62,18 +65,93 @@
         {
           "file": "portrait-halloween25-17.jpg",
           "editorialTitle": "Watched",
-          "description": "Portrait from the fake spiderweb set with purple and red lighting. The composition creates an unsettling feeling, almost as if the subject is being secretly watched.",
+          "description": "A portrait from the fake spiderweb set with purple and red lighting. The composition creates an unsettling feeling, almost as if the subject is being secretly watched.",
           "role": "favorite",
-          "favorite": true
+          "favorite": true,
+          "storyConnection": "Display alongside the section describing the spiderweb set and the darker, voyeuristic feeling of the photographs."
         }
       ]
     }
   ],
   "closingStory": "For me, this shoot wasn't just about the photographs. It was the beginning of finding a community where I could experiment, learn, and keep getting better at photography. Since this was my first time meeting the FPC team, the shoot was also a really interesting social experience. I got to network, meet a lot of people with similar interests, and see how other photographers approached the same environment in completely different ways. I went home that day feeling like I'd found a really good photography community. I had experimented with techniques I hadn't really tried before, met a bunch of interesting people, and came away with some photographs that I genuinely loved.",
   "instagramRefs": [
-    { "title": "Portrait Project", "url": "https://www.instagram.com/p/DQTFEMkkWygBnMnWPk_6GIPpdMtKdz8iZ31fgU0/?img_index=1" },
-    { "title": "Landscape Project", "url": "https://www.instagram.com/p/DQV_oS2jk5bvX35tlDRBP3eQ0M31BjhW4hS_GE0/?img_index=1" }
+    {
+      "title": "Portrait Project",
+      "url": "https://www.instagram.com/p/DQTFEMkkWygBnMnWPk_6GIPpdMtKdz8iZ31fgU0/?img_index=1"
+    },
+    {
+      "title": "Landscape Project",
+      "url": "https://www.instagram.com/p/DQV_oS2jk5bvX35tlDRBP3eQ0M31BjhW4hS_GE0/?img_index=1"
+    }
   ],
   "websitePresentation": "Treat as one of the early experiments with photography. Narrative should communicate: 1) First shoot with FPC, 2) Used freedom to experiment with techniques (shutter drag, zoom drag), 3) Experience introduced to a photography community that encouraged continued creation. Do not make it sound like a formal corporate case study. Preserve personal and reflective tone. Ending should emphasize value was not only photographs but beginning of creative community and willingness to experiment. Display images near relevant story sections: 'Soul Splitting' near shutter drag discussion, 'Pulled Into the Frame' near zoom drag, 'Behind the Screen' near translucent screen discussion, 'Watched' near spiderweb set discussion. Favorite images get stronger visual emphasis. Use editorial titles, not raw filenames. Do not invent technical details. Feel experimental, atmospheric, slightly unsettling, playful — not polished or commercial. Image titles should describe feeling/visual idea/creative intention, not just identify subject.",
-  "creativeThemes": ["Experimentation", "Motion and blur", "Unconventional portraiture", "Creating atmosphere through lighting", "Exploring darker visual styles", "Learning through experimentation", "Finding a photography community", "Spontaneous creative collaboration"]
+  "creativeThemes": [
+    "Experimentation",
+    "Motion and blur",
+    "Unconventional portraiture",
+    "Creating atmosphere through lighting",
+    "Exploring darker visual styles",
+    "Learning through experimentation",
+    "Finding a photography community",
+    "Spontaneous creative collaboration"
+  ],
+  "favoriteImages": [],
+  "featuredImages": [],
+  "sections": [
+    {
+      "text": "This was my first shoot with the Film Photography Club (FPC), and it happened around Halloween. If you remember the Eclectic Art shoot I did with TFC, that was around the same time, so I was still pretty new to the whole photography thing. But this shoot felt very different. Instead of being focused on a specific, directed vision, it was much more experimental and hobby-focused, which gave me a lot more freedom to play around."
+    },
+    {
+      "text": "FPC rented out a studio in Phoenix called Wilson Camera for the event. There were multiple sets, models, and a lot of photographers, and since it was a club event, there were quite a few people there. Most of the photographers were film photographers, but I still only had my Sony A3000, so I brought that along and made the most of it."
+    },
+    {
+      "text": "The setup was pretty relaxed. The models were already in their Halloween-themed sets, and you could either ask them to pose in a specific way or just photograph them while someone else was directing them. There was a lot happening around the studio, so I mostly walked around, watched what other people were doing, and tried to find interesting moments and compositions of my own."
+    },
+    {
+      "text": "Since I wasn't tied to a specific direction, I used the shoot as an opportunity to experiment with techniques I had seen online. One of the main techniques I tried was shutter drag. The basic idea is to slow down the shutter speed and intentionally move the camera or the subject during the exposure, creating motion and blur in the photograph.",
+      "related": [
+        {
+          "file": "portrait-halloween25-5",
+          "title": "Soul Splitting",
+          "description": "An experimental portrait created using a slow shutter speed and intentional camera movement, creating motion and blur across the frame.",
+          "storyConnection": "Display alongside the section explaining shutter drag."
+        }
+      ]
+    },
+    {
+      "text": "It can sometimes be confused with long exposure, but I think of them a little differently. With a typical long exposure, the camera is usually kept still while the subject or environment moves. With shutter drag, the movement of the camera itself can become part of the photograph."
+    },
+    {
+      "text": "I also experimented with zoom drag, where instead of physically moving the camera, I kept everything relatively still and zoomed the lens during the exposure. This creates a kind of magnifying or radial blur effect. Since this technique relies on changing the focal length during the exposure, it only really works with a zoom lens rather than a prime.",
+      "related": [
+        {
+          "file": "portrait-halloween25-4",
+          "title": "Pulled Into the Frame",
+          "description": "An experimental portrait created by keeping the subject in the frame while zooming the lens during a slow exposure. The resulting radial blur pulls the surrounding light and environment toward the subject, creating a surreal and distorted feeling.",
+          "storyConnection": "Display alongside the section discussing zoom drag and experimentation with movement and blur."
+        }
+      ]
+    },
+    {
+      "text": "So throughout the shoot, I tried pretty much everything: regular photographs, shutter drag, and zoom drag. It was honestly just fun to experiment and see what I could make."
+    },
+    {
+      "text": "The studio had around three main sets, and each one had a completely different atmosphere."
+    },
+    {
+      "text": "One set had a shutter and green lighting. Another used a translucent plastic screen, where you could see the models through it when they stood close enough. One of my favorite photographs from the entire shoot came from this set. In \"Behind the Screen,\" you can see Ghostface appearing behind the translucent screen, with red lighting adding to the atmosphere. I really like how creepy the photograph feels, especially with Ghostface almost seeming to sneak up behind the main subject. It felt very Halloween without needing to be overly obvious about it."
+    },
+    {
+      "text": "The third set was made up of fake spiderwebs with purple and red lighting. I really liked the photographs from this setup too because they gave me a completely different feeling. One of the photographs, \"Watched,\" almost feels like I'm spying on the subject. There's something slightly unsettling about the composition, almost like I'm looking at the scene from the perspective of a stalker or a serial killer. That made it fit perfectly with the darker side of the Halloween theme."
+    },
+    {
+      "text": "Since this was my first time meeting the FPC team, the shoot was also a really interesting social experience for me. I got to network, meet a lot of people with similar interests, and see how other photographers approached the same environment in completely different ways."
+    },
+    {
+      "text": "I went home that day feeling like I'd found a really good photography community. I had experimented with techniques I hadn't really tried before, met a bunch of interesting people, and came away with some photographs that I genuinely loved."
+    },
+    {
+      "text": "For me, this shoot wasn't just about the photographs. It was the beginning of finding a community where I could experiment, learn, and keep getting better at photography."
+    }
+  ]
 }

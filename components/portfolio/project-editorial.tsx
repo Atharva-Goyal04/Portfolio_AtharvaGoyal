@@ -2,15 +2,16 @@ import Link from "next/link";
 import { ArrowRight, ChevronLeft } from "lucide-react";
 import Photo from "@/components/shared/photo";
 import Reveal from "@/components/shared/reveal";
+import { imageInfo } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import {
   allProjects,
-  getImagesForProject,
-  getProjectStory,
   type EditorialLayout,
   type ProjectStory,
   type StoryChapter,
   type StoryImage,
+  type StoryRelated,
+  type StorySection,
 } from "@/lib/projects";
 
 interface ProjectEditorialProps {
@@ -26,6 +27,7 @@ interface ResolvedImage {
   editorialTitle: string;
   description: string;
   note?: string;
+  storyConnection?: string;
   layout: EditorialLayout;
 }
 
@@ -46,6 +48,7 @@ function resolve(image: StoryImage, images: { src?: string }[], overrides?: { la
     editorialTitle: image.editorialTitle,
     description: image.description,
     note: image.note,
+    storyConnection: image.storyConnection,
     layout: overrides?.layout ?? image.layout ?? "large",
   };
 }
@@ -125,17 +128,53 @@ function blocksForChapter(chapter: StoryChapter, images: { src?: string }[], cha
   return blocks;
 }
 
-function Caption({ title, description, note }: { title: string; description: string; note?: string }) {
+function Caption({
+  title,
+  description,
+  note,
+  storyConnection,
+  src,
+  camera,
+}: {
+  title?: string;
+  description?: string;
+  note?: string;
+  storyConnection?: string;
+  src?: string;
+  camera?: string;
+}) {
   return (
     <div className="mt-4 max-w-lg">
       {title && <h3 className="font-display text-lg font-medium tracking-tight text-ink">{title}</h3>}
       {description && <p className="mt-1 text-sm leading-relaxed text-muted text-pretty">{description}</p>}
+      {storyConnection && (
+        <p className="mt-1 text-xs italic leading-relaxed text-muted/80">{storyConnection}</p>
+      )}
       {note && <p className="mt-2 text-xs italic leading-relaxed text-muted/80">{note}</p>}
+      {src && <ExifLine src={src} camera={camera} />}
     </div>
   );
 }
 
-function Figure({ image, eager, className }: { image: ResolvedImage; eager?: boolean; className?: string }) {
+function ExifLine({ src, camera }: { src: string; camera?: string }) {
+  const info = imageInfo(src);
+  if (!info) return null;
+  const parts: string[] = [];
+  if (info.shutterSpeed) parts.push(info.shutterSpeed);
+  if (info.aperture) parts.push(info.aperture);
+  if (info.iso && info.iso !== "0" && info.iso !== "150") parts.push(`ISO ${info.iso}`);
+  if (info.focalLength) parts.push(info.focalLength);
+  if (info.lens && info.lens !== "Not specified") parts.push(info.lens);
+  if (info.camera && info.camera !== camera) parts.push(info.camera);
+  if (parts.length === 0) return null;
+  return (
+    <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted/60">
+      {parts.join(" · ")}
+    </p>
+  );
+}
+
+function Figure({ image, eager, className, camera }: { image: ResolvedImage; eager?: boolean; className?: string; camera?: string }) {
   return (
     <figure className={className}>
       <div className="overflow-hidden rounded-sm">
@@ -147,12 +186,19 @@ function Figure({ image, eager, className }: { image: ResolvedImage; eager?: boo
           className="transition-transform duration-700 hover:scale-[1.01]"
         />
       </div>
-      <Caption title={image.editorialTitle} description={image.description} note={image.note} />
+      <Caption
+        title={image.editorialTitle}
+        description={image.description}
+        note={image.note}
+        storyConnection={image.storyConnection}
+        src={image.src}
+        camera={camera}
+      />
     </figure>
   );
 }
 
-function ChapterBlocks({ chapter, images, chapterIndex }: { chapter: StoryChapter; images: { src?: string }[]; chapterIndex: number }) {
+function ChapterBlocks({ chapter, images, chapterIndex, camera }: { chapter: StoryChapter; images: { src?: string }[]; chapterIndex: number; camera?: string }) {
   const blocks = blocksForChapter(chapter, images, chapterIndex);
 
   return (
@@ -162,8 +208,8 @@ function ChapterBlocks({ chapter, images, chapterIndex }: { chapter: StoryChapte
           return (
             <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05}>
               <div className="grid gap-10 sm:grid-cols-2 sm:items-start sm:gap-8">
-                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} />
-                <Figure image={block.b} className={cn("sm:mt-12")} />
+                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} camera={camera} />
+                <Figure image={block.b} className={cn("sm:mt-12")} camera={camera} />
               </div>
             </Reveal>
           );
@@ -172,8 +218,8 @@ function ChapterBlocks({ chapter, images, chapterIndex }: { chapter: StoryChapte
           return (
             <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05}>
               <div className="grid gap-10 sm:grid-cols-12 sm:items-start sm:gap-8">
-                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} className="sm:col-span-7" />
-                <Figure image={block.b} className="mt-0 sm:col-span-5 sm:mt-14" />
+                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} className="sm:col-span-7" camera={camera} />
+                <Figure image={block.b} className="mt-0 sm:col-span-5 sm:mt-14" camera={camera} />
               </div>
             </Reveal>
           );
@@ -182,8 +228,8 @@ function ChapterBlocks({ chapter, images, chapterIndex }: { chapter: StoryChapte
           return (
             <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05}>
               <div className="mx-auto grid max-w-3xl gap-10 sm:grid-cols-2 sm:items-start sm:gap-8">
-                <Figure image={block.a} />
-                <Figure image={block.b} className="sm:mt-10" />
+                <Figure image={block.a} camera={camera} />
+                <Figure image={block.b} className="sm:mt-10" camera={camera} />
               </div>
             </Reveal>
           );
@@ -198,7 +244,7 @@ function ChapterBlocks({ chapter, images, chapterIndex }: { chapter: StoryChapte
                 : "";
         return (
           <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05} className={width}>
-            <Figure image={block.image} eager={chapterIndex === 0 && i === 0} />
+            <Figure image={block.image} eager={chapterIndex === 0 && i === 0} camera={camera} />
           </Reveal>
         );
       })}
@@ -218,127 +264,241 @@ function ChapterHeader({ chapter, index }: { chapter: StoryChapter; index: numbe
       <h2 className="mt-3 font-display text-3xl font-medium tracking-tight text-balance text-ink md:text-4xl">
         {chapter.subtitle ?? chapter.title}
       </h2>
+      {chapter.story && <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted text-pretty md:text-xl">{chapter.story}</p>}
     </header>
   );
 }
 
-export default async function ProjectEditorial({ story, images, categoryLabel, category, slug }: ProjectEditorialProps) {
-  const heroSrc =
-    srcFor(story.coverImage, images) || images.find((img) => img.src)?.src || "";
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-10 flex items-center gap-4 md:mb-12">
+      <span className="h-px w-10 bg-brand/60" />
+      <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">{children}</span>
+    </div>
+  );
+}
+
+function StoryFigure({ src, title, description, connection, camera }: { src: string; title?: string; description?: string; connection?: string; camera?: string }) {
+  const info = imageInfo(src);
+  const isPortrait = info ? info.height > info.width : false;
+  return (
+    <figure className={cn("mx-auto", isPortrait ? "max-w-2xl" : "max-w-4xl")}>
+      <div className="overflow-hidden rounded-sm bg-surface">
+        <Photo src={src} alt={title ?? ""} fit="contain" sizes="(max-width: 1280px) 100vw, 1024px" />
+      </div>
+      <Caption title={title} description={description} storyConnection={connection} src={src} camera={camera} />
+    </figure>
+  );
+}
+
+function RelatedFigure({ related, images, camera }: { related: StoryRelated; images: { src?: string }[]; camera?: string }) {
+  const src = srcFor(related.file, images);
+  if (!src) return null;
+  return <StoryFigure src={src} title={related.title} description={related.description} connection={related.storyConnection} camera={camera} />;
+}
+
+function StorySections({
+  sections,
+  images,
+  camera,
+  context,
+}: {
+  sections: StorySection[];
+  images: { src?: string }[];
+  camera?: string;
+  context: Array<{ file: string; editorialTitle?: string; description?: string }>;
+}) {
+  return (
+    <div className="space-y-14 md:space-y-20">
+      {sections
+        .filter((s) => s.text.trim())
+        .map((section, i) => {
+          const pinnedSrc = section.image ? srcFor(section.image, images) : "";
+          const pinned = section.image ? findImageContext(section.image, context) : undefined;
+          return (
+            <div key={i} className="space-y-12 md:space-y-16">
+              <Reveal>
+                <p className="mx-auto max-w-2xl text-lg leading-relaxed whitespace-pre-wrap text-pretty text-ink/85 md:text-xl">
+                  {section.text}
+                </p>
+              </Reveal>
+              {pinnedSrc && (
+                <Reveal delay={0.05}>
+                  <StoryFigure
+                    src={pinnedSrc}
+                    title={pinned?.editorialTitle}
+                    description={pinned?.description}
+                    camera={camera}
+                  />
+                </Reveal>
+              )}
+              {section.related?.map((r, j) => (
+                <Reveal key={j} delay={0.08}>
+                  <RelatedFigure related={r} images={images} camera={camera} />
+                </Reveal>
+              ))}
+            </div>
+          );
+        })}
+    </div>
+  );
+}
+
+// Find editorial title/description for a pinned story image across chapters + favorites.
+function findImageContext(
+  file: string,
+  all: Array<{ file: string; editorialTitle?: string; description?: string }>,
+): { editorialTitle?: string; description?: string } | undefined {
+  const hit = all.find((img) => img.file.includes(file) || file.includes(img.file));
+  if (!hit) return undefined;
+  return { editorialTitle: hit.editorialTitle || undefined, description: hit.description || undefined };
+}
+
+const detailOrder: Array<[key: string, label: string]> = [
+  ["projectType", "Type"],
+  ["camera", "Camera"],
+  ["cameraNote", "Camera Note"],
+  ["lens", "Lens"],
+  ["flash", "Lighting"],
+  ["location", "Location"],
+  ["time", "Season"],
+];
+
+export default function ProjectEditorial({ story, images, categoryLabel, category, slug }: ProjectEditorialProps) {
+  const heroSrc = srcFor(story.coverImage, images) || images.find((img) => img.src)?.src || "";
+  const heroInfo = imageInfo(heroSrc);
+  const isPortraitHero = heroInfo ? heroInfo.height > heroInfo.width : false;
+
+  const imageContext = [
+    ...(story.visualChapters ?? []).flatMap((ch) => ch.images),
+    ...(story.favoriteImages ?? []),
+  ].map((img) => ({
+    file: img.file,
+    editorialTitle: img.editorialTitle,
+    description: img.description,
+  }));
 
   const projects = allProjects();
-  const currentIndex = projects.findIndex((p) => p.category === category && p.slug === slug);
-  const nextProject = projects[(currentIndex + 1) % projects.length];
-  const nextImages = getImagesForProject(nextProject.category, nextProject.slug);
-  let nextCoverSrc = nextImages[0]?.src ?? "";
-  const nextStory = await getProjectStory(nextProject.category, nextProject.slug);
-  if (nextStory?.coverImage) {
-    nextCoverSrc = srcFor(nextStory.coverImage, nextImages) || nextCoverSrc;
-  }
+  const others = projects.filter((p) => !(p.category === category && p.slug === slug));
+  const sameCategory = others.filter((p) => p.category === category);
+  const explore = [...sameCategory, ...others.filter((p) => p.category !== category)].slice(0, 3);
 
   const metaLine = [story.time, story.location].filter(Boolean).join(" · ");
+
   const detailRows: Array<[string, string]> = [];
-  if (story.camera) detailRows.push(["camera", story.camera]);
-  if (story.lens && story.lens !== "Not specified") detailRows.push(["lens", story.lens]);
-  if (story.flash) detailRows.push(["lighting", story.flash]);
-  if (story.lightingSetup?.length) detailRows.push(["setup", story.lightingSetup.map((l) => `${l.role} — ${l.detail}`).join(" · ")]);
-  if (story.location) detailRows.push(["location", story.location]);
-  if (story.time) detailRows.push(["season", story.time]);
+  for (const [key, label] of detailOrder) {
+    const value = story[key as keyof ProjectStory];
+    if (typeof value === "string" && value && value !== "Not specified") detailRows.push([label, value]);
+  }
+  if (story.lightingSetup?.length) {
+    detailRows.push(["Setup", story.lightingSetup.map((l) => `${l.role} — ${l.detail}`).join(" · ")]);
+  }
   if (story.outfits && Object.keys(story.outfits).length) {
-    detailRows.push(["outfits", Object.entries(story.outfits).map(([k, v]) => `${k}: ${v.join(", ")}`).join(" · ")]);
+    detailRows.push([
+      "Outfits",
+      Object.entries(story.outfits).map(([k, v]) => `${k}: ${v.join(", ")}`).join(" · "),
+    ]);
   }
 
+  const sections = story.sections ?? [];
+  const editingStory = story.editingStory;
+  const conclusion = story.conclusion ?? story.closingStory;
+
   return (
-    <article className="mx-auto w-full max-w-5xl px-6 pb-28 pt-24 md:pb-32 md:pt-32">
-      <div className="mb-14 flex items-center justify-between">
+    <article className="mx-auto w-full max-w-6xl px-6 pb-28 pt-24 md:pb-32 md:pt-28">
+      <div className="mb-12 flex items-center justify-between">
         <Link
           href="/projects"
           className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-brand"
         >
           <ChevronLeft className="h-4 w-4" /> Projects
         </Link>
-        <Link
-          href={`/projects/${nextProject.category}/${nextProject.slug}`}
-          className="hidden items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-brand sm:inline-flex"
-        >
-          Next Project <ArrowRight className="h-4 w-4" />
-        </Link>
       </div>
 
       <header>
-        <figure className="mx-auto w-full max-w-[min(56rem,calc(80svh*0.75))]">
-          <Photo src={heroSrc} alt={story.projectTitle} eager fit="contain" sizes="(max-width: 1280px) 90vw, 896px" />
-        </figure>
-        <div className="mx-auto mt-10 max-w-3xl text-center">
-          <div className="flex flex-col items-center gap-3">
-            <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">{categoryLabel}</span>
-            <h1 className="font-display text-4xl font-medium tracking-tight text-balance text-ink md:text-6xl">
-              {story.projectTitle}
-            </h1>
-            <p className="font-mono text-xs uppercase tracking-wider text-muted">{metaLine}</p>
-            {story.tagline && (
-              <p className="mt-2 max-w-xl text-base leading-relaxed text-muted text-pretty">{story.tagline}</p>
-            )}
-          </div>
-        </div>
-      </header>
-
-      <section className="mt-20 md:mt-28">
-        {story.visualChapters.map((chapter, i) => (
-          <div key={chapter.id} className={cn("space-y-14 md:space-y-20", i > 0 && "mt-24 md:mt-32")}>
-            <ChapterHeader chapter={chapter} index={i} />
-            <ChapterBlocks chapter={chapter} images={images} chapterIndex={i} />
-          </div>
-        ))}
-      </section>
-
-      {story.favoriteImages && story.favoriteImages.length > 0 && (
-        <section className="mt-24 md:mt-32">
-          <Reveal>
-            <div className="mb-10 flex items-center gap-4">
-              <span className="h-px w-10 bg-brand/60" />
-              <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">One I keep coming back to</span>
-            </div>
-          </Reveal>
-          <div className="space-y-14 md:space-y-20">
-            {story.favoriteImages.map((fav, i) => (
-              <Reveal key={`${fav.file}-${i}`} delay={i * 0.05}>
-                <figure className="mx-auto max-w-4xl">
-                  <div className="overflow-hidden rounded-sm">
-                    <Photo
-                      src={srcFor(fav.file, images)}
-                      alt={fav.editorialTitle}
-                      sizes="(max-width: 1280px) 100vw, 1024px"
-                      className="transition-transform duration-700 hover:scale-[1.01]"
-                    />
-                  </div>
-                  <Caption title={fav.editorialTitle} description={fav.description} note={fav.note} />
+        {isPortraitHero ? (
+          <div className="grid items-center gap-10 md:grid-cols-12 md:gap-12">
+            <div className="md:col-span-7">
+              <Reveal>
+                <figure className="overflow-hidden rounded-sm bg-surface">
+                  <Photo src={heroSrc} alt={story.projectTitle} eager fit="contain" sizes="(max-width: 1280px) 70vw, 720px" />
                 </figure>
               </Reveal>
-            ))}
+            </div>
+            <div className="md:col-span-5">
+              <Reveal delay={0.08}>
+                <div className="flex flex-col gap-4">
+                  <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">{categoryLabel}</span>
+                  <h1 className="font-display text-4xl font-medium tracking-tight text-balance text-ink md:text-5xl">
+                    {story.projectTitle}
+                  </h1>
+                  <p className="font-mono text-xs uppercase tracking-wider text-muted">{metaLine}</p>
+                  {story.tagline && (
+                    <p className="max-w-md text-base leading-relaxed text-muted text-pretty">{story.tagline}</p>
+                  )}
+                </div>
+              </Reveal>
+            </div>
           </div>
-        </section>
-      )}
-
-      {(story.introduction || story.closingStory) && (
-        <section className="mx-auto mt-24 max-w-2xl md:mt-32">
+        ) : (
           <Reveal>
-            <div className="mb-8 flex items-center gap-4">
+            <figure className="mx-auto w-full max-w-5xl overflow-hidden rounded-sm bg-surface">
+              <Photo src={heroSrc} alt={story.projectTitle} eager fit="contain" sizes="(max-width: 1280px) 90vw, 1024px" />
+            </figure>
+            <div className="mx-auto mt-10 flex max-w-3xl flex-col gap-3">
+              <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">{categoryLabel}</span>
+              <h1 className="font-display text-4xl font-medium tracking-tight text-balance text-ink md:text-6xl">
+                {story.projectTitle}
+              </h1>
+              <p className="font-mono text-xs uppercase tracking-wider text-muted">{metaLine}</p>
+              {story.tagline && (
+                <p className="mt-1 max-w-xl text-base leading-relaxed text-muted text-pretty">{story.tagline}</p>
+              )}
+            </div>
+          </Reveal>
+        )}
+      </header>
+
+      {sections.length > 0 && (
+        <section className="mx-auto mt-20 max-w-4xl md:mt-28">
+          <Reveal>
+            <div className="mb-10 flex items-center gap-4 md:mb-14">
               <span className="h-px w-10 bg-brand/60" />
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">The Story</span>
             </div>
-            <div className="space-y-6">
-              {story.introduction && (
-                <p className="font-display text-lg leading-relaxed whitespace-pre-wrap text-justify text-muted">
-                  {story.introduction}
-                </p>
-              )}
-              {story.closingStory && (
-                <p className="font-display text-xl leading-relaxed whitespace-pre-wrap text-justify text-ink/90 md:text-2xl">
-                  {story.closingStory}
-                </p>
-              )}
+          </Reveal>
+          <StorySections sections={sections} images={images} camera={story.camera} context={imageContext} />
+        </section>
+      )}
+
+      {story.visualChapters?.length > 0 && (
+        <section className="mt-24 md:mt-32">
+          <SectionLabel>Visual Chapters</SectionLabel>
+          {story.visualChapters.map((chapter, i) => (
+            <div key={chapter.id} className={cn("space-y-14 md:space-y-20", i > 0 && "mt-24 md:mt-32")}>
+              <ChapterHeader chapter={chapter} index={i} />
+              <ChapterBlocks chapter={chapter} images={images} chapterIndex={i} camera={story.camera} />
             </div>
+          ))}
+        </section>
+      )}
+
+      {editingStory && (
+        <section className="mx-auto mt-24 max-w-2xl md:mt-32">
+          <Reveal>
+            <SectionLabel>Editing</SectionLabel>
+            <p className="font-display text-xl leading-relaxed whitespace-pre-wrap text-justify text-pretty text-ink/85 md:text-2xl">
+              {editingStory}
+            </p>
+          </Reveal>
+        </section>
+      )}
+
+      {conclusion && (
+        <section className="mx-auto mt-24 max-w-2xl md:mt-32">
+          <Reveal>
+            <SectionLabel>Looking Back</SectionLabel>
+            <p className="text-lg leading-relaxed whitespace-pre-wrap text-pretty text-muted md:text-xl">{conclusion}</p>
           </Reveal>
         </section>
       )}
@@ -346,7 +506,7 @@ export default async function ProjectEditorial({ story, images, categoryLabel, c
       {detailRows.length > 0 && (
         <section className="mx-auto mt-24 max-w-2xl md:mt-32">
           <div className="border-t border-line pt-10">
-            <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">The Details</span>
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">Project Details</span>
             <dl className="mt-8 grid gap-x-10 gap-y-7 sm:grid-cols-2">
               {detailRows.map(([label, value]) => (
                 <div key={label}>
@@ -359,37 +519,49 @@ export default async function ProjectEditorial({ story, images, categoryLabel, c
         </section>
       )}
 
-      <Link
-        href={`/projects/${nextProject.category}/${nextProject.slug}`}
-        className="group mt-24 block md:mt-32"
-      >
-        <div className="mb-8 border-t border-line pt-10">
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">Next Project</span>
-        </div>
-        <figure className="max-w-sm sm:max-w-xs">
-          <div className="overflow-hidden rounded-sm">
-            <Photo
-              src={nextCoverSrc}
-              alt={nextProject.title}
-              sizes="(max-width: 640px) 90vw, 384px"
-              className="transition-transform duration-700 group-hover:scale-[1.01]"
-            />
+      {explore.length > 0 && (
+        <section className="mt-24 md:mt-32">
+          <div className="mb-10 border-t border-line pt-10">
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">Explore Other Projects</span>
           </div>
-          <figcaption className="mt-4 flex items-end justify-between gap-4">
-            <span>
-              <span className="block font-mono text-[10px] uppercase tracking-[0.25em] text-muted/70">
-                {nextProject.categoryLabel}
-              </span>
-              <span className="mt-1 block font-display text-2xl font-medium tracking-tight text-ink">
-                {nextProject.title}
-              </span>
-            </span>
-            <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-brand">
-              View <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </span>
-          </figcaption>
-        </figure>
-      </Link>
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {explore.map((proj, i) => (
+              <Link
+                key={`${proj.category}/${proj.slug}`}
+                href={`/projects/${proj.category}/${proj.slug}`}
+                className="group block"
+              >
+                <Reveal delay={i * 0.06}>
+                  <figure>
+                    <div className="overflow-hidden rounded-sm bg-surface">
+                      <Photo
+                        src={proj.coverSrc || proj.cover}
+                        alt={proj.title}
+                        ratio={4 / 5}
+                        sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 320px"
+                        className="transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                    <figcaption className="mt-4 flex items-end justify-between gap-4">
+                      <span>
+                        <span className="block font-mono text-[10px] uppercase tracking-[0.25em] text-muted/70">
+                          {proj.categoryLabel}
+                        </span>
+                        <span className="mt-1 block font-display text-lg font-medium tracking-tight text-ink">
+                          {proj.title}
+                        </span>
+                      </span>
+                      <span className="inline-flex shrink-0 items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-brand">
+                        View <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                      </span>
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </article>
   );
 }

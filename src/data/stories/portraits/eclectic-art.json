@@ -66,10 +66,66 @@
   ],
   "closingStory": "This shoot ended up being a really educational experience. I got to experience what it was like to work with a creative team and learned a lot about how a shoot actually works: communication, direction, working toward a shared vision, and adapting to what is happening around you. More importantly, it made me want to do more photography. Looking back now, I think this shoot was one of the seeds that eventually grew into everything I've continued doing with photography at ASU. I really loved the experience, and it pushed me to seek out more opportunities to create, collaborate, and eventually become more involved in the photography community myself.",
   "instagramRefs": [
-    { "title": "Black & White", "url": "https://www.instagram.com/p/DTbqDkBj3g1/?img_index=1" },
-    { "title": "Color", "url": "https://www.instagram.com/p/DUpOvKUDT3a/?img_index=1" },
-    { "title": "TFC Shoot", "url": "https://www.instagram.com/p/DQ4wzT2EYTy/?img_index=1" }
+    {
+      "title": "Black & White",
+      "url": "https://www.instagram.com/p/DTbqDkBj3g1/?img_index=1"
+    },
+    {
+      "title": "Color",
+      "url": "https://www.instagram.com/p/DUpOvKUDT3a/?img_index=1"
+    },
+    {
+      "title": "TFC Shoot",
+      "url": "https://www.instagram.com/p/DQ4wzT2EYTy/?img_index=1"
+    }
   ],
   "websitePresentation": "Present as a visual story about one of the early photography experiences at ASU. When discussing black-and-white photography, display 'Eclectic Portrait — Monochrome' (portrait-eclectic-13) near that section. When discussing color/duotone approach, display 'Eclectic Portrait — Color' (portrait-eclectic-14) near that section. The two favorite photographs should be treated as important featured images. Use editorial titles instead of raw filenames. Do not invent technical details. Photographs should support the narrative rather than appear as unrelated gallery. Feel like a photography project case study / visual story, not a formal corporate case study.",
-  "creativeThemes": ["Composition over color", "Finding structure in architecture", "Symmetry and geometry", "Using environment as part of portrait", "Contrast between monochrome and restrained color", "Learning to work within directed creative vision", "Collaboration and communication", "Early experimentation with professional photography"]
+  "creativeThemes": [
+    "Composition over color",
+    "Finding structure in architecture",
+    "Symmetry and geometry",
+    "Using environment as part of portrait",
+    "Contrast between monochrome and restrained color",
+    "Learning to work within directed creative vision",
+    "Collaboration and communication",
+    "Early experimentation with professional photography"
+  ],
+  "favoriteImages": [],
+  "featuredImages": [],
+  "sections": [
+    {
+      "text": "The Fashion Collective at ASU (TFC) invited me to photograph an Eclectic Art shoot at the ASU Art Museum. This was actually one of my first photography gigs ever, so I was pretty excited about the whole thing. I did this during my first semester of freshman year, around September or October, when I was still pretty new to ASU and figuring my way around campus."
+    },
+    {
+      "text": "When they invited me to the ASU Art Museum, I honestly thought it was the one near the Brickyard. Let me tell youit was not."
+    },
+    {
+      "text": "It was a completely different spot, and it ended up being one of the coolest places I'd discovered on campus."
+    },
+    {
+      "text": "The shoot was directed by Kara, and it was my first time working in an environment that felt this professional: there was a director, models, a defined theme, and an overall creative vision that we were working toward. I was still relatively new to photography, so I was excited to see how everything actually came together on a real shoot."
+    },
+    {
+      "text": "We started with a few group photographs and then moved on to individual portraits. The shoot happened around 2 p.m., and the sun was still incredibly bright, so we were all sweating like crazy. Despite that, I was having a great time. Looking back, the photographs I made that day are still some of my favorite work."
+    },
+    {
+      "text": "A huge part of what made the shoot special was the location itself. The ASU Art Museum is filled with interesting architecture, symmetry, shapes, and what I saw as a kind of brutalist aesthetic. Almost every corner felt like another opportunity to find a different composition. It felt like a place where you could keep coming back and still discover something new every time. For a photographer, it was basically a gold mine."
+    },
+    {
+      "text": "I approached the photographs in two main ways: black and white, and color."
+    },
+    {
+      "text": "I personally really enjoy black-and-white photography because removing color allows me to focus on the structure of the photographthe composition, lighting, subject, shapes, and contrast. When the color is gone, your attention shifts away from saturation and vibrant colors and toward the bones of the image. That's one of the reasons I keep coming back to monochrome photography."
+    },
+    {
+      "text": "For the color photographs, I still wanted to keep that same structured feeling. Rather than going for extremely colorful edits, I leaned toward a monotone or a duotone look. It kept the focus on the composition and subject while adding a little more flair - the cherry on top."
+    },
+    {
+      "text": "This shoot ended up being a really educational experience for me. I got to experience what it was like to work with a creative team and learned a lot about how a shoot actually works: communication, direction, working toward a shared vision, and adapting to what is happening around you."
+    },
+    {
+      "text": "More importantly, it made me want to do more photography."
+    }
+  ],
+  "conclusion": "Looking back now, I think this shoot was one of the seeds that eventually grew into everything I've continued doing with photography at ASU. I really loved the experience, and it pushed me to seek out more opportunities to create, collaborate, and eventually become more involved in the photography community myself."
 }

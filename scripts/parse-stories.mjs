@@ -133,7 +133,7 @@ function parseRefs(lines) {
     }
     if (lastField && consumeFieldLine(cur, lastField, line)) continue;
   }
-  return refs;
+  return Object.fromEntries(Object.entries(refs).map(([k, v]) => [k, { ...v, ...(v.fields || {}) }]));
 }
 
 function parseChapters(lines) {

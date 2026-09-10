@@ -8,11 +8,12 @@
   "camera": "Sony A3000 (purchased from KEH, older entry-level mirrorless)",
   "lens": "Sony Carl Zeiss Vario-Tessar T* E 16-70mm F4 ZA OSS",
   "coverImage": "portrait-eclectic-12.jpg",
+  "highlights": ["coolest places I'd discovered on campus"],
   "visualChapters": [
     {
       "id": "monochrome",
       "label": "Black & White",
-      "title": "Monochrome",
+      "title": "Black & White",
       "description": "Removing color allows focus on structure — composition, lighting, subject, shapes, and contrast. When color is gone, attention shifts to the bones of the image.",
       "images": [
         {
@@ -29,7 +30,7 @@
           "role": "supporting"
         },
         {
-          "file": "portrait-eclectic-14.jpg",
+          "file": "portrait-eclectic-14-color.jpg",
           "editorialTitle": "Eclectic Portrait — Color",
           "description": "The color version of the favorite portrait from the project.",
           "role": "favorite",
@@ -44,7 +45,7 @@
       "description": "Restrained monotone/duotone look keeping focus on composition and subject while adding a little flair — the cherry on top.",
       "images": [
         {
-          "file": "portrait-eclectic-1.jpg",
+          "file": "portrait-eclectic-1-color.jpg",
           "editorialTitle": "Eclectic Portrait — Color",
           "description": "Color portrait with restrained duotone treatment.",
           "role": "supporting"
@@ -56,7 +57,7 @@
           "role": "supporting"
         },
         {
-          "file": "portrait-eclectic-3.jpg",
+          "file": "portrait-eclectic-3-color.jpg",
           "editorialTitle": "Symmetry",
           "description": "Symmetrical composition using museum architecture.",
           "role": "supporting"

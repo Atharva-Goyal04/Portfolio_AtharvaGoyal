@@ -11,7 +11,6 @@ import {
   type EditorialLayout,
   type ProjectStory,
   type StoryChapter,
-  type StoryImage,
   type StoryRelated,
   type StorySection,
 } from "@/lib/projects";
@@ -31,7 +30,7 @@ function srcFor(file: string, images: { src?: string }[]): string {
 
 interface ProjectEditorialProps {
   story: ProjectStory;
-  images: { src?: string }[];
+  images: Array<{ src?: string; projectTitle?: string }>;
   categoryLabel: string;
   category: string;
   slug: string;
@@ -46,96 +45,78 @@ interface ResolvedImage {
   layout: EditorialLayout;
 }
 
-type Block =
-  | { type: "single"; image: ResolvedImage; width: "widest" | "wide" | "narrow" | "detail" }
-  | { type: "two-up"; a: ResolvedImage; b: ResolvedImage }
-  | { type: "offset"; a: ResolvedImage; b: ResolvedImage }
-  | { type: "detail-pair"; a: ResolvedImage; b: ResolvedImage };
-
-function resolve(image: StoryImage, images: { src?: string }[], overrides?: { layout?: EditorialLayout }): ResolvedImage {
-  return {
-    src: srcFor(image.file, images),
-    editorialTitle: image.editorialTitle,
-    description: image.description,
-    note: image.note,
-    storyConnection: image.storyConnection,
-    layout: overrides?.layout ?? image.layout ?? "large",
-  };
+// Extracts the trailing number from an image filename so sets can be split by
+// the actual shooting order (e.g. `portrait-nikon_shoot-12` → 12,
+// `portrait-eclectic-1-color` → 1).
+function numericSuffix(file: string): number {
+  const base = (file.split("/").pop() ?? file).replace(/\.[a-z0-9]+$/i, "");
+  const m = base.match(/-(\d+)(?:-[a-z0-9]+)?$/);
+  return m ? parseInt(m[1], 10) : Number.MAX_SAFE_INTEGER;
 }
 
-function blocksForChapter(chapter: StoryChapter, images: { src?: string }[], chapterIndex: number): Block[] {
-  const blocks: Block[] = [];
-  const imgs = chapter.images;
-  let i = 0;
+// Splits image srcs into `n` consecutive numeric-order ranges. A project with
+// 15 files and 3 chapters yields clean 1–5 / 6–10 / 11–15 chunks.
+function splitIntoRanges(srcs: string[], n: number): string[][] {
+  const sorted = [...srcs].sort((a, b) => numericSuffix(a) - numericSuffix(b));
+  const chunks: string[][] = [];
+  for (let i = 0; i < n; i++) {
+    const start = Math.round((i * sorted.length) / n);
+    const end = Math.round(((i + 1) * sorted.length) / n);
+    chunks.push(sorted.slice(start, end));
+  }
+  return chunks;
+}
 
-  while (i < imgs.length) {
-    const img = imgs[i];
+// Extracts the labeling tag after the number, e.g. `portrait-eclectic-1-color` → "color".
+// Files with no tag (bare numbers) are black-and-white by convention.
+function filenameTag(file: string): string {
+  const base = (file.split("/").pop() ?? file).replace(/\.[a-z0-9]+$/i, "");
+  const m = base.match(/-(\d+)-([a-z0-9]+)$/i);
+  return m ? m[2].toLowerCase() : "";
+}
 
-    if (img.layout === "detail") {
-      blocks.push({ type: "single", image: resolve(img, images, { layout: "detail" }), width: "detail" });
-      i += 1;
-      continue;
-    }
-    if (img.layout === "two-up" || img.layout === "offset") {
-      const next = i + 1 < imgs.length ? imgs[i + 1] : null;
-      if (next) {
-        blocks.push(
-          img.layout === "two-up"
-            ? { type: "two-up", a: resolve(img, images, { layout: "two-up" }), b: resolve(next, images, { layout: "two-up" }) }
-            : { type: "offset", a: resolve(img, images, { layout: "offset" }), b: resolve(next, images, { layout: "offset" }) },
-        );
-        i += 2;
-      } else {
-        blocks.push({ type: "single", image: resolve(img, images, { layout: "large" }), width: "wide" });
-        i += 1;
-      }
-      continue;
-    }
-    if (img.layout === "full" || img.layout === "medium" || img.layout === "large") {
-      const width = img.layout === "full" ? "widest" : img.layout === "medium" ? "narrow" : "wide";
-      blocks.push({ type: "single", image: resolve(img, images, { layout: img.layout }), width });
-      i += 1;
-      continue;
-    }
-
-    if (img.role === "detail") {
-      const next = i + 1 < imgs.length && imgs[i + 1].role === "detail" && !imgs[i + 1].layout ? imgs[i + 1] : null;
-      if (next) {
-        blocks.push({
-          type: "detail-pair",
-          a: resolve(img, images, { layout: "detail" }),
-          b: resolve(next, images, { layout: "detail" }),
-        });
-        i += 2;
-      } else {
-        blocks.push({ type: "single", image: resolve(img, images, { layout: "detail" }), width: "detail" });
-        i += 1;
-      }
-      continue;
-    }
-
-    if (i === 0 && chapterIndex === 0) {
-      blocks.push({ type: "single", image: resolve(img, images, { layout: "large" }), width: "wide" });
-      i += 1;
-      continue;
-    }
-
-    const next = i + 1 < imgs.length ? imgs[i + 1] : null;
-    if (next && next.role !== "detail" && !next.layout) {
-      const useOffset = blocks.length % 3 === 1;
-      blocks.push(
-        useOffset
-          ? { type: "offset", a: resolve(img, images, { layout: "offset" }), b: resolve(next, images, { layout: "offset" }) }
-          : { type: "two-up", a: resolve(img, images, { layout: "two-up" }), b: resolve(next, images, { layout: "two-up" }) },
-      );
-      i += 2;
+// When a project labels its photos (e.g. `…-1-color` for color, bare numbers for
+// bnw), chapters follow those tag groups instead of numeric ranges. Returns null
+// when the project has no tags, falling back to splitIntoRanges.
+function chapterSetsFor(srcs: string[], chapters: { title: string }[]): string[][] | null {
+  const byTag = new Map<string, string[]>();
+  const untagged: string[] = [];
+  for (const src of srcs) {
+    const tag = filenameTag(src);
+    if (tag) {
+      byTag.set(tag, [...(byTag.get(tag) ?? []), src]);
     } else {
-      blocks.push({ type: "single", image: resolve(img, images, { layout: "full" }), width: "widest" });
-      i += 1;
+      untagged.push(src);
+    }
+  }
+  if (byTag.size + (untagged.length ? 1 : 0) !== chapters.length) return null;
+
+  const sortGroup = (g: string[]) => [...g].sort((a, b) => numericSuffix(a) - numericSuffix(b));
+  const sets: (string[] | null)[] = chapters.map(() => null);
+  const matched = new Set<string>();
+
+  for (let i = 0; i < chapters.length; i++) {
+    const tag = [...byTag.keys()].find((t) => chapters[i].title.toLowerCase().includes(t));
+    if (tag && !matched.has(tag)) {
+      sets[i] = sortGroup(byTag.get(tag)!);
+      matched.add(tag);
     }
   }
 
-  return blocks;
+  const open = sets.map((s, i) => (s ? -1 : i)).filter((i) => i >= 0);
+
+  if (untagged.length) {
+    if (open.length !== 1) return null;
+    sets[open[0]] = sortGroup(untagged);
+    return sets as string[][];
+  }
+
+  const leftTags = [...byTag.keys()]
+    .filter((t) => !matched.has(t))
+    .sort((a, b) => numericSuffix(byTag.get(a)![0]) - numericSuffix(byTag.get(b)![0]));
+  if (leftTags.length !== open.length) return null;
+  for (let j = 0; j < open.length; j++) sets[open[j]] = sortGroup(byTag.get(leftTags[j])!);
+  return sets as string[][];
 }
 
 function Caption({ title, src, camera }: { title?: string; src?: string; camera?: string }) {
@@ -165,7 +146,21 @@ function ExifLine({ src, camera }: { src: string; camera?: string }) {
   );
 }
 
-function Figure({ image, eager, className, camera, ratio }: { image: ResolvedImage; eager?: boolean; className?: string; camera?: string; ratio?: number }) {
+function Figure({
+  image,
+  eager,
+  className,
+  camera,
+  ratio,
+  sizes = "(max-width: 1280px) 100vw, 1024px",
+}: {
+  image: ResolvedImage;
+  eager?: boolean;
+  className?: string;
+  camera?: string;
+  ratio?: number;
+  sizes?: string;
+}) {
   return (
     <figure className={className}>
       <div className="overflow-hidden rounded-sm">
@@ -174,7 +169,7 @@ function Figure({ image, eager, className, camera, ratio }: { image: ResolvedIma
           alt={image.editorialTitle}
           eager={eager}
           ratio={ratio}
-          sizes="(max-width: 1280px) 100vw, 1024px"
+          sizes={sizes}
           className="transition-transform duration-700 hover:scale-[1.01]"
         />
       </div>
@@ -183,53 +178,49 @@ function Figure({ image, eager, className, camera, ratio }: { image: ResolvedIma
   );
 }
 
-function ChapterBlocks({ chapter, images, chapterIndex, camera }: { chapter: StoryChapter; images: { src?: string }[]; chapterIndex: number; camera?: string }) {
-  const blocks = blocksForChapter(chapter, images, chapterIndex);
-
+// Renders a chapter's full set as a tidy editorial grid — small and consistent
+// (no full-bleed singles), each figure capped at a caption + EXIF line.
+function SetGrid({
+  chapter,
+  images,
+  eagerFirst,
+  camera,
+}: {
+  chapter: StoryChapter;
+  images: { src?: string }[];
+  eagerFirst?: boolean;
+  camera?: string;
+}) {
   return (
-    <div className="space-y-14 md:space-y-20">
-      {blocks.map((block, i) => {
-        if (block.type === "two-up") {
-          return (
-            <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05}>
-              <div className="grid gap-10 sm:grid-cols-2 sm:items-start sm:gap-8">
-                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} camera={camera} />
-                <Figure image={block.b} camera={camera} />
-              </div>
-            </Reveal>
-          );
-        }
-        if (block.type === "offset") {
-          return (
-            <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05}>
-              <div className="grid gap-10 sm:grid-cols-12 sm:items-start sm:gap-8">
-                <Figure image={block.a} eager={chapterIndex === 0 && i === 0} className="sm:col-span-7" camera={camera} />
-                <Figure image={block.b} className="sm:col-span-5" camera={camera} />
-              </div>
-            </Reveal>
-          );
-        }
-        if (block.type === "detail-pair") {
-          return (
-            <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05}>
-              <div className="mx-auto grid max-w-3xl gap-10 sm:grid-cols-2 sm:items-start sm:gap-8">
-                <Figure image={block.a} camera={camera} />
-                <Figure image={block.b} camera={camera} />
-              </div>
-            </Reveal>
-          );
-        }
-        const width =
-          block.width === "detail"
-            ? "mx-auto max-w-md"
-            : block.width === "narrow"
-              ? "mx-auto max-w-2xl"
-              : block.width === "wide"
-                ? "mx-auto max-w-4xl"
-                : "mx-auto max-w-5xl";
+    <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      {chapter.images.map((img, i) => {
+        const src = srcFor(img.file, images);
+        if (!src) return null;
+        const info = imageInfo(src);
+        const isLandscape = info ? info.width > info.height : false;
         return (
-          <Reveal key={`${chapter.id}-${i}`} delay={i * 0.05} className={width}>
-            <Figure image={block.image} eager={chapterIndex === 0 && i === 0} camera={camera} />
+          <Reveal
+            key={`${chapter.id}-${i}`}
+            delay={i * 0.04}
+            className={isLandscape ? "sm:col-span-2 lg:col-span-2" : undefined}
+          >
+            <Figure
+              image={{
+                src,
+                editorialTitle: img.editorialTitle,
+                description: img.description,
+                note: img.note,
+                storyConnection: img.storyConnection,
+                layout: "large",
+              }}
+              eager={eagerFirst && i === 0}
+              camera={camera}
+              sizes={
+                isLandscape
+                  ? "(max-width: 640px) 100vw, (max-width: 1024px) 66vw, 45vw"
+                  : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              }
+            />
           </Reveal>
         );
       })}
@@ -249,6 +240,9 @@ function ChapterHeader({ chapter, index }: { chapter: StoryChapter; index: numbe
       <h2 className="mt-3 font-display text-3xl font-medium tracking-tight text-balance text-ink md:text-4xl">
         {chapter.subtitle ?? chapter.title}
       </h2>
+      {chapter.description && (
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted text-pretty">{chapter.description}</p>
+      )}
     </header>
   );
 }
@@ -266,9 +260,15 @@ function StoryFigure({ src, title, camera }: { src: string; title?: string; came
   const info = imageInfo(src);
   const isPortrait = info ? info.height > info.width : false;
   return (
-    <figure className={cn("mx-auto", isPortrait ? "max-w-2xl" : "max-w-4xl")}>
+    <figure className={cn("mx-auto", isPortrait ? "max-w-md" : "max-w-lg")}>
       <div className="overflow-hidden rounded-sm bg-surface">
-        <Photo src={src} alt={title ?? ""} fit="contain" sizes="(max-width: 1280px) 100vw, 1024px" />
+        <Photo
+          src={src}
+          alt={title ?? ""}
+          fit="contain"
+          imgClassName="block h-auto w-full"
+          sizes="(max-width: 1280px) 100vw, 640px"
+        />
       </div>
       <Caption title={title} src={src} camera={camera} />
     </figure>
@@ -317,7 +317,6 @@ function StorySections({
   patterns,
   pullQuote,
   pullQuoteAfter,
-  skipFiles,
 }: {
   sections: StorySection[];
   images: { src?: string }[];
@@ -326,7 +325,6 @@ function StorySections({
   patterns: string[];
   pullQuote?: string;
   pullQuoteAfter?: number;
-  skipFiles?: Set<string>;
 }) {
   return (
     <div className="space-y-14 md:space-y-20">
@@ -334,7 +332,6 @@ function StorySections({
         .filter((s) => s.text.trim())
         .map((section, i) => {
           const pinnedSrc = section.image ? srcFor(section.image, images) : "";
-          const pinnedVisible = Boolean(pinnedSrc) && !(skipFiles?.has(fileBase(pinnedSrc)));
           const pinned = section.image ? findImageContext(section.image, context) : undefined;
           return (
             <div key={i} className="space-y-12 md:space-y-16">
@@ -343,14 +340,14 @@ function StorySections({
                   <Highlight text={section.text} patterns={patterns} />
                 </p>
               </Reveal>
-              {pinnedVisible && (
+              {pinnedSrc && (
                 <Reveal delay={0.05}>
                   <StoryFigure src={pinnedSrc} title={pinned?.editorialTitle} camera={camera} />
                 </Reveal>
               )}
               {section.related?.map((r, j) => {
                 const relatedSrc = srcFor(r.file, images);
-                if (!relatedSrc || skipFiles?.has(fileBase(relatedSrc))) return null;
+                if (!relatedSrc) return null;
                 return (
                   <Reveal key={j} delay={0.08}>
                     <RelatedFigure related={r} images={images} camera={camera} />
@@ -424,22 +421,29 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
     description: img.description,
   }));
 
-  // Each image appears exactly once on the page. The visual chapters are the
-  // canonical home for every image they reference; the hero renders its own
-  // cover. Story figures (pinned + related) only render images that are shown
-  // nowhere else, so a photo never repeats lower down the page.
-  const coverKey = fileBase(story.coverImage);
-  const chapterFileBases = new Set<string>();
-  for (const ch of story.visualChapters ?? []) for (const img of ch.images ?? []) chapterFileBases.add(fileBase(img.file));
-  const skipStoryFiles = new Set<string>([coverKey, ...chapterFileBases]);
+  // Curated editorial titles/descriptions, keyed by canonical filename, so the
+  // author's copy is reused wherever a photo already had one.
+  const curatedMap = new Map(imageContext.map((c) => [fileBase(c.file), c]));
 
-  // Drop the hero cover from a chapter only when the chapter still has other
-  // images to show; a single-image chapter keeps its image.
-  const chapters = (story.visualChapters ?? []).map((ch) => {
-    if (ch.images.length === 1) return ch;
-    const images = ch.images.filter((img) => fileBase(img.file) !== coverKey);
-    return images.length > 0 ? { ...ch, images } : ch;
-  });
+  // Every chapter presents its full shooting set — split by tag where photos are
+  // labeled (e.g. Eclectic Art: `-color` files vs bare-number bnw), otherwise by
+  // numeric order (e.g. Nikon Tour: clean 1–5 / mono 6–10 / drag 11–15).
+  const curatedChapters = story.visualChapters ?? [];
+  const allSrcs = images.map((img) => img.src).filter((s): s is string => Boolean(s));
+  const tagSets = chapterSetsFor(allSrcs, curatedChapters);
+  const rangeSets = splitIntoRanges(allSrcs, Math.max(curatedChapters.length, 1));
+  const chapters: StoryChapter[] = curatedChapters.map((ch, i) => ({
+    ...ch,
+    images: (tagSets?.[i] ?? rangeSets[i] ?? []).map((src) => {
+      const curated = curatedMap.get(fileBase(src));
+      return {
+        file: (src.split("/").pop() ?? src),
+        editorialTitle: curated?.editorialTitle ?? "",
+        description: curated?.description ?? "",
+        role: "supporting",
+      };
+    }),
+  }));
 
   // Every image file referenced in the story — any raw filename the author wrote
   // gets removed from the prose (files are reference, not story content).
@@ -456,7 +460,10 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
   for (const fav of story.favoriteImages ?? []) addBase(fav.file);
 
   const highlightPatterns = [
-    ...new Set(imageContext.map((c) => c.editorialTitle).filter((t): t is string => Boolean(t && t.trim()))),
+    ...new Set([
+      ...imageContext.map((c) => c.editorialTitle).filter((t): t is string => Boolean(t && t.trim())),
+      ...(story.highlights ?? []),
+    ]),
   ].sort((a, b) => b.length - a.length);
 
   // Keep the author's prose untouched — no titles or reference data injected.
@@ -500,12 +507,22 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
 
   const storySections = sections.filter((s) => s.text.trim());
   const pullQuote = pullQuoteFor(storySections);
-  const pullQuoteAfter = pullQuote ? Math.floor(storySections.length / 2) : -1;
+  const pullQuoteIndex = pullQuote ? Math.floor(storySections.length / 2) : -1;
 
-  // Surface the first paragraphs, then let the reader continue the story.
-  const PREVIEW_SECTIONS = 2;
-  const previewSections = storySections.slice(0, PREVIEW_SECTIONS);
-  const restSections = storySections.slice(PREVIEW_SECTIONS);
+  // Surface the opening of the story — roughly 500 characters excluding spaces —
+  // then let the reader continue. Whole sections are kept intact so prose stays verbatim.
+  const PREVIEW_LIMIT = 500;
+  const nonSpaceLen = (text: string) => text.replace(/\s+/g, "").length;
+  let previewLen = 0;
+  let previewCount = 0;
+  for (const s of storySections) {
+    previewLen += nonSpaceLen(s.text);
+    previewCount += 1;
+    if (previewLen >= PREVIEW_LIMIT) break;
+  }
+  const previewSections = storySections.slice(0, previewCount);
+  const restSections = storySections.slice(previewCount);
+  const quoteInPreview = pullQuoteIndex >= 0 && pullQuoteIndex < previewCount;
   const storyNodes = {
     preview: (
       <StorySections
@@ -514,9 +531,8 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
         camera={story.camera}
         context={imageContext}
         patterns={highlightPatterns}
-        pullQuote={pullQuoteAfter < PREVIEW_SECTIONS ? pullQuote : undefined}
-        pullQuoteAfter={pullQuoteAfter < PREVIEW_SECTIONS ? pullQuoteAfter : -1}
-        skipFiles={skipStoryFiles}
+        pullQuote={quoteInPreview ? pullQuote : undefined}
+        pullQuoteAfter={quoteInPreview ? pullQuoteIndex : -1}
       />
     ),
     rest: (
@@ -526,9 +542,8 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
         camera={story.camera}
         context={imageContext}
         patterns={highlightPatterns}
-        pullQuote={pullQuoteAfter >= PREVIEW_SECTIONS ? pullQuote : undefined}
-        pullQuoteAfter={pullQuoteAfter >= PREVIEW_SECTIONS ? pullQuoteAfter - PREVIEW_SECTIONS : -1}
-        skipFiles={skipStoryFiles}
+        pullQuote={!quoteInPreview && pullQuoteIndex >= 0 ? pullQuote : undefined}
+        pullQuoteAfter={!quoteInPreview && pullQuoteIndex >= 0 ? pullQuoteIndex - previewCount : -1}
       />
     ),
   };
@@ -550,7 +565,14 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
             <div className="md:col-span-7">
               <Reveal>
                 <figure className="overflow-hidden rounded-sm bg-surface">
-                  <Photo src={heroSrc} alt={story.projectTitle} eager fit="contain" sizes="(max-width: 1280px) 70vw, 720px" />
+                  <Photo
+                    src={heroSrc}
+                    alt={story.projectTitle}
+                    eager
+                    fit="contain"
+                    imgClassName="block h-auto w-full"
+                    sizes="(max-width: 1280px) 70vw, 720px"
+                  />
                 </figure>
               </Reveal>
             </div>
@@ -572,7 +594,14 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
         ) : (
           <Reveal>
             <figure className="mx-auto w-full max-w-5xl overflow-hidden rounded-sm bg-surface">
-              <Photo src={heroSrc} alt={story.projectTitle} eager fit="contain" sizes="(max-width: 1280px) 90vw, 1024px" />
+              <Photo
+                src={heroSrc}
+                alt={story.projectTitle}
+                eager
+                fit="contain"
+                imgClassName="block h-auto w-full"
+                sizes="(max-width: 1280px) 90vw, 1024px"
+              />
             </figure>
             <div className="mx-auto mt-10 flex max-w-3xl flex-col gap-3">
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">{categoryLabel}</span>
@@ -606,11 +635,11 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
 
       {chapters.length > 0 && (
         <section className="mt-24 md:mt-32">
-          <SectionLabel>Visual Chapters</SectionLabel>
+          <SectionLabel>Complete Collection</SectionLabel>
           {chapters.map((chapter, i) => (
             <div key={chapter.id} className={cn("space-y-14 md:space-y-20", i > 0 && "mt-24 md:mt-32")}>
               <ChapterHeader chapter={chapter} index={i} />
-              <ChapterBlocks chapter={chapter} images={images} chapterIndex={i} camera={story.camera} />
+              <SetGrid chapter={chapter} images={images} eagerFirst={i === 0} camera={story.camera} />
             </div>
           ))}
         </section>

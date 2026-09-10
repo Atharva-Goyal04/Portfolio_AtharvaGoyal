@@ -108,6 +108,7 @@ export interface ProjectStory {
   introduction?: string;
   lightingSetup?: Array<{ role: string; detail: string }>;
   coverImage: string;
+  highlights?: string[];
   visualChapters: StoryChapter[];
   favoriteImages?: Array<{
     file: string;

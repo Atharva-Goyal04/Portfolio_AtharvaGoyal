@@ -275,7 +275,7 @@
     "lens": "35mm Film",
     "isFilm": true
   },
-  "/images/portraits/eclectic-art/portrait-eclectic-1.jpg": {
+  "/images/portraits/eclectic-art/portrait-eclectic-1-color.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "eclectic-art",
@@ -283,7 +283,7 @@
     "width": 1430,
     "height": 2048,
     "blur": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAACwBACdASoQABcALoVarVaipycnBwCES2AE6ZQYwMtJIjYwUejziuGWjO5Ho/+AAP7Fd52DWifze4l8PKRsSo6GACB40UA2kGGXunlYtwK7+2Mn44Hx+fII4MEF6r/abzWivWdOfGNJz3J6jnihQzv8mJsdvSlkElRL4k1vXLnd1PJNI6qHd5MA8sGJX2w1z5+Wf7/k128FATB74lOmaEm5Uvvm9VjwDGFONZNlXTn8/8+ue7yGC++gT8uos+e+nTrWAAAA",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-1.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-1-color.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "23mm",
@@ -309,7 +309,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/eclectic-art/portrait-eclectic-3.jpg": {
+  "/images/portraits/eclectic-art/portrait-eclectic-3-color.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "eclectic-art",
@@ -317,7 +317,7 @@
     "width": 4563,
     "height": 3042,
     "blur": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABwAgCdASoQAAsAAoBCJbACdAYrnlIPTpol3tqgAP727DvfB9Q2S6ss16Hu5VXAag0L/Oi9iMX3mWZlu7dXfHLsa9sFjAm8NkPKS/ufeI1fxLhF/xkn+a8VnKCrlKW0x05nMzC7Ao8DPQP5TD59sV737Xfw6syagvPy1Sav+mzysoE7gAA=",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-3.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-3-color.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "23mm",
@@ -360,7 +360,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/eclectic-art/portrait-eclectic-6.jpg": {
+  "/images/portraits/eclectic-art/portrait-eclectic-6-color.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "eclectic-art",
@@ -368,7 +368,7 @@
     "width": 3632,
     "height": 5456,
     "blur": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAACwBACdASoQABgAPrVKnkonJCKhsAgA4BaJbACdMoFWwDlaINg5rMew41yoPJk8AP7vZ3ZJcwGv6PDdKkBhl2aPyOKoPSU3NFsZ9ZUuZmpLj9wtv8b8ZM0l/Nr0exQjX4/8z5y7nfZI/op0/xq2aAKQeVzfnR+B9eytRA5IIa/3cXRR9ptKO+euMwSaMZGeI+2StuYsZCof1phC8jxnBpVZNI/WUNUiXvrYf3B8VgPrqBW94IJLcv+0eyxb+xxB0txrG/Jp0ZyAAA==",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-6.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-6-color.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "70mm",
@@ -411,7 +411,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/eclectic-art/portrait-eclectic-9.jpg": {
+  "/images/portraits/eclectic-art/portrait-eclectic-9-color.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "eclectic-art",
@@ -419,7 +419,7 @@
     "width": 3632,
     "height": 5456,
     "blur": "data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAABQBQCdASoQABgAPrVInkmnJCKhMAgA4BaJbACdMoMYHYADlGobWJZpGfGqXUPH1In1+oAA/vV1IAuEgQuwJI9MNIEU3vLS02HpqXoULkevcsYX7Pm926wyt3cGiDtFzwoBAI7KOMsS7F2mIocUeh0+yIZx5nBDZztrA3iHScALtDMAgh2z6lpWyBLPnMJmq4717GrTAgSlYrTQTQSr21vf39CqtIjjTLLFs0x+WU/z1luz0rPRQJszoC8SlpnA94j8UIjNzNZvy/H8tiVfttl64bkAAAAA",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-9.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-9-color.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "41mm",
@@ -445,7 +445,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/eclectic-art/portrait-eclectic-11.jpg": {
+  "/images/portraits/eclectic-art/portrait-eclectic-11-color.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "eclectic-art",
@@ -453,7 +453,7 @@
     "width": 5456,
     "height": 3632,
     "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAQAgCdASoQAAsAAoBCJbACdAD7AiIZniSAAP7v150KOAkkqjsh/YHRixCJVe59xk1d1trh78/w22Mtlmm/Q5PTr+k0v2buecihDEjLdJ2syf4xBHOEKBPx33NS9V5gv/9d8f3McXTJ8W87hW/rMujY2/Iq50V0BdAAAA==",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-11.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-11-color.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "70mm",
@@ -496,7 +496,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/eclectic-art/portrait-eclectic-14.jpg": {
+  "/images/portraits/eclectic-art/portrait-eclectic-14-color.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "eclectic-art",
@@ -504,7 +504,7 @@
     "width": 3632,
     "height": 5343,
     "blur": "data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAAAwBQCdASoQABgAPrVInkmnJCKhMAgA4BaJbACdMoR4MQAGeCZTF/r7GqlMzy7r9/5b8AD+72fjWKXQ9c+kQFXNSZNyW6QtTzE5qFYbyTLWz7crQibNWrJMVNiasBToAwFT204/lkDQ/h3V14WKzYm/G3mF+9/9gPE4mxzm6gW0j+9VSW11xJlOe5jDqk3/b36kTnRnnGyMAf3pSiwg/lJgslB4g8XF/aSHlvjBH3NRWYfSVAV+MgDP3Fv9YhSDlHlK9Hg69DeDmgJYc826InHBaoAAAA==",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-14.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-14-color.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "26mm",
@@ -530,7 +530,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/eclectic-art/portrait-eclectic-31.jpg": {
+  "/images/portraits/eclectic-art/portrait-eclectic-16.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "eclectic-art",
@@ -538,7 +538,7 @@
     "width": 3632,
     "height": 5456,
     "blur": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAwBACdASoQABgAPrVIn0mnJCKhMAgA4BaJZwAD5LIN9Ej3vplSONuWtXAA/vhJ3yvSFAj3rA9IMajm8KmUrR13zxI/xouBxC8/7P/SJh79U3vSujYB2dZ3m5j08KC1ZgG2DIohCIvYivAfMP2pnCqEc08bTeyy+IBVX2hSP1IqcnAYkhK6xmfORgUAAAAA",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-31.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/eclectic-art/preview/portrait-eclectic-16.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "16mm",

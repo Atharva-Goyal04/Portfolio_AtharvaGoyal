@@ -375,27 +375,35 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
     description: img.description,
   }));
 
-  // Map an image filename to its editorial title so raw filenames never appear
-  // in the narrative — the title stands in for the "important bit".
-  const titleForFile = new Map<string, string>();
-  const noteTitle = (file: string, title?: string) => {
-    if (!title || !title.trim()) return;
-    const base = file.replace(/\.(jpe?g|png|heic|tiff|webp)$/i, "").toLowerCase();
-    if (base && !titleForFile.has(base)) titleForFile.set(base, title.trim());
+  // Every image file referenced in the story — any raw filename the author wrote
+  // gets removed from the prose (files are reference, not story content).
+  const storyFileBases = new Set<string>();
+  const addBase = (f: string) => {
+    const base = f.replace(/\.(jpe?g|png|heic|tiff|webp)$/i, "").toLowerCase();
+    if (base) storyFileBases.add(base);
   };
-  for (const c of imageContext) noteTitle(c.file, c.editorialTitle);
+  for (const s of story.sections ?? []) {
+    if (s.image) addBase(s.image);
+    for (const r of s.related ?? []) addBase(r.file);
+  }
+  for (const ch of story.visualChapters ?? []) for (const img of ch.images ?? []) addBase(img.file);
+  for (const fav of story.favoriteImages ?? []) addBase(fav.file);
 
   const highlightPatterns = [
     ...new Set(imageContext.map((c) => c.editorialTitle).filter((t): t is string => Boolean(t && t.trim()))),
   ].sort((a, b) => b.length - a.length);
 
+  // Keep the author's prose untouched — no titles or reference data injected.
+  // Only strip raw image filenames (gracefully keeping punctuation) and tidy
+  // rtf spacing artifacts.
   const polishStory = (text: string) => {
     let out = text;
-    for (const [base, title] of titleForFile) {
-      const re = new RegExp(`\\b${escapeRegExp(base)}(?:\\.(?:jpe?g|png|heic|tiff|webp))?\\b`, "gi");
-      out = out.replace(re, title);
+    for (const base of storyFileBases) {
+      out = out
+        .replace(new RegExp(`\\s+(?:is|was|by|of)\\s+${escapeRegExp(base)}\\s*`, "gi"), " ")
+        .replace(new RegExp(`\\b${escapeRegExp(base)}(?:\\.(?:jpe?g|png|heic|tiff|webp))?\\b`, "gi"), "");
     }
-    return out.replace(/\s+([.,!?])(?=\s|\s*$)/g, "$1").trim();
+    return out.replace(/\s+([.,!?])(?=\s|\s*$)/g, "$1").replace(/[ \t]{2,}/g, " ").trim();
   };
 
   const projects = allProjects();

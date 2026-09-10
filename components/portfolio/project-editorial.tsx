@@ -3,7 +3,6 @@ import { Fragment } from "react";
 import { ArrowRight, ChevronLeft } from "lucide-react";
 import Photo from "@/components/shared/photo";
 import Reveal from "@/components/shared/reveal";
-import ContinueReading from "@/components/portfolio/continue-reading";
 import { imageInfo } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import {
@@ -272,18 +271,50 @@ function RelatedFigure({ related, images, camera }: { related: StoryRelated; ima
   return <StoryFigure src={src} title={related.title} camera={camera} />;
 }
 
+const sentenceRe = /[^.!?]+[.!?]+/g;
+
+// For long stories, surface a single verbatim sentence from the middle as a
+// pull quote — the photographer's own words, never altered or invented.
+function pullQuoteFor(sections: StorySection[]): string | undefined {
+  const long = sections.filter((s) => s.text.trim().length > 0);
+  if (long.length < 6) return undefined;
+  const middle = long[Math.floor(long.length / 2)].text;
+  const sentences = middle.match(sentenceRe);
+  if (!sentences) return undefined;
+  const pick = sentences.filter((s) => s.trim().split(/\s+/).length >= 5 && s.trim().split(/\s+/).length <= 35);
+  if (pick.length === 0) return undefined;
+  return pick.sort((a, b) => b.trim().split(/\s+/).length - a.trim().split(/\s+/).length)[0].trim();
+}
+
+function PullQuote({ quote }: { quote: string }) {
+  return (
+    <Reveal>
+      <div className="flex gap-5 py-6 md:gap-7">
+        <span className="w-px shrink-0 bg-brand/60" />
+        <blockquote className="font-display text-2xl font-medium leading-snug text-balance text-ink md:text-3xl">
+          “{quote}”
+        </blockquote>
+      </div>
+    </Reveal>
+  );
+}
+
 function StorySections({
   sections,
   images,
   camera,
   context,
   patterns,
+  pullQuote,
+  pullQuoteAfter,
 }: {
   sections: StorySection[];
   images: { src?: string }[];
   camera?: string;
   context: Array<{ file: string; editorialTitle?: string; description?: string }>;
   patterns: string[];
+  pullQuote?: string;
+  pullQuoteAfter?: number;
 }) {
   return (
     <div className="space-y-14 md:space-y-20">
@@ -309,6 +340,7 @@ function StorySections({
                   <RelatedFigure related={r} images={images} camera={camera} />
                 </Reveal>
               ))}
+              {pullQuote && i === pullQuoteAfter && <PullQuote quote={pullQuote} />}
             </div>
           );
         })}
@@ -432,13 +464,9 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
   const editingStory = polishStory(story.editingStory ?? "");
   const conclusion = polishStory(story.conclusion ?? story.closingStory ?? "");
 
-  const PREVIEW_SECTIONS = 2;
-  const previewSections = sections.slice(0, PREVIEW_SECTIONS);
-  const restSections = sections.slice(PREVIEW_SECTIONS);
-  const storyNodes = {
-    preview: <StorySections sections={previewSections} images={images} camera={story.camera} context={imageContext} patterns={highlightPatterns} />,
-    rest: <StorySections sections={restSections} images={images} camera={story.camera} context={imageContext} patterns={highlightPatterns} />,
-  };
+  const storySections = sections.filter((s) => s.text.trim());
+  const pullQuote = pullQuoteFor(storySections);
+  const pullQuoteAfter = pullQuote ? Math.floor(storySections.length / 2) : -1;
 
   return (
     <article className="mx-auto w-full max-w-6xl px-6 pb-28 pt-24 md:pb-32 md:pt-28">
@@ -503,10 +531,16 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand">The Story</span>
             </div>
           </Reveal>
-          {restSections.length > 0 ? (
-            <ContinueReading preview={storyNodes.preview}>{storyNodes.rest}</ContinueReading>
-          ) : (
-            storyNodes.preview
+          {storySections.length > 0 && (
+            <StorySections
+              sections={storySections}
+              images={images}
+              camera={story.camera}
+              context={imageContext}
+              patterns={highlightPatterns}
+              pullQuote={pullQuote}
+              pullQuoteAfter={pullQuoteAfter}
+            />
           )}
         </section>
       )}

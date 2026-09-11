@@ -23,30 +23,12 @@
       "detail": "Additional Godox flash behind subject on light stand"
     }
   ],
-  "coverImage": "portrait-thequiethour-4.jpg",
+  "coverImage": "portrait-thequiethour-3.jpg",
   "visualChapters": [
     {
-      "id": "show",
-      "label": "01 — Show / Blueprint",
-      "title": "Show",
-      "subtitle": "Blueprint",
-      "description": "Begin with the detail-oriented sneaker image. Use the graphic composition and nighttime bokeh to establish the visual language of the project.",
-      "images": [
-        {
-          "file": "portrait-thequiethour-1.jpg",
-          "editorialTitle": "Blueprint",
-          "description": "A low-angle close-up of a white-and-blue Air Jordan against light-wash denim. The sneaker is sharply focused while the nighttime environment dissolves into warm circular bokeh. Pavement lines create perspective through the frame, while the contrast between cool foreground tones and warm background lights gives the photograph a polished streetwear-editorial quality.",
-          "role": "Detail image / visual introduction.",
-          "storyConnection": "Establishes the visual language of the shoot through a small, detail-oriented frame. The sneaker, denim, pavement, and nighttime lighting introduce the streetwear aesthetic without immediately relying on a conventional portrait."
-        }
-      ],
-      "story": "The first visual direction focuses on the details and visual language of the shoot rather than immediately presenting the model. The sneaker photograph turns a small part of the outfit into its own graphic composition. The low perspective, pavement geometry, sharp footwear, and warm nighttime bokeh give the image a structured, almost architectural quality. The photograph is less about documenting the outfit and more about establishing the visual world of the shoot."
-    },
-    {
       "id": "blue",
-      "label": "02 — Blue / Fountain of Youth",
-      "title": "Blue",
-      "subtitle": "Fountain of Youth",
+      "label": "01 — Fountain of Youth",
+      "title": "Fountain of Youth",
       "description": "Move into the blue outfit and nighttime environmental portraits. The cooler styling, fountain, warm background lights, and playful Bob-omb accessory establish the youthful and relaxed side of the project.",
       "images": [
         {
@@ -97,9 +79,9 @@
     },
     {
       "id": "red",
-      "label": "03 — Red / Heatwave",
-      "title": "Red",
-      "subtitle": "Heatwave",
+      "label": "02 — Heat Wave",
+      "title": "Heat Wave",
+      "displayOrder": "desc",
       "description": "Transition into the black-and-red outfit at Durham Hall. The brick architecture, warm directional lighting, and darker styling create the most dramatic visual chapter.",
       "images": [
         {
@@ -122,7 +104,7 @@
   "favoriteImages": [
     {
       "file": "portrait-thequiethour-4.jpg",
-      "editorialTitle": "Untitled — Personal Favorite",
+      "editorialTitle": "Still Young",
       "description": "Subject looks away from the key light and smiles while the rear flash is visible behind him, shining toward the lens and creating a distinctive flare.",
       "role": "favorite",
       "note": "Photographer's personal favorite. Key visual element: rear flash shining toward camera while subject looks away from main light and smiles. Flare and layered lighting create unusual nighttime portrait with spontaneous, atmospheric quality."

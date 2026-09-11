@@ -60,6 +60,7 @@ export interface StoryChapter {
   label: string;
   title: string;
   subtitle?: string;
+  displayOrder?: "asc" | "desc";
   description: string;
   images: StoryImage[];
   story?: string;

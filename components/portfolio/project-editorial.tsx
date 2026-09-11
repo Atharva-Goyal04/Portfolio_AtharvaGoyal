@@ -432,18 +432,22 @@ export default function ProjectEditorial({ story, images, categoryLabel, categor
   const allSrcs = images.map((img) => img.src).filter((s): s is string => Boolean(s));
   const tagSets = chapterSetsFor(allSrcs, curatedChapters);
   const rangeSets = splitIntoRanges(allSrcs, Math.max(curatedChapters.length, 1));
-  const chapters: StoryChapter[] = curatedChapters.map((ch, i) => ({
-    ...ch,
-    images: (tagSets?.[i] ?? rangeSets[i] ?? []).map((src) => {
-      const curated = curatedMap.get(fileBase(src));
-      return {
-        file: (src.split("/").pop() ?? src),
-        editorialTitle: curated?.editorialTitle ?? "",
-        description: curated?.description ?? "",
-        role: "supporting",
-      };
-    }),
-  }));
+  const chapters: StoryChapter[] = curatedChapters.map((ch, i) => {
+    const set = [...(tagSets?.[i] ?? rangeSets[i] ?? [])];
+    if (ch.displayOrder === "desc") set.reverse();
+    return {
+      ...ch,
+      images: set.map((src) => {
+        const curated = curatedMap.get(fileBase(src));
+        return {
+          file: (src.split("/").pop() ?? src),
+          editorialTitle: curated?.editorialTitle ?? "",
+          description: curated?.description ?? "",
+          role: "supporting",
+        };
+      }),
+    };
+  });
 
   // Every image file referenced in the story — any raw filename the author wrote
   // gets removed from the prose (files are reference, not story content).

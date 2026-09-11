@@ -547,7 +547,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-1.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-1-screen.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -555,7 +555,7 @@
     "width": 3632,
     "height": 5456,
     "blur": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAACwBACdASoQABgAPrVInkmnJCKhMAgA4BaJagCdMoRwAdDo7SKfAJgpfkO2yrWIAP32kTUtW0820ZKJCfiNxmr4BjsZ59dWCevhGYBOnpubHy8EKg1/wG9m7gTr+Qz+06xat0OtSOy1rI45tfUK3+1O8kvABM2ObqnckRzeXC4/JgCN4dDiVKhoz18m2wiGLyA4EHnYBa7yBJxyfH+jcGp+VWflO3h4AAA=",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-1.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-1-screen.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "27mm",
@@ -564,7 +564,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-3.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-3-screen.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -572,7 +572,7 @@
     "width": 5456,
     "height": 3632,
     "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABwAgCdASoQAAsAAoBCJbACdLoAAwqet/M2j64AAP75xEDa2F+XCmdKi5ATeH7B/ksSjh/+gPXv/kMHYrL/xK+G6cm+GeunJBtd2uZ3+34v42w1Mxv4AA==",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-3.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-3-screen.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "70mm",
@@ -581,7 +581,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-4.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-4-shutter.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -589,7 +589,7 @@
     "width": 3378,
     "height": 5216,
     "blur": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAACQBACdASoQABkAPrVKoEonJCMhsAgA4BaJbACdMoRwEGVgS7W4ZfncqDnApeAA9yeJFw0zkYX7Tb466uP3V/WRggyHS9od7dfwEPd/pgvXA/3Rmfx45ON8Vqbp7t/hbfpYRz5ajO1FZ8Lz70qptSKuVZyHU4HhkA1kzss8oid0RFfUXUl8lDYEQjuf49CqposAFucZzzLZJfStNJzQCP4N8KBebhGBJbP+mpx7yXXrW+AA",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-4.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-4-shutter.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "19mm",
@@ -598,7 +598,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-5.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-5-screen.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -606,7 +606,7 @@
     "width": 3359,
     "height": 5456,
     "blur": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAwBACdASoQABoAPrVInkmnJCKhMAgA4BaJaACsACIj1nlMwf5jEiKh1cAA/jR+33+iDQtaq6DstPOF03rcn93l8SnInJrHu+pUVPv5X9pHZEf356BuH+4il9EccNeNaEOqJ2AOgHQsjdLk0o4yf9Kf1bT65ayjmDPQfd6PZb+/YeSqPIYkPy/kAAA=",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-5.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-5-screen.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "47mm",
@@ -615,7 +615,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-6.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-6-shutter.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -623,7 +623,7 @@
     "width": 5456,
     "height": 3632,
     "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAQAgCdASoQAAsAAoBCJbACdADRuIVWHHSQAP511OYzrT/gFh1lQ3Pb0IYKxHY/QayuUsBgVdCnskbDsmyH4skKVjbUIqT9Huomzm8e9Y/ZOvBmlv+Z//NloH/+5LNrPxUpg72C2rw63+AA",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-6.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-6-shutter.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "30mm",
@@ -632,7 +632,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-7.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-7-screen.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -640,7 +640,7 @@
     "width": 5456,
     "height": 3632,
     "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQAgCdASoQAAsAAoBCJbACdAELX/PaCE0AAP77bZRS9uasdYw/nDxLCFyrCkkQvXKmUZJ1JGb57mMlSb4f4927ZH8PhAf4qb9DMXmEZCiZonp/k8AcAA==",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-7.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-7-screen.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "38mm",
@@ -649,7 +649,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-8.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-8-screen.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -657,7 +657,7 @@
     "width": 5185,
     "height": 3632,
     "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQAgCdASoQAAsAAoBCJbACdAEPh0WtGWIYyQAA/vuNvVMznBXfN0iw/EFA/Urb45/BAm5WYyFxsMOappNE6UFHRqTGq6Ql5fH/vGf5t6V82J2P4RpLS294yCDZfo2OHFohvv/ooXQAAA==",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-8.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-8-screen.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "57mm",
@@ -666,7 +666,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-9.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-9-shutter.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -674,7 +674,7 @@
     "width": 3632,
     "height": 5456,
     "blur": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAADwBACdASoQABgAPrVMnkonJCKhsAgA4BaJbACdL10fOyI4Fv++P/GKLkLHSEJtKcAA/veCW/Z5XIcplHXrLapgRQIHg8e/Dq6VWE5bG0edbYMn+gLNuHyy2GN7X3fuG/BvGGds56PFaqC0Ivnpytr2wiMH8e/1NOYGOeqQPqvTYvkrmetVfmiTuivNLVnctFGI9Eju6VtSDmBM9aGnqFXp+nTtj1bv4LWlpAmPz7z9v5t37H/f/8QDMS/ibwx8svz8AAAA",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-9.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-9-shutter.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "23mm",
@@ -683,7 +683,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-10.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-10-screen.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -691,7 +691,7 @@
     "width": 3632,
     "height": 5211,
     "blur": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAAAQBQCdASoQABcAPrVInkmnJCKhMAgA4BaJbACdMoMYHYZ7yABjITUrQdn5FnkUmgwAAP72iEJ7fKytiDjVn86DoVcNi+Uz4fHj5WWfLETJBN3Vnba9KLfwHjUKjt1CibyrTZNmayh3sEZlTJ2xYRpZ/I1WaYTYgVEVaJv0UyLueRNqELwyxkLgB59EZCR3pl4lK+Hl/4sivzT7sLdfvOTz6/+rFvgAAAA=",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-10.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-10-screen.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "45mm",
@@ -700,7 +700,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-11.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-11-shutter.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -708,7 +708,7 @@
     "width": 5456,
     "height": 3632,
     "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABQAgCdASoQAAsAAoBCJbACdLoAAs1ur1NnAwAA/dJzUAjB+atAf6uXsUMnEYvztrV+A33Exi7RGhD4GR6ZpsN0//VPi8gpLv6ji1C9x2jf/P/682LvU7y+MIz/uMYjU1+2FiF+X2EYOpFHAAA=",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-11.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-11-shutter.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "62mm",
@@ -717,7 +717,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-12.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-12-shutter.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -725,7 +725,7 @@
     "width": 5456,
     "height": 3632,
     "blur": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAwAgCdASoQAAsAAoBCJbACdAD7AqME7hX06AD4z7q/DAdGzzw3lmEONRn5EGrj7sFTyOsbG66gvSIPmUsG2yXeAa8A+2f/r8BzJP4+73/8NF5/E7X9s+fLpDyKBsX4AAA=",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-12.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-12-shutter.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "35mm",
@@ -734,7 +734,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-13.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-13-screen.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -742,7 +742,7 @@
     "width": 3327,
     "height": 5130,
     "blur": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAADQBACdASoQABkAPrVKnkmnJCKhMAgA4BaJbACdLwDAAN4rAxkJ0iJICc65VPJvgAD+9tEESNoFnhZ1WSJnjffQNDZQNAvnRcFPPPXKUDXHyefK0wJplw6jfJn2R5wBtDOmxQ6n7Bqs44r/Y2j/S+JOkt1UIFd0n54SoL8frKPsKcNgX4AVcAAfNkAAAA==",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-13.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-13-screen.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "21mm",
@@ -751,7 +751,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-14.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-14-web.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -759,7 +759,7 @@
     "width": 3632,
     "height": 5456,
     "blur": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAABwBACdASoQABgAPrVKnkmnJCKhMAgA4BaJbACdMoAzABDIVPTzhaVnHdgxWAD+8VFpRfoBGyJDRt3TB9O+GbbCCCtzkWvPVCFnGukb89s5r4fap34JRjbH61HvJfGWP8ZCHx/8JBODdvyW0s4S9/oP5PntvF8xSofLczz4vLbNvk5T308hNhzj35w9tHXULpJyOyjkUALl8V2MBdc3l9dsDNcK/P+rQ/ybux6HfqAAAA==",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-14.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-14-web.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "32mm",
@@ -768,7 +768,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-15.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-15-screen.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -776,7 +776,7 @@
     "width": 5103,
     "height": 3632,
     "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwAgCdASoQAAsAAoBCJbACdLoAAvkx77XGiAD++RHb14+UhUj+OaD/RiSyclezofd/IRELfvrNYSwxYqIklv3EM5o5xss9XSpP/lyD7v2v9KsTf/0On8A16wNP+w/W5LTvzqNVjcAAAA==",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-15.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-15-screen.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "28mm",
@@ -785,7 +785,7 @@
     "iso": "ISO 3200",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-16.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-16-web.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -793,7 +793,7 @@
     "width": 3440,
     "height": 5146,
     "blur": "data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAABQBACdASoQABgAPrVInkmnJCKhMAgA4BaJbACdMoRwACnHYMPR3HChAj1gAP71cAROIrUkVfaBivpjltiWrJxLrzKGXqEH/PiIM2aH3rctEv/+CZdUFbt3r1/B+D0yn57fVWSFpt11HXPjbn8nIbKVHDO1LXXlqtalJ4yZa21iDrF/cyC6te7IabUbs/EurqNf6AZ5+I0RxYn9xYOoXM+Z6UU3s+EV3qQYcAAA",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-16.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-16-web.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "69mm",
@@ -802,7 +802,7 @@
     "iso": "ISO 2000",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-17.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-17-web.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -810,7 +810,7 @@
     "width": 5456,
     "height": 3632,
     "blur": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoQAAsAAoBCJbACdAD0uSA3MhEAAP74fg86PnGawaht31tAwDFIoCqLOGrxjV+uLKNdY5//Jhd8wXD1fwxDDXr//0N7s+ftHfBwAA==",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-17.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-17-web.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "21mm",
@@ -819,7 +819,7 @@
     "iso": "ISO 100",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-18.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-18-shutter.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -827,7 +827,7 @@
     "width": 5456,
     "height": 3632,
     "blur": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAwAgCdASoQAAsAAoBCJbACdDBGAU6WvBhwYADOIjoJTwxikO73j06FSILLRbTW57EUSucOaXC7shIufXDjiHBJZeOWNHDfnuJ40g07UV+J71lf2GKzyiCNWEcQIEHpEt/5jNQPpe63r9lln/+nLMA/P/H1ezobfH5v/Gcfst1WAAAA",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-18.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-18-shutter.jpg.webp",
     "camera": "Sony α3000",
     "lens": "E 16-70mm F4 ZA OSS",
     "focalLength": "46mm",
@@ -836,24 +836,7 @@
     "iso": "ISO 1600",
     "isFilm": false
   },
-  "/images/portraits/halloween-25/portrait-halloween25-19.jpg": {
-    "category": "portraits",
-    "label": "Portraits",
-    "project": "halloween-25",
-    "projectTitle": "Halloween 25",
-    "width": 3632,
-    "height": 5456,
-    "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBACdASoQABgAPrVKnkonJCKhsAgA4BaJZACdACHh+4eh8eVEFkOA8AD+94HKPkJcHakba07PJfuLRQ3OuJbgVFQ79h6Q3jHJX3AA1YTlwH9vt6GIl63kbwMZZFsKCNDeGkZ88IZ2U+gpKTP+ZMCY7cHWAqUVOhuwAAAA",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-19.jpg.webp",
-    "camera": "Sony α3000",
-    "lens": "E 16-70mm F4 ZA OSS",
-    "focalLength": "16mm",
-    "aperture": "f/4",
-    "shutterSpeed": "1/160s",
-    "iso": "ISO 1000",
-    "isFilm": false
-  },
-  "/images/portraits/halloween-25/portrait-halloween25-20.jpg": {
+  "/images/portraits/halloween-25/portrait-halloween25-20-screen.jpg": {
     "category": "portraits",
     "label": "Portraits",
     "project": "halloween-25",
@@ -861,62 +844,13 @@
     "width": 2125,
     "height": 3264,
     "blur": "data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAACQBQCdASoQABkAPrVInkmnJCKhMAgA4BaJbACdMoRwN5XTAPUA9ADpZQMZDK4bREqwEkt2AAD+8MsdzmpdaZXstkGQbDYZ1IJ92Sn22VPP+nieaUyI1hXXZpgoCpYsB8//Jmd95uJcCHWqm8FOWU4RLAd/zDG1l5O/RobmzZEajhlziXi4Gb1U9pGWUWroWW92pBVn9gKXkyA2OXqrQs4/PMgsQwMg4BiYj/P5I7PA1+bBjdL/Ncq19wBmo1HIjiIHOhAHaZr92yRvzPnAgAAA",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-20.jpg.webp",
+    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-20-screen.jpg.webp",
     "camera": "Canon PowerShot SX700 HS",
     "lens": "4.5-135.0 mm",
     "focalLength": "13mm",
     "aperture": "f/4.5",
     "shutterSpeed": "1/20s",
     "iso": "ISO 1600",
-    "isFilm": false
-  },
-  "/images/portraits/halloween-25/portrait-halloween25-21.jpg": {
-    "category": "portraits",
-    "label": "Portraits",
-    "project": "halloween-25",
-    "projectTitle": "Halloween 25",
-    "width": 3072,
-    "height": 4096,
-    "blur": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAABwBACdASoQABUAPrVInkmnJCKhMAgA4BaJZACdMoADDtLTyNqSUVkmYwEpwAD+0c0Qj71XwUoagRiqxQEiJ75OQ+WdAUSUNWkcb2lqC8Us3eamkvyMmKpOssLctFGv/Wl4b7QMuAoaQhRwyeQ/32M4pqVnqsItu5ZxKvoFSjn+itO36fZCp0YjtwnrSzTDreNfqHhcduUgAA==",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-21.jpg.webp",
-    "camera": "A059P",
-    "focalLength": "13mm",
-    "aperture": "f/2.6",
-    "shutterSpeed": "1/35s",
-    "iso": "ISO 748",
-    "isFilm": false
-  },
-  "/images/portraits/halloween-25/portrait-halloween25-22.jpg": {
-    "category": "portraits",
-    "label": "Portraits",
-    "project": "halloween-25",
-    "projectTitle": "Halloween 25",
-    "width": 3072,
-    "height": 4096,
-    "blur": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABQBACdASoQABUAPrVInkmnJCKhMAgA4BaJagCdIExCyRBqJkb3z62hRTJAAP7mkTDOtXrubpgQjowP20AAESdTYmazVgi5bcS0aV/J3YSnQX4LvpJFE1NH+fQzlC37+w+uW4J7Hh8aVA2cc+VxgW+DkkvjC3XAaJtldWx85Ubmez994y+1l4+Xd5nyTz4vfrf4AAAA",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-22.jpg.webp",
-    "camera": "A059P",
-    "focalLength": "13mm",
-    "aperture": "f/2.6",
-    "shutterSpeed": "1/50s",
-    "iso": "ISO 365",
-    "isFilm": false
-  },
-  "/images/portraits/halloween-25/portrait-halloween25-23.jpg": {
-    "category": "portraits",
-    "label": "Portraits",
-    "project": "halloween-25",
-    "projectTitle": "Halloween 25",
-    "width": 3375,
-    "height": 6000,
-    "blur": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAACQBACdASoQAB0APrVKoUqnJCMhsAgA4BaJZgCdFQAJuOGP/Nc2wHJi8v0rryAA/vRdgghoeq3Jtijqp/sTxZOVIfWf5q2S5Rs2cVwNZ7Q+1mU5nfhCM4uIUisMBuTYcOhor0yQHq7KPloHBl4u18rBrqayom8SZO+tet2OvLyqXJUZ4eXX80aCQ4V4HyLVKXU8znrKYnAAAA==",
-    "url": "https://lumen-cdn.lumen-cdn.workers.dev/portfolio/portraits/halloween-25/preview/portrait-halloween25-23.jpg.webp",
-    "camera": "DC-S9",
-    "lens": "LUMIX S 85/F1.8",
-    "focalLength": "85mm",
-    "aperture": "f/1.8",
-    "shutterSpeed": "1/125s",
-    "iso": "ISO 160",
     "isFilm": false
   },
   "/images/portraits/nikon-tour/portrait-nikon_shoot-1.jpg": {

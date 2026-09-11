@@ -6,37 +6,21 @@
   "time": "Around Halloween",
   "camera": "Sony A3000",
   "lens": "Not specified",
-  "coverImage": "portrait-halloween25-10.jpg",
+  "coverImage": "portrait-halloween25-10-screen.jpg",
   "visualChapters": [
     {
-      "id": "zoom-drag",
-      "label": "Zoom Drag",
-      "title": "Zoom Drag",
-      "description": "Keeping the subject in frame while zooming the lens during a slow exposure creates radial blur pulling surrounding light and environment toward the subject — surreal and distorted.",
+      "id": "shutter",
+      "label": "Shutter Set",
+      "title": "Shutter",
+      "description": "The first studio location — a shutter gate in the background under green lighting. This is where the slow-exposure experimentation happened, spinning the camera or zooming the lens to turn the frame into motion and blur.",
       "images": [
         {
-          "file": "portrait-halloween25-4.jpg",
+          "file": "portrait-halloween25-4-shutter.jpg",
           "editorialTitle": "Pulled Into the Frame",
           "description": "An experimental portrait created by keeping the subject in the frame while zooming the lens during a slow exposure. The resulting radial blur pulls the surrounding light and environment toward the subject, creating a surreal and distorted feeling.",
           "role": "featured",
           "featured": true,
           "storyConnection": "Display alongside the section discussing zoom drag and experimentation with movement and blur."
-        }
-      ]
-    },
-    {
-      "id": "shutter-drag",
-      "label": "Shutter Drag",
-      "title": "Shutter Drag",
-      "description": "Slow shutter speed with intentional camera movement creates motion and blur across the frame. The movement of the camera itself becomes part of the photograph.",
-      "images": [
-        {
-          "file": "portrait-halloween25-5.jpg",
-          "editorialTitle": "Soul Splitting",
-          "description": "An experimental portrait created using a slow shutter speed and intentional camera movement, creating motion and blur across the frame.",
-          "role": "featured",
-          "featured": true,
-          "storyConnection": "Display alongside the section explaining shutter drag."
         }
       ]
     },
@@ -47,23 +31,31 @@
       "description": "A set with a translucent plastic screen and red lighting. Ghostface appearing behind the screen creates an unsettling Halloween atmosphere — creepy without being overly obvious.",
       "images": [
         {
-          "file": "portrait-halloween25-13.jpg",
+          "file": "portrait-halloween25-13-screen.jpg",
           "editorialTitle": "Behind the Screen",
           "description": "Ghostface appearing behind a translucent plastic screen with red lighting. The figure seems to creep up behind the main subject, creating an unsettling Halloween atmosphere.",
           "role": "favorite",
           "favorite": true,
           "storyConnection": "Display alongside the section describing the translucent-screen set."
+        },
+        {
+          "file": "portrait-halloween25-5-screen.jpg",
+          "editorialTitle": "Soul Splitting",
+          "description": "An experimental portrait created using a slow shutter speed and intentional camera movement, creating motion and blur across the frame.",
+          "role": "featured",
+          "featured": true,
+          "storyConnection": "Display alongside the section explaining shutter drag."
         }
       ]
     },
     {
       "id": "spiderweb",
       "label": "Spiderweb Set",
-      "title": "Watched",
+      "title": "Spiderweb",
       "description": "Fake spiderweb set with purple and red lighting. Composition creates an unsettling feeling — almost like spying on the subject from the perspective of a stalker or serial killer.",
       "images": [
         {
-          "file": "portrait-halloween25-17.jpg",
+          "file": "portrait-halloween25-17-web.jpg",
           "editorialTitle": "Watched",
           "description": "A portrait from the fake spiderweb set with purple and red lighting. The composition creates an unsettling feeling, almost as if the subject is being secretly watched.",
           "role": "favorite",
@@ -111,7 +103,7 @@
       "text": "Since I wasn't tied to a specific direction, I used the shoot as an opportunity to experiment with techniques I had seen online. One of the main techniques I tried was shutter drag. The basic idea is to slow down the shutter speed and intentionally move the camera or the subject during the exposure, creating motion and blur in the photograph.",
       "related": [
         {
-          "file": "portrait-halloween25-5",
+          "file": "portrait-halloween25-5-screen",
           "title": "Soul Splitting",
           "description": "An experimental portrait created using a slow shutter speed and intentional camera movement, creating motion and blur across the frame.",
           "storyConnection": "Display alongside the section explaining shutter drag."
@@ -125,7 +117,7 @@
       "text": "I also experimented with zoom drag, where instead of physically moving the camera, I kept everything relatively still and zoomed the lens during the exposure. This creates a kind of magnifying or radial blur effect. Since this technique relies on changing the focal length during the exposure, it only really works with a zoom lens rather than a prime.",
       "related": [
         {
-          "file": "portrait-halloween25-4",
+          "file": "portrait-halloween25-4-shutter",
           "title": "Pulled Into the Frame",
           "description": "An experimental portrait created by keeping the subject in the frame while zooming the lens during a slow exposure. The resulting radial blur pulls the surrounding light and environment toward the subject, creating a surreal and distorted feeling.",
           "storyConnection": "Display alongside the section discussing zoom drag and experimentation with movement and blur."

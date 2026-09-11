@@ -150,7 +150,7 @@ function FeaturedSection() {
               href="/projects"
               className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-brand"
             >
-              See the portfolio <ArrowRight className="h-4 w-4" />
+              View projects <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>
         </div>

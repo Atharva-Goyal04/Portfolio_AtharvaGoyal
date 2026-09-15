@@ -18,10 +18,31 @@ const darken = (hex: string, factor = 0.6) => {
 
 const labelColors = TRACKS.map((_, i) => darken(PALETTE[i % PALETTE.length]));
 
-export default function VinylPlayer() {
+interface VinylPlayerProps {
+  size?: "md" | "lg";
+  variant?: "floating" | "inline";
+  label?: string;
+}
+
+export default function VinylPlayer({ size = "md", variant = "floating", label }: VinylPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const lg = size === "lg";
+  const wrapperClass = variant === "floating" ? "absolute bottom-5 right-5" : "";
+  const buttonClass = lg ? "h-20 w-20" : "h-14 w-14";
+  const discClass = lg ? "h-16 w-16" : "h-11 w-11";
+  const labelClass = lg ? "h-7 w-7" : "h-5 w-5";
+  const armClass = lg ? "h-0.5 w-9" : "h-0.5 w-6";
 
   useEffect(() => {
     if (audioRef.current) {
@@ -59,46 +80,57 @@ export default function VinylPlayer() {
   };
 
   return (
-    <div className="absolute bottom-5 right-5">
+    <div className={wrapperClass}>
       <audio
         ref={audioRef}
         src={TRACKS[currentTrack]}
         onEnded={handleEnded}
         className="hidden"
       />
-      <motion.button
-        onClick={togglePlay}
-        aria-label={isPlaying ? "Stop music" : "Play music"}
-        className="group relative block cursor-pointer rounded-full bg-surface/80 p-2 shadow-xl backdrop-blur-sm"
-        whileHover={{ scale: 1.06 }}
-        whileTap={{ scale: 0.96 }}
-      >
-        <div className="relative flex h-14 w-14 items-center justify-center">
-          <motion.div
-            animate={{ rotate: isPlaying ? 360 : 0 }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-            className="h-11 w-11 rounded-full border border-line"
-            style={{
-              background:
-                "conic-gradient(from 0deg, #395144 0deg, #2d4033 30deg, #395144 60deg, #2d4033 90deg, #395144 120deg, #2d4033 150deg, #395144 180deg, #2d4033 210deg, #395144 240deg, #2d4033 270deg, #395144 300deg, #2d4033 330deg, #395144 360deg)",
-            }}
-          >
-            <div
-              className="absolute left-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border"
+      <div className="flex flex-row-reverse items-center gap-3">
+        <motion.button
+          onClick={togglePlay}
+          aria-label={isPlaying ? "Stop music" : "Play music"}
+          className="group relative block cursor-pointer rounded-full bg-surface/80 p-2 shadow-xl backdrop-blur-sm"
+          whileHover={{ scale: 1.06 }}
+          whileTap={{ scale: 0.96 }}
+        >
+          <div className={`relative flex ${buttonClass} items-center justify-center`}>
+            <motion.div
+              animate={{ rotate: isPlaying ? 360 : 0 }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+              className={`${discClass} rounded-full border border-line`}
               style={{
-                backgroundColor: labelColors[currentTrack % labelColors.length],
-                backgroundImage:
-                  "repeating-radial-gradient(circle at center, transparent 0px, transparent 1px, rgba(0,0,0,0.22) 1px, rgba(0,0,0,0.22) 2px)",
+                background:
+                  "conic-gradient(from 0deg, #395144 0deg, #2d4033 30deg, #395144 60deg, #2d4033 90deg, #395144 120deg, #2d4033 150deg, #395144 180deg, #2d4033 210deg, #395144 240deg, #2d4033 270deg, #395144 300deg, #2d4033 330deg, #395144 360deg)",
               }}
+            >
+              <div
+                className={`absolute left-1/2 top-1/2 ${labelClass} -translate-x-1/2 -translate-y-1/2 rounded-full border`}
+                style={{
+                  backgroundColor: labelColors[currentTrack % labelColors.length],
+                  backgroundImage:
+                    "repeating-radial-gradient(circle at center, transparent 0px, transparent 1px, rgba(0,0,0,0.22) 1px, rgba(0,0,0,0.22) 2px)",
+                }}
+              />
+            </motion.div>
+            <div
+              className={`absolute right-[10%] top-1/2 ${armClass} origin-right rounded-full bg-brand transition-transform duration-300 ${
+                isPlaying ? "-rotate-[24deg]" : "-rotate-[8deg]"
+              }`}
             />
-          </motion.div>
-          <div
-            className={`absolute right-[10%] top-1/2 h-0.5 w-6 origin-right rounded-full bg-brand transition-transform duration-300 ${
-              isPlaying ? "-rotate-[24deg]" : "-rotate-[8deg]"
+          </div>
+        </motion.button>
+        {label && (
+          <p
+            className={`translate-y-1 flex-1 text-right font-mono text-[10px] uppercase leading-relaxed tracking-[0.3em] text-brand/50 transition-opacity duration-300 ${
+              scrolled ? "opacity-0" : "opacity-100"
             }`}
-          />
-        </div>
-      </motion.button>
+          >
+            {label}
+          </p>
+        )}
+      </div>
     </div>
   );
 }

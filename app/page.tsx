@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowDown, ArrowRight, Camera, MapPin, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowRight, CalendarClock, Images, MapPin } from "lucide-react";
 import Reveal from "@/components/shared/reveal";
 import Photo from "@/components/shared/photo";
 import { Button } from "@/components/ui/button";
@@ -15,9 +15,8 @@ export const metadata: Metadata = {
 
 const projects = allProjects();
 
-const heroImage = projects.find((p) => p.category === "portraits")?.coverSrc ?? projects[0].coverSrc;
-const heroThumb =
-  projects.filter((p) => p.category === "portraits")[1]?.coverSrc ?? projects[1].coverSrc;
+const heroImage = "/images/portraits/nikon-tour/portrait-nikon_shoot-9.jpg";
+const heroThumb = "/images/portraits/nikon-tour/portrait-nikon_shoot-6.jpg";
 
 const CATEGORY_ORDER = ["portraits", "street", "side-projects"];
 
@@ -52,7 +51,7 @@ function HomeHero() {
             "radial-gradient(60% 60% at 75% 20%, hsl(var(--brand) / 0.10) 0%, transparent 70%)",
         }}
       />
-      <span className="pointer-events-none absolute top-20 right-8 hidden select-none font-mono text-[10px] uppercase tracking-[0.3em] text-muted/40 lg:block">
+      <span className="pointer-events-none absolute top-[6.25rem] right-8 hidden select-none font-mono text-[10px] uppercase tracking-[0.3em] text-muted/40 lg:block">
         33.4242° N, 111.9281° W
       </span>
 
@@ -190,40 +189,40 @@ function DisciplineSection() {
           <Reveal>
             <div className="flex flex-col gap-6">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand/10 text-brand">
-                <Camera className="h-6 w-6" />
+                <CalendarClock className="h-6 w-6" />
               </div>
               <h2 className="font-display text-3xl font-medium md:text-5xl">
-                Portraits &amp; <em className="text-gradient not-italic">sessions</em>
+                Free 30-minute <em className="text-gradient not-italic">consult</em>
               </h2>
               <p className="max-w-md leading-relaxed text-muted text-pretty">
-                Graduations, portraits, and event sessions built around people. Every client
-                gallery is delivered as its own private, downloadable space.
+                Not sure where to start? Grab a 30-minute Zoom call to talk through your shoot — what
+                you want, the timeline, and how delivery works. No commitment.
               </p>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-brand"
               >
-                Book your session <ArrowRight className="h-4 w-4" />
+                Book a 30-minute consult <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="flex flex-col gap-6">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand/10 text-brand">
-                <Sparkles className="h-6 w-6" />
+                <Images className="h-6 w-6" />
               </div>
               <h2 className="font-display text-3xl font-medium md:text-5xl">
-                Street &amp; <em className="text-gradient not-italic">editorial</em>
+                The full <em className="text-gradient not-italic">archive</em>
               </h2>
               <p className="max-w-md leading-relaxed text-muted text-pretty">
                 Candid frames, film experiments, and the quiet geometry of Arizona — shots
                 made for the love of the frame, not the brief.
               </p>
               <Link
-                href="/projects"
+                href="/photos"
                 className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-brand"
               >
-                Explore the archive <ArrowRight className="h-4 w-4" />
+                View the photos <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </Reveal>

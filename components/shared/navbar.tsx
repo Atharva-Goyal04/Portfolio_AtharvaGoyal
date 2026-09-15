@@ -132,6 +132,7 @@ export default function Navbar() {
           </motion.nav>
         )}
       </AnimatePresence>
+      <span className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-brand/30" />
     </header>
   );
 }

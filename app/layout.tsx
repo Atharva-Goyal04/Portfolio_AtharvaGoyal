@@ -114,7 +114,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           <main>{children}</main>
           <div id="sticky-controls" className="sticky bottom-0 z-30">
-            <VinylPlayer />
+            <VinylPlayer label="spin the studio mix" />
             <BackToTop />
           </div>
           <Footer />

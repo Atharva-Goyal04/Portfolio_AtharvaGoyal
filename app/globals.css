@@ -35,14 +35,14 @@
 
   body {
     @apply bg-canvas text-ink font-body antialiased;
-    background-image: linear-gradient(hsl(var(--canvas) / 0.7), hsl(var(--canvas) / 0.7)), url("/images/bg-light.png");
+    background-image: linear-gradient(hsl(var(--canvas) / 0.7), hsl(var(--canvas) / 0.7)), url("/backgrounds/bg-light.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
   }
 
   .dark body {
-    background-image: linear-gradient(hsl(var(--canvas) / 0.5), hsl(var(--canvas) / 0.5)), url("/images/bg-dark.png");
+    background-image: linear-gradient(hsl(var(--canvas) / 0.5), hsl(var(--canvas) / 0.5)), url("/backgrounds/bg-dark.png");
   }
 
   :where(a, button, input, textarea, select, summary):focus-visible {

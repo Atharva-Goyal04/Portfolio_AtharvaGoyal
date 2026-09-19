@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const TRACKS = ["/audio/audio_01.mp3", "/audio/audio_02.mp3", "/audio/audio_3.mp3", "/audio/audio_4.mp3", "/audio/audio_5.mp3"];
+const TRACKS = ["/audio/audio_01.mp3", "/audio/audio_02.mp3", "/audio/audio_3.mp3", "/audio/audio_4.mp3", "/audio/audio_5.mp3", "/audio/audio_6.mp3", "/audio/audio_7.mp3", "/audio/audio_8.mp3"];
 
-const PALETTE = ["#8a3b34", "#67b6bd", "#534b27", "#bfce72", "#1b1b1b"];
+const PALETTE = ["#8a3b34", "#67b6bd", "#534b27", "#bfce72", "#1b1b1b", "#7a5c3d", "#4a6fa5", "#9c4f6d"];
 
 const darken = (hex: string, factor = 0.6) => {
   const n = hex.replace("#", "");
